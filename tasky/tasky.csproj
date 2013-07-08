@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="DAL\TaskyContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Sprint.cs" />
     <Compile Include="Models\Story.cs" />
+    <Compile Include="Models\TeamMember.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +313,11 @@
     <Content Include="Views\Sprint\Create.cshtml" />
     <Content Include="Views\Sprint\Edit.cshtml" />
     <Content Include="Views\Sprint\Delete.cshtml" />
+    <Content Include="Views\TeamMember\Index.cshtml" />
+    <Content Include="Views\TeamMember\Details.cshtml" />
+    <Content Include="Views\TeamMember\Create.cshtml" />
+    <Content Include="Views\TeamMember\Edit.cshtml" />
+    <Content Include="Views\TeamMember\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
