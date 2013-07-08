@@ -16,19 +16,19 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.description)
-            @Html.ValidationMessageFor(model => model.description)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.title)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.title)
             @Html.ValidationMessageFor(model => model.title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
         </div>
 
         <div class="editor-label">
@@ -43,7 +43,10 @@
             @Html.LabelFor(model => model.status)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.status)
+            @Html.DropDownListFor(model => model.status, 
+                      ViewBag.StatusOptions as SelectList, 
+                      "-- Select a status--",
+                      new { @class = "editor-textbox" })
             @Html.ValidationMessageFor(model => model.status)
         </div>
 

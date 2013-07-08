@@ -40,6 +40,7 @@ namespace tasky.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.StatusOptions = new SelectList(new String[] { "To-Do", "In Progress", "Done", "Accepted"});
             return View();
         }
 
@@ -70,6 +71,7 @@ namespace tasky.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StatusOptions = new SelectList(new String[] { "To-Do", "In Progress", "Done", "Accepted" });
             return View(story);
         }
 

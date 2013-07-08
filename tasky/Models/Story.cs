@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace tasky.Models
 {
     public class Story
     {
         public int ID { get; set; }
-        public string description { get; set; }
+
+        [Required]
         public string title { get; set; }
-        //creator
-        //assignee
+
+        public string description { get; set; }
+
         public int points { get; set; }
-        //sprint
+
+        [Required]
         public string status { get; set; }
     }
 }
