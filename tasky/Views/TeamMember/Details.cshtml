@@ -1,0 +1,43 @@
+﻿@model tasky.Models.TeamMember
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TeamMember</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hash)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hash)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.salt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.salt)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
