@@ -10,33 +10,33 @@ using tasky.DAL;
 
 namespace tasky.Controllers
 {
-    public class StoryController : Controller
+    public class SprintController : Controller
     {
         private TaskyContext db = new TaskyContext();
 
         //
-        // GET: /Story/
+        // GET: /Sprint/
 
         public ActionResult Index()
         {
-            return View(db.Stories.ToList());
+            return View(db.Sprints.ToList());
         }
 
         //
-        // GET: /Story/Details/5
+        // GET: /Sprint/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Story story = db.Stories.Find(id);
-            if (story == null)
+            Sprint sprint = db.Sprints.Find(id);
+            if (sprint == null)
             {
                 return HttpNotFound();
             }
-            return View(story);
+            return View(sprint);
         }
 
         //
-        // GET: /Story/Create
+        // GET: /Sprint/Create
 
         public ActionResult Create()
         {
@@ -44,73 +44,73 @@ namespace tasky.Controllers
         }
 
         //
-        // POST: /Story/Create
+        // POST: /Sprint/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Story story)
+        public ActionResult Create(Sprint sprint)
         {
             if (ModelState.IsValid)
             {
-                db.Stories.Add(story);
+                db.Sprints.Add(sprint);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(story);
+            return View(sprint);
         }
 
         //
-        // GET: /Story/Edit/5
+        // GET: /Sprint/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Story story = db.Stories.Find(id);
-            if (story == null)
+            Sprint sprint = db.Sprints.Find(id);
+            if (sprint == null)
             {
                 return HttpNotFound();
             }
-            return View(story);
+            return View(sprint);
         }
 
         //
-        // POST: /Story/Edit/5
+        // POST: /Sprint/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Story story)
+        public ActionResult Edit(Sprint sprint)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(story).State = EntityState.Modified;
+                db.Entry(sprint).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(story);
+            return View(sprint);
         }
 
         //
-        // GET: /Story/Delete/5
+        // GET: /Sprint/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Story story = db.Stories.Find(id);
-            if (story == null)
+            Sprint sprint = db.Sprints.Find(id);
+            if (sprint == null)
             {
                 return HttpNotFound();
             }
-            return View(story);
+            return View(sprint);
         }
 
         //
-        // POST: /Story/Delete/5
+        // POST: /Sprint/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Story story = db.Stories.Find(id);
-            db.Stories.Remove(story);
+            Sprint sprint = db.Sprints.Find(id);
+            db.Sprints.Remove(sprint);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

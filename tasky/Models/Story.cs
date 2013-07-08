@@ -18,9 +18,4 @@ namespace tasky.Models
         //sprint
         public string status { get; set; }
     }
-
-    public class StoryDBContext : DbContext
-    {
-        public DbSet<Story> Stories { get; set; }
-    }
 }

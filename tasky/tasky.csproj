@@ -183,12 +183,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SprintController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="DAL\TaskyContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\StoryModel.cs" />
+    <Compile Include="Models\Sprint.cs" />
+    <Compile Include="Models\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -302,6 +306,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Sprint\Index.cshtml" />
+    <Content Include="Views\Sprint\Details.cshtml" />
+    <Content Include="Views\Sprint\Create.cshtml" />
+    <Content Include="Views\Sprint\Edit.cshtml" />
+    <Content Include="Views\Sprint\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
