@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Story Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,6 +13,7 @@
 @using (Html.BeginForm("Index","Story",FormMethod.Get))
 {
     @Html.DropDownList("StatusFilter", ViewBag.StatusOptions as SelectList, "-- Filter Status --")
+    @Html.DropDownList("SprintFilter", ViewBag.SprintOptions as SelectList, "-- Filter Sprint --")
     <input type="submit" value="Filter" />
 }
 <table>

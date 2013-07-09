@@ -18,14 +18,23 @@ namespace tasky.Controllers
         //
         // GET: /Story/
 
-        public ActionResult Index(string statusFilter = null)
+        public ActionResult Index(string statusFilter = null, int? sprintFilter = null)
         {
+            //create a selectlist for the status options
             ViewBag.StatusOptions = new SelectList(StatusOptions);
 
+            //create a selectlist for the sprint options - use the name of every existing sprint
+            List<Sprint> sprintList = db.Sprints.OrderBy(model => model.title).ToList();
+            ViewBag.SprintOptions = new SelectList(sprintList, "Id","Title");
+
             var storyQuery = db.Stories.AsQueryable();
-            if(statusFilter != null)
+            if (statusFilter != null)
             {
                 storyQuery = storyQuery.Where(model => model.status == statusFilter);
+            }
+            if (sprintFilter != null)
+            {
+                //storyQuery = storyQuery.Where(model => model.status == statusFilter);
             }
 
             return View(storyQuery.ToList());
