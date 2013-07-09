@@ -17,5 +17,8 @@ namespace tasky.Models
 
         [Required]
         public string status { get; set; }
+
+        [Display(Name="Sprint")]
+        public virtual Sprint sprint { get; set; }
     }
 }

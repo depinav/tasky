@@ -48,6 +48,20 @@
             @Html.ValidationMessageFor(model => model.status)
         </div>
 
+        <div class="editor-label">
+            <h3>Sprint</h3>
+        </div>
+        <div class="editor-label">
+            @if (ViewBag.SprintTitle != null)
+            {
+                @ViewBag.SprintTitle
+            }
+            else 
+            {
+                
+            }                               
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>
