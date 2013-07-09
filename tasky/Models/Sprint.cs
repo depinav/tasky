@@ -12,12 +12,15 @@ namespace tasky.Models
         
         public int id { get; set; }
         
+        [Display(Name="Title")]
         [DataType(DataType.Text)]
         public string title { get; set; }
 
+        [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
         public DateTime startDate { get; set; }
         
+        [Display(Name= "End Date")]
         [DataType(DataType.Date)]
         public DateTime endDate { get; set; }
     }
