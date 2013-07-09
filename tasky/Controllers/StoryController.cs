@@ -56,9 +56,14 @@ namespace tasky.Controllers
         //
         // GET: /Story/Create
 
-        public ActionResult Create()
+        public ActionResult Create(string sprintTitle)
         {
             ViewBag.StatusOptions = new SelectList(StatusOptions);
+            if (sprintTitle != null)
+            {
+                ViewBag.SprintTitle = sprintTitle;
+            }
+        //    ViewBag.SprintOptions = new SelectList(
             return View();
         }
 
