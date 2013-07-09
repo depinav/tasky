@@ -12,6 +12,7 @@ namespace tasky.Controllers
 {
     public class StoryController : Controller
     {
+        private static String[] StatusOptions = new String[] { "To-Do", "In Progress", "Done", "Accepted"};
         private TaskyContext db = new TaskyContext();
 
         //
@@ -40,7 +41,7 @@ namespace tasky.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.StatusOptions = new SelectList(new String[] { "To-Do", "In Progress", "Done", "Accepted"});
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
             return View();
         }
 
@@ -71,7 +72,7 @@ namespace tasky.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StatusOptions = new SelectList(new String[] { "To-Do", "In Progress", "Done", "Accepted" });
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
             return View(story);
         }
 

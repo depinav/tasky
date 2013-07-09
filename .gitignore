@@ -95,6 +95,7 @@ sql
 TestResults
 [Tt]est[Rr]esult*
 *.Cache
+*.cache
 ClientBin
 [Ss]tyle[Cc]op.*
 ~$*
