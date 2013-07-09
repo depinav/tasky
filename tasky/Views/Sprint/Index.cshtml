@@ -10,13 +10,6 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index","Story",FormMethod.Get))
-{
-    @Html.DropDownList("StatusFilter", ViewBag.StatusOptions as SelectList, "-- Filter Status --")
-    @Html.DropDownList("SprintFilter", ViewBag.SprintOptions as SelectList, "-- Filter Sprint --")
-    <input type="submit" value="Filter" />
-}
-
 <table>
     <tr>
         <th>
