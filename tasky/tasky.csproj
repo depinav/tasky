@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="DAL\TaskyContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -195,10 +196,15 @@
     <Compile Include="Migrations\201307091424210_init.Designer.cs">
       <DependentUpon>201307091424210_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307091511286_task.cs" />
+    <Compile Include="Migrations\201307091511286_task.Designer.cs">
+      <DependentUpon>201307091511286_task.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Sprint.cs" />
     <Compile Include="Models\Story.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TeamMember.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -323,6 +329,11 @@
     <Content Include="Views\TeamMember\Create.cshtml" />
     <Content Include="Views\TeamMember\Edit.cshtml" />
     <Content Include="Views\TeamMember\Delete.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\Details.cshtml" />
+    <Content Include="Views\Task\Create.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
+    <Content Include="Views\Task\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,6 +344,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201307091424210_init.resx">
       <DependentUpon>201307091424210_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307091511286_task.resx">
+      <DependentUpon>201307091511286_task.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
