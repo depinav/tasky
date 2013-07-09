@@ -49,16 +49,16 @@
         </div>
 
         <div class="editor-label">
-            <h3>Sprint</h3>
+            @Html.LabelFor(model => model.sprint)
         </div>
-        <div class="editor-label">
+        <div class="editor-field">
             @if (ViewBag.SprintTitle != null)
             {
                 @ViewBag.SprintTitle
             }
             else 
             {
-                
+                @Html.DropDownListFor(model => model.sprint, ViewBag.SprintOptions as SelectList, "-- Filter Sprint --")
             }                               
         </div>
 

@@ -4,6 +4,7 @@ namespace tasky.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using tasky.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<tasky.DAL.TaskyContext>
     {
@@ -26,6 +27,16 @@ namespace tasky.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Sprints.AddOrUpdate(i => i.title,
+            new Sprint
+            {
+                id = 0,
+                title = "Unscheduled",
+                startDate = DateTime.Parse("2000-1-1"),
+                endDate = DateTime.Parse("2000-1-1"),
+                stories = Enumerable.Empty<Story>()
+            });
         }
     }
 }

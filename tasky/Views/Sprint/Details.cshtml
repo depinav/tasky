@@ -36,10 +36,15 @@
     <div class="display-field">
         @if(Model.stories != null) 
         {
-            @foreach (var story in Model.stories)
+            <h3>Model.stories is not null</h3>
+            foreach (var story in Model.stories)
             {
                 @Html.ActionLink(story.title, "Details", "Story", new {id = story.ID}, null)
             }
+        }
+        else
+        {
+            <h3>Model.stories is null</h3>
         }
     </div>
 </fieldset>
