@@ -82,20 +82,16 @@ namespace tasky.Controllers
             if (ModelState.IsValid)
             {
                 db.Stories.Add(story);
-                Sprint storySprint = db.Sprints.Find(story.sprint.id);
-
-                if (storySprint.stories == null)
-                {
-                    storySprint.stories = new[] { story };
-                }
-                else
-                {
-                    storySprint.stories = storySprint.stories.Concat(new[] { story });
-                }
-                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            //create a selectlist for the status options
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
+
+            //create a selectlist for the sprint options - use the name of every existing sprint
+            List<Sprint> sprintList = db.Sprints.OrderBy(model => model.title).ToList();
+            ViewBag.SprintOptions = new SelectList(sprintList, "Id", "Title");
 
             return View(story);
         }
