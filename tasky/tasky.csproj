@@ -183,6 +183,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SprintAPIController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
