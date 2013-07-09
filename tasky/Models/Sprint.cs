@@ -27,4 +27,18 @@ namespace tasky.Models
         [Display(Name="Stories")]
         public IEnumerable<Story> stories { get; set; }
     }
+
+    public class SprintAPI
+    {
+        public int id { get; set; }
+
+        [DataType(DataType.Text)]
+        public string title { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? startDate { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? endDate { get; set; }
+    }
 }
