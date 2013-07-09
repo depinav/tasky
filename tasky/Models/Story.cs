@@ -18,9 +18,4 @@ namespace tasky.Models
         [Required]
         public string status { get; set; }
     }
-
-    public class StoryFilter
-    {
-        public String status { get; set; }
-    }
 }

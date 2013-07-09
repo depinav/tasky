@@ -18,9 +18,17 @@ namespace tasky.Controllers
         //
         // GET: /Story/
 
-        public ActionResult Index()
+        public ActionResult Index(string statusFilter = null)
         {
-            return View(db.Stories.ToList());
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
+
+            var storyQuery = db.Stories.AsQueryable();
+            if(statusFilter != null)
+            {
+                storyQuery = storyQuery.Where(model => model.status == statusFilter);
+            }
+
+            return View(storyQuery.ToList());
         }
 
         //
