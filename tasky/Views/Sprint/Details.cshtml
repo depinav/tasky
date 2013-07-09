@@ -37,9 +37,9 @@
         @if(Model.stories != null) 
         {
             <h3>Model.stories is not null</h3>
-            foreach (var story in Model.stories)
+            foreach (var story in ViewBag.StoryOptions)
             {
-                @Html.ActionLink(story.title, "Details", "Story", new {id = story.ID}, null)
+                @Html.ActionLink((string)story.title, "Details", "Story", new {id = story.ID}, null)
             }
         }
         else

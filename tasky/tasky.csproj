@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201307091543365_sprint-story-association.Designer.cs">
       <DependentUpon>201307091543365_sprint-story-association.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307092038531_elliotsCode.cs" />
+    <Compile Include="Migrations\201307092038531_elliotsCode.Designer.cs">
+      <DependentUpon>201307092038531_elliotsCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Sprint.cs" />
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307091543365_sprint-story-association.resx">
       <DependentUpon>201307091543365_sprint-story-association.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307092038531_elliotsCode.resx">
+      <DependentUpon>201307092038531_elliotsCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
