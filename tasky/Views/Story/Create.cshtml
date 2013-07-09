@@ -54,6 +54,7 @@
         <div class="editor-field">
             @if (ViewBag.SprintTitle != null)
             {
+                @Html.HiddenFor(model => model.sprintId, new { value = ViewBag.SprintTitle })
                 @ViewBag.SprintTitle
             }
             else 
