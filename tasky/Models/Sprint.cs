@@ -23,5 +23,8 @@ namespace tasky.Models
         [Display(Name= "End Date")]
         [DataType(DataType.Date)]
         public DateTime endDate { get; set; }
+
+        [Display(Name="Stories")]
+        public IEnumerable<Story> stories { get; set; }
     }
 }

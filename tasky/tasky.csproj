@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201307091511286_task.Designer.cs">
       <DependentUpon>201307091511286_task.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307091543365_sprint-story-association.cs" />
+    <Compile Include="Migrations\201307091543365_sprint-story-association.Designer.cs">
+      <DependentUpon>201307091543365_sprint-story-association.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Sprint.cs" />
@@ -347,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307091511286_task.resx">
       <DependentUpon>201307091511286_task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307091543365_sprint-story-association.resx">
+      <DependentUpon>201307091543365_sprint-story-association.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -29,6 +29,19 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.endDate)
     </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.stories)
+    </div>
+    <div class="display-field">
+        @if(Model.stories != null) 
+        {
+            @foreach (var story in Model.stories)
+            {
+                @Html.ActionLink(story.title, "Details", "Story", new {id = story.ID}, null)
+            }
+        }
+    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
