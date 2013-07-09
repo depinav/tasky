@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamMember)
+        </th>
         <th></th>
     </tr>
 
@@ -46,6 +49,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Status)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamMember)
+        </td>
+        <td></td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

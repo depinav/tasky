@@ -200,6 +200,18 @@
     <Compile Include="Migrations\201307091511286_task.Designer.cs">
       <DependentUpon>201307091511286_task.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307091633220_addFk.cs" />
+    <Compile Include="Migrations\201307091633220_addFk.Designer.cs">
+      <DependentUpon>201307091633220_addFk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307091820551_addedFK.cs" />
+    <Compile Include="Migrations\201307091820551_addedFK.Designer.cs">
+      <DependentUpon>201307091820551_addedFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307091910537_changes.cs" />
+    <Compile Include="Migrations\201307091910537_changes.Designer.cs">
+      <DependentUpon>201307091910537_changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Sprint.cs" />
@@ -347,6 +359,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307091511286_task.resx">
       <DependentUpon>201307091511286_task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307091633220_addFk.resx">
+      <DependentUpon>201307091633220_addFk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307091820551_addedFK.resx">
+      <DependentUpon>201307091820551_addedFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307091910537_changes.resx">
+      <DependentUpon>201307091910537_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

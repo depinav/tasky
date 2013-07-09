@@ -13,6 +13,14 @@
     <fieldset>
         <legend>Task</legend>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeamMember)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => Model.TeamMember, (SelectList)ViewBag.TeamList)
+            @Html.ValidationMessageFor(model => model.TeamMember)
+        </div>
+
         @Html.HiddenFor(model => model.ID)
 
         <div class="editor-label">

@@ -14,6 +14,14 @@
         <legend>Task</legend>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.TeamMember)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => Model.TeamMember, (SelectList)ViewBag.TeamList)
+            @Html.ValidationMessageFor(model => model.TeamMember)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Title)
         </div>
         <div class="editor-field">
