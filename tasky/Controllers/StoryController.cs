@@ -63,7 +63,12 @@ namespace tasky.Controllers
             {
                 ViewBag.SprintTitle = sprintTitle;
             }
-        //    ViewBag.SprintOptions = new SelectList(
+            else
+            {
+                List<Sprint> sprintList = db.Sprints.OrderBy(model => model.title).ToList();
+                ViewBag.SprintOptions = new SelectList(sprintList, "Id", "Title");
+            }
+
             return View();
         }
 
@@ -77,6 +82,17 @@ namespace tasky.Controllers
             if (ModelState.IsValid)
             {
                 db.Stories.Add(story);
+                Sprint storySprint = db.Sprints.Find(story.sprint.id);
+
+                if (storySprint.stories == null)
+                {
+                    storySprint.stories = new[] { story };
+                }
+                else
+                {
+                    storySprint.stories = storySprint.stories.Concat(new[] { story });
+                }
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
