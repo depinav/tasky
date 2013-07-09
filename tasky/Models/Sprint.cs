@@ -35,9 +35,11 @@ namespace tasky.Models
         [DataType(DataType.Text)]
         public string title { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime? startDate { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime? endDate { get; set; }
     }

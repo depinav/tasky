@@ -31,14 +31,18 @@ namespace tasky.Controllers
         // POST api/sprintapi
         public Sprint Post([FromBody]SprintAPI value)
         {
-            Sprint result = new Sprint();
-            result.startDate = (DateTime)value.startDate;
-            result.endDate = (DateTime)value.endDate;
-            result.title = value.title;
+            if (ModelState.IsValid)
+            {
+                Sprint result = new Sprint();
+                result.startDate = (DateTime)value.startDate;
+                result.endDate = (DateTime)value.endDate;
+                result.title = value.title;
 
-            result = db.Sprints.Add(result);
-            db.SaveChanges();
-            return result;
+                result = db.Sprints.Add(result);
+                db.SaveChanges();
+                return result;
+            }
+            return null;
         }
 
         // PUT api/sprintapi/5
