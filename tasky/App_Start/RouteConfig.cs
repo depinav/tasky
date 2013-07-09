@@ -16,7 +16,7 @@ namespace tasky
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Sprint", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
