@@ -56,7 +56,7 @@ namespace tasky.Controllers
         //
         // GET: /Task/Create
 
-        public ActionResult Create(int? teamMemberID)
+        public ActionResult Create(int? teamMemberID, int? storyID)
         {
             ViewBag.StatusOptions = new SelectList(StatusOptions);
             if (teamMemberID != null)
@@ -69,6 +69,17 @@ namespace tasky.Controllers
             {
                 //create a selectlist for the team member options - use the name of every existing member
                 ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
+            }
+
+            if (storyID != null)
+            {
+                Story currentStory = db.Stories.Find(storyID);
+                ViewBag.currentStoryID = currentStory.ID;
+                ViewBag.currentStoryTitle = currentStory.title;
+            }
+            else
+            {
+                ViewBag.StoryOptions = new SelectList(getStoryOptions(), "Id", "Title");
             }
 
             //create a selectlist for the status options
@@ -94,12 +105,6 @@ namespace tasky.Controllers
                 return RedirectToAction("Index");
             }
 
-            //create a selectlist for the status options
-            ViewBag.StatusOptions = new SelectList(StatusOptions);
-
-            //create a selectlist for the team member options - use the name of every existing member
-            ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
-
             return View(task);
         }
 
@@ -120,6 +125,8 @@ namespace tasky.Controllers
             //create a selectlist for the team member options - use the name of every existing member
             ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
 
+            ViewBag.StoryOptions = new SelectList(getStoryOptions(), "Id", "Title");
+
             return View(task);
         }
 
@@ -136,12 +143,6 @@ namespace tasky.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            //create a selectlist for the status options
-            ViewBag.StatusOptions = new SelectList(StatusOptions);
-
-            //create a selectlist for the team member options - use the name of every existing member
-            ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
 
             return View(task);
         }
@@ -182,6 +183,11 @@ namespace tasky.Controllers
         private List<TeamMember> getTeamMemberOptions()
         {
             return db.TeamMembers.ToList();
+        }
+
+        private List<Story> getStoryOptions()
+        {
+            return db.Stories.ToList();
         }
     }
 }

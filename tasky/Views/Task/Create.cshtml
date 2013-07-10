@@ -71,6 +71,21 @@
             }                               
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.story)
+        </div>
+        <div class="editor-field">
+            @if (ViewBag.currentStoryID != null)
+            {
+                @Html.HiddenFor(model => model.storyId, new { value = ViewBag.currentStoryID })
+                @ViewBag.StoryTitle
+            }
+            else 
+            {
+                @Html.DropDownListFor(model => model.storyId, ViewBag.StoryOptions as SelectList, "-- Filter Story --")
+            }                               
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>

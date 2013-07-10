@@ -45,6 +45,8 @@ namespace tasky.Controllers
         public ActionResult Details(int id = 0)
         {
             Story story = db.Stories.Find(id);
+            story.tasks = db.Tasks.Where(t => t.storyId == id).OrderBy(t => t.Title).ToList();
+
             if (story == null)
             {
                 return HttpNotFound();
@@ -124,12 +126,6 @@ namespace tasky.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            //create a selectlist for the status options
-            ViewBag.StatusOptions = new SelectList(StatusOptions);
-
-            //create a selectlist for the sprint options - use the name of every existing sprint
-            ViewBag.SprintOptions = new SelectList(getSprintOptions(), "Id", "Title");
 
             return View(story);
         }

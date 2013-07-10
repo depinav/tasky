@@ -28,5 +28,10 @@ namespace tasky.Models
         [ForeignKey("TeamMember")]
         public int TeamMemberId { get; set; }
         public virtual TeamMember TeamMember { get; set; }
+
+        [Display(Name = "Story")]
+        [ForeignKey("story")]
+        public int storyId { get; set; }
+        public virtual Story story { get; set; }
     }
 }
