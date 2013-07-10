@@ -3,7 +3,7 @@ namespace tasky.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class taskteam : DbMigration
     {
         public override void Up()
         {
@@ -16,8 +16,11 @@ namespace tasky.Migrations
                         description = c.String(maxLength: 4000),
                         points = c.Int(nullable: false),
                         status = c.String(nullable: false, maxLength: 4000),
+                        sprintId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Sprint", t => t.sprintId, cascadeDelete: true)
+                .Index(t => t.sprintId);
             
             CreateTable(
                 "dbo.Sprint",
@@ -42,10 +45,31 @@ namespace tasky.Migrations
                     })
                 .PrimaryKey(t => t.id);
             
+            CreateTable(
+                "dbo.Task",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Title = c.String(nullable: false, maxLength: 4000),
+                        Description = c.String(maxLength: 4000),
+                        Estimate_Hours = c.Int(nullable: false),
+                        Remaining_Hours = c.Int(nullable: false),
+                        Status = c.String(maxLength: 4000),
+                        TeamMemberId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.TeamMember", t => t.TeamMemberId, cascadeDelete: true)
+                .Index(t => t.TeamMemberId);
+            
         }
         
         public override void Down()
         {
+            DropIndex("dbo.Task", new[] { "TeamMemberId" });
+            DropIndex("dbo.Story", new[] { "sprintId" });
+            DropForeignKey("dbo.Task", "TeamMemberId", "dbo.TeamMember");
+            DropForeignKey("dbo.Story", "sprintId", "dbo.Sprint");
+            DropTable("dbo.Task");
             DropTable("dbo.TeamMember");
             DropTable("dbo.Sprint");
             DropTable("dbo.Story");

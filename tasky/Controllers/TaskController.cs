@@ -12,16 +12,32 @@ namespace tasky.Controllers
 {
     public class TaskController : Controller
     {
+        private static String[] StatusOptions = new String[] { "To-Do", "In Progress", "Done", "Accepted" };
         private TaskyContext db = new TaskyContext();
 
         //
         // GET: /Task/
 
-        public ActionResult Index()
+        public ActionResult Index(string statusFilter = "", int? teamMemberFilter = null)
         {
+            //create a selectlist for the status options
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
 
-            
-            return View(db.Tasks.ToList());
+            //create a selectlist for the team member options - use the name of every existing sprint
+            ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
+
+            var taskQuery = db.Tasks.AsQueryable();
+            if (statusFilter.Length > 0)
+            {
+                taskQuery = taskQuery.Where(model => model.Status == statusFilter);
+            }
+            if (teamMemberFilter != null)
+            {
+                taskQuery = taskQuery.Where(model => model.TeamMember.id == (int)teamMemberFilter);
+            }
+
+            return View(taskQuery.ToList());
+            //return View(db.Tasks.ToList());
         }
 
         //
@@ -40,11 +56,28 @@ namespace tasky.Controllers
         //
         // GET: /Task/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int? teamMemberID)
         {
-            List<TeamMember> TeamMemberList = db.TeamMembers.OrderBy(model => model.name).ToList();
-            ViewBag.TeamList = new SelectList(TeamMemberList, "id", "Name");
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
+            if (teamMemberID != null)
+            {
+                TeamMember currentTeamMember = db.TeamMembers.Find(teamMemberID);
+                ViewBag.currentTeamMemberID = currentTeamMember.id;
+                ViewBag.teamMemberName = currentTeamMember.name;
+            }
+            else
+            {
+                //create a selectlist for the team member options - use the name of every existing member
+                ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
+            }
+
+            //create a selectlist for the status options
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
             return View();
+
+            //List<TeamMember> TeamMemberList = db.TeamMembers.OrderBy(model => model.name).ToList();
+            //ViewBag.TeamList = new SelectList(TeamMemberList, "id", "Name");
+            //return View();
         }
 
         //
@@ -61,6 +94,12 @@ namespace tasky.Controllers
                 return RedirectToAction("Index");
             }
 
+            //create a selectlist for the status options
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
+
+            //create a selectlist for the team member options - use the name of every existing member
+            ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
+
             return View(task);
         }
 
@@ -74,8 +113,13 @@ namespace tasky.Controllers
             {
                 return HttpNotFound();
             }
-            List<TeamMember> TeamMemberList = db.TeamMembers.OrderBy(model => model.name).ToList();
-            ViewBag.TeamList = new SelectList(TeamMemberList, "name", "Name");
+
+            //create a selectlist for the status options
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
+
+            //create a selectlist for the team member options - use the name of every existing member
+            ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
+
             return View(task);
         }
 
@@ -92,6 +136,13 @@ namespace tasky.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            //create a selectlist for the status options
+            ViewBag.StatusOptions = new SelectList(StatusOptions);
+
+            //create a selectlist for the team member options - use the name of every existing member
+            ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
+
             return View(task);
         }
 
@@ -125,6 +176,12 @@ namespace tasky.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        //queries all tasks, groups them by team member name, then returns the names
+        private List<TeamMember> getTeamMemberOptions()
+        {
+            return db.TeamMembers.ToList();
         }
     }
 }

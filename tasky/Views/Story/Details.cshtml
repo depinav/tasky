@@ -36,6 +36,13 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.status)
     </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.sprint.title)
+    </div>
+    <div class="display-field">
+        @Html.ActionLink((string)Model.sprint.title, "Details", "Sprint", new {id = Model.sprintId}, null)
+    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |

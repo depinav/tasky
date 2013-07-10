@@ -28,8 +28,7 @@ namespace tasky.Controllers
         public ActionResult Details(int id)
         {
             Sprint sprint = db.Sprints.Find(id);
-
-            ViewBag.StoryOptions = (List<Story>)db.Stories.Where(s => s.sprintId == id).OrderBy(s => s.title).ToList();
+            sprint.stories = db.Stories.Where(s => s.sprintId == id).OrderBy(s => s.title).ToList();
 
             if (sprint == null)
             {

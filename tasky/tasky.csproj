@@ -193,13 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307101406545_taskmodels.cs" />
-    <Compile Include="Migrations\201307101406545_taskmodels.Designer.cs">
-      <DependentUpon>201307101406545_taskmodels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201307092038531_elliotsCode.cs" />
-    <Compile Include="Migrations\201307092038531_elliotsCode.Designer.cs">
-      <DependentUpon>201307092038531_elliotsCode.cs</DependentUpon>
+    <Compile Include="Migrations\201307101637256_task-team.cs" />
+    <Compile Include="Migrations\201307101637256_task-team.Designer.cs">
+      <DependentUpon>201307101637256_task-team.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -342,11 +338,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307101406545_taskmodels.resx">
-      <DependentUpon>201307101406545_taskmodels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307092038531_elliotsCode.resx">
-      <DependentUpon>201307092038531_elliotsCode.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201307101637256_task-team.resx">
+      <DependentUpon>201307101637256_task-team.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

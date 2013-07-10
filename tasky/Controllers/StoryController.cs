@@ -84,17 +84,10 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Stories.Add(story);
+                db.Stories.Add(story);                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            //create a selectlist for the status options
-            ViewBag.StatusOptions = new SelectList(StatusOptions);
-
-            //create a selectlist for the sprint options - use the name of every existing sprint
-            ViewBag.SprintOptions = new SelectList(getSprintOptions(), "Id", "Title");
-
             return View(story);
         }
 

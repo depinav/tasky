@@ -5,13 +5,13 @@ namespace tasky.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class init : IMigrationMetadata
+    public sealed partial class taskteam : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(taskteam));
         
         string IMigrationMetadata.Id
         {
-            get { return "201307091424210_init"; }
+            get { return "201307101637256_task-team"; }
         }
         
         string IMigrationMetadata.Source

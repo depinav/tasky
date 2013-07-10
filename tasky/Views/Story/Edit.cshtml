@@ -50,6 +50,13 @@
             @Html.ValidationMessageFor(model => model.status)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.sprint)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.sprintId, ViewBag.SprintOptions as SelectList, "-- Filter Sprint --")                  
+        </div>
+
         <p>
             <input type="submit" value="Save" />
         </p>
