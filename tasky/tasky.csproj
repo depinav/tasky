@@ -196,17 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307101645271_fixes.cs" />
-    <Compile Include="Migrations\201307101645271_fixes.Designer.cs">
-      <DependentUpon>201307101645271_fixes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201307101855594_storytotasks.cs" />
-    <Compile Include="Migrations\201307101855594_storytotasks.Designer.cs">
-      <DependentUpon>201307101855594_storytotasks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201307101841139_storyHasTasksMigration.cs" />
-    <Compile Include="Migrations\201307101841139_storyHasTasksMigration.Designer.cs">
-      <DependentUpon>201307101841139_storyHasTasksMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201307102054139_init.cs" />
+    <Compile Include="Migrations\201307102054139_init.Designer.cs">
+      <DependentUpon>201307102054139_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -349,14 +341,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307101645271_fixes.resx">
-      <DependentUpon>201307101645271_fixes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307101855594_storytotasks.resx">
-      <DependentUpon>201307101855594_storytotasks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307101841139_storyHasTasksMigration.resx">
-      <DependentUpon>201307101841139_storyHasTasksMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201307102054139_init.resx">
+      <DependentUpon>201307102054139_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
