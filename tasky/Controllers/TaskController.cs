@@ -59,6 +59,7 @@ namespace tasky.Controllers
         public ActionResult Create(int? teamMemberID, int? storyID)
         {
             ViewBag.StatusOptions = new SelectList(StatusOptions);
+            
             if (teamMemberID != null)
             {
                 TeamMember currentTeamMember = db.TeamMembers.Find(teamMemberID);

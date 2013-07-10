@@ -28,6 +28,7 @@ namespace tasky.Controllers
         public ActionResult Details(int id = 0)
         {
             TeamMember teammember = db.TeamMembers.Find(id);
+            teammember.tasks = db.Tasks.Where(t => t.TeamMemberId == id).OrderBy(t => t.Title).ToList();
             if (teammember == null)
             {
                 return HttpNotFound();
@@ -66,6 +67,8 @@ namespace tasky.Controllers
         public ActionResult Edit(int id = 0)
         {
             TeamMember teammember = db.TeamMembers.Find(id);
+            ViewBag.TaskOptions = new SelectList(getTaskOptions(), "Id", "Title");
+
             if (teammember == null)
             {
                 return HttpNotFound();
@@ -119,6 +122,11 @@ namespace tasky.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private List<Task> getTaskOptions()
+        {
+            return db.Tasks.ToList();
         }
     }
 }

@@ -45,6 +45,13 @@
     </div>
 
     <div class="display-label">
+        @Html.DisplayNameFor(model => model.TeamMember)
+    </div>
+    <div class="display-field">
+        @Html.ActionLink((string)Model.TeamMember.name, "Details", "TeamMember", new {id = Model.TeamMember.id}, null)
+    </div>
+
+    <div class="display-label">
         @Html.DisplayNameFor(model => model.story.title)
     </div>
     <div class="display-field">
