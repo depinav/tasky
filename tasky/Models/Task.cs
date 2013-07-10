@@ -12,8 +12,11 @@ namespace tasky.Models
 
         public int ID { get; set; }
 
+        [Display(Name = "Task Title")]
         [Required]
         public string Title { get; set; }
+
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
         [Display(Name="Estimated")]
@@ -24,6 +27,7 @@ namespace tasky.Models
         [Range(0, int.MaxValue, ErrorMessage = "Hours must be greater than 0")]
         public int Remaining_Hours { get; set; }
 
+        [Display(Name = "Status")]
         public string Status { get; set; }
 
         [Display(Name = "Team Member")]

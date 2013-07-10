@@ -12,7 +12,7 @@ namespace tasky.Models
         
         public int id { get; set; }
         
-        [Display(Name="Title")]
+        [Display(Name="Sprint Title")]
         [DataType(DataType.Text)]
         public string title { get; set; }
 

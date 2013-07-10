@@ -9,14 +9,18 @@ namespace tasky.Models
     public class Story
     {
         public int ID { get; set; }
-
+        
+        [Display(Name = "Story Title")]
         [Required]
         public string title { get; set; }
 
+        [Display(Name = "Description")]
         public string description { get; set; }
 
+        [Display(Name = "Points")]
         public int points { get; set; }
 
+        [Display(Name = "Status")]
         [Required]
         public string status { get; set; }
 
