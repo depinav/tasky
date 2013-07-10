@@ -55,20 +55,23 @@ namespace tasky.Controllers
         //
         // GET: /Story/Create
 
-        public ActionResult Create(string sprintTitle)
+        public ActionResult Create(int? sprintID)
         {
             ViewBag.StatusOptions = new SelectList(StatusOptions);
-            if (sprintTitle != null)
+            if (sprintID != null)
             {
-                ViewBag.SprintTitle = sprintTitle;
+                Sprint currentSprint = db.Sprints.Find(sprintID);
+                ViewBag.currentSprintID = currentSprint.id;
+                ViewBag.sprintTitle = currentSprint.title;
+            }
+            else
+            {
+                //create a selectlist for the sprint options - use the name of every existing sprint
+                ViewBag.SprintOptions = new SelectList(getSprintOptions(), "Id", "Title");
             }
 
             //create a selectlist for the status options
             ViewBag.StatusOptions = new SelectList(StatusOptions);
-
-            //create a selectlist for the sprint options - use the name of every existing sprint
-            ViewBag.SprintOptions = new SelectList(getSprintOptions(), "Id", "Title");
-
             return View();
         }
 
