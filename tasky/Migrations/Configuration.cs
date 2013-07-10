@@ -1,6 +1,7 @@
 namespace tasky.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -34,7 +35,7 @@ namespace tasky.Migrations
                 title = "Unscheduled",
                 startDate = DateTime.Parse("2000-1-1"),
                 endDate = DateTime.Parse("2000-1-1"),
-                stories = Enumerable.Empty<Story>()
+                stories = new List<Story>()
             });
         }
     }
