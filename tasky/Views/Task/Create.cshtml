@@ -78,7 +78,7 @@
             @if (ViewBag.currentStoryID != null)
             {
                 @Html.HiddenFor(model => model.storyId, new { value = ViewBag.currentStoryID })
-                @ViewBag.StoryTitle
+                @ViewBag.currentStoryTitle
             }
             else 
             {

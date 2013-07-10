@@ -45,7 +45,7 @@
         {
             foreach (var task in Model.tasks)
             {
-                @Html.ActionLink((string)task.Title, "Details", "Task", new {id = task.ID}, null)
+                @Html.ActionLink((string)task.Title, "Details", "Task", new {id = task.id}, null)
             }
         }
         else

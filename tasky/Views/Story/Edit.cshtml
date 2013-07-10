@@ -13,7 +13,7 @@
     <fieldset>
         <legend>Story</legend>
 
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.id)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.title)
@@ -58,7 +58,7 @@
         </div>
         
         <div class="editor-label">
-           @Html.ActionLink("Create Task", "Create", "Task", new {storyId = Model.ID}, null)
+           @Html.ActionLink("Create Task", "Create", "Task", new {storyId = Model.id}, null)
         </div>
 
         <p>
