@@ -52,9 +52,9 @@
             @Html.LabelFor(model => model.sprint)
         </div>
         <div class="editor-field">
-            @if (ViewBag.SprintTitle != null)
+            @if (ViewBag.currentSprintID != null)
             {
-                @Html.HiddenFor(model => model.sprintId, new { value = ViewBag.SprintTitle })
+                @Html.HiddenFor(model => model.sprintId, new { value = ViewBag.currentSprintID })
                 @ViewBag.SprintTitle
             }
             else 
