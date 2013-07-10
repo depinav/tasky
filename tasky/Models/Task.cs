@@ -10,7 +10,7 @@ namespace tasky.Models
     public class Task
     {
 
-        public int ID { get; set; }
+        public int id { get; set; }
 
         [Required]
         public string Title { get; set; }

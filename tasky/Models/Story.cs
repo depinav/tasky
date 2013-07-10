@@ -7,7 +7,7 @@ namespace tasky.Models
 {
     public class Story
     {
-        public int ID { get; set; }
+        public int id { get; set; }
 
         [Required]
         public string title { get; set; }
