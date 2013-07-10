@@ -1,10 +1,10 @@
 ﻿@model tasky.Models.Task
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Task";
 }
 
-<h2>Create</h2>
+<h2>Create Task</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -12,14 +12,6 @@
 
     <fieldset>
         <legend>Task</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TeamMember)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => Model.TeamMember, (SelectList)ViewBag.TeamList)
-            @Html.ValidationMessageFor(model => model.TeamMember)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
@@ -33,7 +25,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -57,8 +49,26 @@
             @Html.LabelFor(model => model.Status)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusOptions)
+            @Html.DropDownListFor(model => model.Status, 
+                      ViewBag.StatusOptions as SelectList, 
+                      "-- Select a status--",
+                      new { @class = "editor-textbox" })
             @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeamMember)
+        </div>
+        <div class="editor-field">
+            @if (ViewBag.currentTeamMemberID != null)
+            {
+                @Html.HiddenFor(model => model.TeamMemberId, new { value = ViewBag.currentTeamMemberID })
+                @ViewBag.TeamMemberName
+            }
+            else 
+            {
+                @Html.DropDownListFor(model => model.TeamMemberId, ViewBag.TeamMemberOptions as SelectList, "-- Assign Team Member --")
+            }                               
         </div>
 
         <p>

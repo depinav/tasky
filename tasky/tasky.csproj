@@ -193,13 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307101542290_fixes.cs" />
-    <Compile Include="Migrations\201307101542290_fixes.Designer.cs">
-      <DependentUpon>201307101542290_fixes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201307101559160_taskmodel.cs" />
-    <Compile Include="Migrations\201307101559160_taskmodel.Designer.cs">
-      <DependentUpon>201307101559160_taskmodel.cs</DependentUpon>
+    <Compile Include="Migrations\201307101637256_task-team.cs" />
+    <Compile Include="Migrations\201307101637256_task-team.Designer.cs">
+      <DependentUpon>201307101637256_task-team.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -343,11 +339,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307101542290_fixes.resx">
-      <DependentUpon>201307101542290_fixes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307101559160_taskmodel.resx">
-      <DependentUpon>201307101559160_taskmodel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201307101637256_task-team.resx">
+      <DependentUpon>201307101637256_task-team.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

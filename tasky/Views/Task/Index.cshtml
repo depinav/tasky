@@ -1,14 +1,22 @@
 ﻿@model IEnumerable<tasky.Models.Task>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Task Index";
 }
 
-<h2>Index</h2>
+<h2>Task Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index","Task",FormMethod.Get))
+{
+    @Html.DropDownList("StatusFilter", ViewBag.StatusOptions as SelectList, "-- Filter Status --")
+    @Html.DropDownList("TeamMemberFilter", ViewBag.TeamMemberOptions as SelectList, "-- Filter Team Member --")
+    <input type="submit" value="Filter" />
+}
+
 <table>
     <tr>
         <th>
@@ -50,7 +58,7 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TeamMember)
+            @Html.DisplayFor(modelItem => item.TeamMember.name)
         </td>
         <td></td>
 
