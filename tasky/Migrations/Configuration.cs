@@ -31,7 +31,6 @@ namespace tasky.Migrations
             context.Sprints.AddOrUpdate(i => i.title,
             new Sprint
             {
-                id = 0,
                 title = "Unscheduled",
                 startDate = DateTime.Parse("2000-1-1"),
                 endDate = DateTime.Parse("2000-1-1"),
