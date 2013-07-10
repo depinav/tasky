@@ -36,7 +36,6 @@
     <div class="display-field">
         @if(Model.stories != null) 
         {
-            <h3>Model.stories is not null</h3>
             foreach (var story in Model.stories)
             {
                 @Html.ActionLink((string)story.title, "Details", "Story", new {id = story.ID}, null)
