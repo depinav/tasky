@@ -70,17 +70,35 @@
             });
 
             $("#updateButton").on('click', function () {
-                $.get('/api/sprintapi/').done(function (response) {
+                var id = $("#idInput").val();
+                var postData = JSON.parse($("#dataArea").val());
+
+                //update sprint
+                $.ajax('/api/sprintapi/' + id + "/", {
+                    data: postData,
+                    type: "PUT",
+                }).done(function (response) {
                     $("#responseText").text(JSON.stringify(response, undefined, 3));
                     $("#response").show();
+                }).fail(function (jqXHR, status, message) {
+                    $("#failureText").text(message);
+                    $("#failure").show();
                 });
                 return false;
             });
 
             $("#deleteButton").on('click', function () {
-                $.get('/api/sprintapi/').done(function (response) {
+                var id = $("#idInput").val();
+
+                //delete sprint
+                $.ajax('/api/sprintapi/' + id + "/", {
+                    type: "DELETE",
+                }).done(function (response) {
                     $("#responseText").text(JSON.stringify(response, undefined, 3));
                     $("#response").show();
+                }).fail(function (jqXHR, status, message) {
+                    $("#failureText").text(message);
+                    $("#failure").show();
                 });
                 return false;
             });

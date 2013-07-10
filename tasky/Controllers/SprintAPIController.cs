@@ -29,18 +29,13 @@ namespace tasky.Controllers
         }
 
         // POST api/sprintapi
-        public Sprint Post([FromBody]SprintAPI value)
+        public Sprint Post([FromBody]Sprint value)
         {
             if (value != null && ModelState.IsValid)
             {
-                Sprint result = new Sprint();
-                result.startDate = (DateTime)value.startDate;
-                result.endDate = (DateTime)value.endDate;
-                result.title = value.title;
-
-                result = db.Sprints.Add(result);
+                value = db.Sprints.Add(value);
                 db.SaveChanges();
-                return result;
+                return value;
             }
             return null;
         }
@@ -48,10 +43,14 @@ namespace tasky.Controllers
         // PUT api/sprintapi/5
         public Sprint Put(int id, [FromBody]Sprint value)
         {
-            value.id = id;
-            db.Entry(value).State = EntityState.Modified;
-            db.SaveChanges();
-            return value;
+            if (value != null && ModelState.IsValid)
+            {
+                value.id = id;
+                db.Entry(value).State = EntityState.Modified;
+                db.SaveChanges();
+                return value;
+            }
+            return null;
         }
 
         // DELETE api/sprintapi/5
