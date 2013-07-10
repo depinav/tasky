@@ -38,11 +38,29 @@
     </div>
 
     <div class="display-label">
+        @Html.DisplayNameFor(model => model.tasks)
+    </div>
+    <div class="display-field">
+        @if(Model.tasks != null) 
+        {
+            foreach (var task in Model.tasks)
+            {
+                @Html.ActionLink((string)task.Title, "Details", "Task", new {id = task.ID}, null)
+            }
+        }
+        else
+        {
+            <h3>Model.tasks is null</h3>
+        }
+    </div>
+
+    <div class="display-label">
         @Html.DisplayNameFor(model => model.sprint.title)
     </div>
     <div class="display-field">
         @Html.ActionLink((string)Model.sprint.title, "Details", "Sprint", new {id = Model.sprintId}, null)
     </div>
+
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |

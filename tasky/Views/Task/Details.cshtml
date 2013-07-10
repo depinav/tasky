@@ -43,6 +43,13 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Status)
     </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.story.title)
+    </div>
+    <div class="display-field">
+        @Html.ActionLink((string)Model.story.title, "Details", "Story", new {id = Model.storyId}, null)
+    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
