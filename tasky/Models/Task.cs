@@ -34,8 +34,6 @@ namespace tasky.Models
         [Display(Name = "Story")]
         [ForeignKey("story")]
         public int storyId { get; set; }
-
-        [Display(Name="Story")]
         public virtual Story story { get; set; }
     }
 }
