@@ -56,6 +56,10 @@
         <div class="editor-field">
             @Html.DropDownListFor(model => model.sprintId, ViewBag.SprintOptions as SelectList, "-- Filter Sprint --")                  
         </div>
+        
+        <div class="editor-label">
+           @Html.ActionLink("Create Task", "Create", "Task", new {storyId = Model.ID}, null)
+        </div>
 
         <p>
             <input type="submit" value="Save" />
