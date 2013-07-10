@@ -19,6 +19,8 @@ namespace tasky.Controllers
 
         public ActionResult Index()
         {
+
+            
             return View(db.Tasks.ToList());
         }
 
@@ -40,6 +42,8 @@ namespace tasky.Controllers
 
         public ActionResult Create()
         {
+            List<TeamMember> TeamMemberList = db.TeamMembers.OrderBy(model => model.name).ToList();
+            ViewBag.TeamList = new SelectList(TeamMemberList, "id", "Name");
             return View();
         }
 
@@ -70,6 +74,8 @@ namespace tasky.Controllers
             {
                 return HttpNotFound();
             }
+            List<TeamMember> TeamMemberList = db.TeamMembers.OrderBy(model => model.name).ToList();
+            ViewBag.TeamList = new SelectList(TeamMemberList, "name", "Name");
             return View(task);
         }
 

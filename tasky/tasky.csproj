@@ -193,17 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307091424210_init.cs" />
-    <Compile Include="Migrations\201307091424210_init.Designer.cs">
-      <DependentUpon>201307091424210_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201307091511286_task.cs" />
-    <Compile Include="Migrations\201307091511286_task.Designer.cs">
-      <DependentUpon>201307091511286_task.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201307091543365_sprint-story-association.cs" />
-    <Compile Include="Migrations\201307091543365_sprint-story-association.Designer.cs">
-      <DependentUpon>201307091543365_sprint-story-association.cs</DependentUpon>
+    <Compile Include="Migrations\201307101406545_taskmodels.cs" />
+    <Compile Include="Migrations\201307101406545_taskmodels.Designer.cs">
+      <DependentUpon>201307101406545_taskmodels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -347,14 +339,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307091424210_init.resx">
-      <DependentUpon>201307091424210_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307091511286_task.resx">
-      <DependentUpon>201307091511286_task.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307091543365_sprint-story-association.resx">
-      <DependentUpon>201307091543365_sprint-story-association.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201307101406545_taskmodels.resx">
+      <DependentUpon>201307101406545_taskmodels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
