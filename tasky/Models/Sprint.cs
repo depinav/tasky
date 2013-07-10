@@ -28,19 +28,16 @@ namespace tasky.Models
         public virtual IEnumerable<Story> stories { get; set; }
     }
 
+    
     public class SprintAPI
     {
         public int id { get; set; }
 
-        [DataType(DataType.Text)]
+        [Required]
         public string title { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime? startDate { get; set; }
+        public DateTime startDate { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime? endDate { get; set; }
+        public DateTime endDate { get; set; }
     }
 }

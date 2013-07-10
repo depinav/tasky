@@ -22,10 +22,8 @@ namespace tasky.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult ApiTest()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

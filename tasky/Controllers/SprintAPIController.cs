@@ -31,7 +31,7 @@ namespace tasky.Controllers
         // POST api/sprintapi
         public Sprint Post([FromBody]SprintAPI value)
         {
-            if (ModelState.IsValid)
+            if (value != null && ModelState.IsValid)
             {
                 Sprint result = new Sprint();
                 result.startDate = (DateTime)value.startDate;
