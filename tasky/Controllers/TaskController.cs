@@ -74,7 +74,7 @@ namespace tasky.Controllers
             if (storyID != null)
             {
                 Story currentStory = db.Stories.Find(storyID);
-                ViewBag.currentStoryID = currentStory.ID;
+                ViewBag.currentStoryID = currentStory.id;
                 ViewBag.currentStoryTitle = currentStory.title;
             }
             else
