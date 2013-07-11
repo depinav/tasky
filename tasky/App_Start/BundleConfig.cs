@@ -19,8 +19,8 @@ namespace tasky
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/backbone").Include(
-                        "~/Scripts/underscore-min.js",
-                        "~/Scripts/backbone-min.js"));
+                        "~/Scripts/underscore-min-1.5.1.js",
+                        "~/Scripts/backbone-min-1.0.0.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
