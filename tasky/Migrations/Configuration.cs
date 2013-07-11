@@ -37,6 +37,16 @@ namespace tasky.Migrations
                 endDate = DateTime.Parse("2000-1-1"),
                 stories = new List<Story>()
             });
+
+            context.TeamMembers.AddOrUpdate(i => i.name,
+            new TeamMember
+            {
+                name = "Not Assigned",
+                email = null,
+                tasks = new List<Task>(),
+                hash = null,
+                salt = null
+            });
         }
     }
 }
