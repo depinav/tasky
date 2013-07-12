@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table>
+@*<table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.title)
@@ -23,25 +23,35 @@
         </th>
         <th>
         </th>
-    </tr>
+    </tr>*@
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+    <table>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
+            <td>@Html.DisplayFor(modelItem => item.title)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
+            <td>@Html.DisplayFor(modelItem => item.startDate)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
+            <td>@Html.DisplayFor(modelItem => item.endDate)</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    </table>
+    
+    <table>
+        <p>Should list stories here!</p>
+
+    </table>
 }
 
-</table>
+@*</table>*@
