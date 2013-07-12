@@ -78,13 +78,14 @@
 
 @section Scripts {
     <script type="text/javascript">
-        var taskdata = {
-            task1: {title: "hi"},
-            task2: {title: "hi2"},
-            task3: {title: "hi3"}
-        };
+        var taskdata = [
+            {title: "hi"},
+            {title: "hi2"},
+            {title: "hi3"}
+        ];
 
         var c = new TaskList(taskdata);
+        console.log(c);
 
         $(document).on("ready", function() {
             var taskView = new TaskListView({ items: c, el:$(".taskList") })
