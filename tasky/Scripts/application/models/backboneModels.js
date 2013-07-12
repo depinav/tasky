@@ -1,15 +1,23 @@
 var Task = Backbone.Model.extend({
-	urlRoot: '/api/TaskAPI',
+	urlRoot: '/api/taskapi',
 
 	defaults: {
-		title: "",
-		description: "",
-		estimate_hours: 0,
-		remaining_hours: 0,
-		status: "",
-		team_member: null,
+		title: '',
+		description: '',
+		estimate_Hours: 0,
+		remaining_Hours: 0,
+		status: '',
+		teamMember: null,
 		story: null
 	}
 });
 
-var task = new Task();
+var Sprint = Backbone.Model.extend({
+    urlRoot: 'api/sprintapi',
+
+    defaults: {
+        title: '',
+        startdate: null,
+        enddate: null
+    }
+});
