@@ -59,14 +59,20 @@
 @section Scripts {
     <script>
 
+        var onsuccess = function (response) {
+            $("#responseText").text(JSON.stringify(response, undefined, 3));
+            $("#response").show();
+        }
+        var onerror = function (jqXHR, status, message) {
+            $("#failureText").text(message);
+            $("#failure").show();
+        }
+
         $(document).on('ready', function () {
             $("#getAllButton").on('click', function () {
                 var model = $("input[name=model]:checked").val();
 
-                $.get('/api/'+model+'/').done(function (response) {
-                    $("#responseText").text(JSON.stringify(response, undefined, 3));
-                    $("#response").show();
-                });
+                $.get('/api/' + model + '/').done(onsuccess);
                 return false;
             });
 
@@ -74,10 +80,7 @@
                 var id = $("#idInput").val();
                 var model = $("input[name=model]:checked").val();
 
-                $.get('/api/'+model+'/' + id + "/").done(function (response) {
-                    $("#responseText").text(JSON.stringify(response, undefined, 3));
-                    $("#response").show();
-                });
+                $.get('/api/' + model + '/' + id + "/").done(onsuccess);
                 return false;
             });
 
@@ -86,14 +89,7 @@
                 var model = $("input[name=model]:checked").val();
 
                 //create a sprint
-                $.post('/api/'+model+'/', postData)
-                    .done(function (response) {
-                        $("#responseText").text(JSON.stringify(response, undefined, 3));
-                        $("#response").show();
-                    }).fail(function (jqXHR, status, message) {
-                        $("#failureText").text(message);
-                        $("#failure").show();
-                    });
+                $.post('/api/'+model+'/', postData).done(onsuccess).fail(onerror);
                 return false;
             });
 
@@ -106,13 +102,7 @@
                 $.ajax('/api/' + model + '/' + id + "/", {
                     data: postData,
                     type: "PUT",
-                }).done(function (response) {
-                    $("#responseText").text(JSON.stringify(response, undefined, 3));
-                    $("#response").show();
-                }).fail(function (jqXHR, status, message) {
-                    $("#failureText").text(message);
-                    $("#failure").show();
-                });
+                }).done(onsuccess).fail(onerror);
                 return false;
             });
 
@@ -123,13 +113,7 @@
                 //delete sprint
                 $.ajax('/api/' + model + '/' + id + "/", {
                     type: "DELETE",
-                }).done(function (response) {
-                    $("#responseText").text(JSON.stringify(response, undefined, 3));
-                    $("#response").show();
-                }).fail(function (jqXHR, status, message) {
-                    $("#failureText").text(message);
-                    $("#failure").show();
-                });
+                }).done(onsuccess).fail(onerror);
                 return false;
             });
 
