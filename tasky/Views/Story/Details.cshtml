@@ -51,7 +51,7 @@
     <div class="display-field">
         @Html.ActionLink((string)Model.sprint.title, "Details", "Sprint", new {id = Model.sprintId}, null)
     </div>    
-
+<!-- 
     <div class="display-label">
         @Html.DisplayNameFor(model => model.tasks)
     </div>
@@ -68,7 +68,7 @@
             <h3>Model.tasks is null</h3>
         }
     </div> 
-
+-->
     <div class="taskList">
 
         <!-- List out tasks using Backbone here -->
@@ -76,3 +76,19 @@
 
 </fieldset>
 
+@section Scripts {
+    <script type="text/javascript">
+        var taskdata = {
+            task1: {title: "hi"},
+            task2: {title: "hi2"},
+            task3: {title: "hi3"}
+        };
+
+        var c = new TaskList(taskdata);
+
+        $(document).on("ready", function() {
+            var taskView = new TaskListView({ items: c, el:$(".taskList") })
+            taskView.render();
+        });
+    </script>
+}

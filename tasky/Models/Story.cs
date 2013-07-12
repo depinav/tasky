@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace tasky.Models
 {
@@ -29,6 +31,7 @@ namespace tasky.Models
         public int sprintId { get; set; }
         public virtual Sprint sprint { get; set; }
 
+        [ScriptIgnore]
         [Display(Name = "Tasks")]
         public List<Task> tasks { get; set; }
     }
