@@ -10,10 +10,7 @@
     <legend>Story</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.description)
+        User Story -
     </div>
 
     <div class="display-label">
@@ -23,6 +20,10 @@
         @Html.DisplayFor(model => model.title)
     </div>
 
+    <span>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+         @Html.ActionLink("Delete", "Delete", new { id=Model.id })
+    </span>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.points)
     </div>
@@ -36,6 +37,20 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.status)
     </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.sprint.title)
+    </div>
+    <div class="display-field">
+        @Html.ActionLink((string)Model.sprint.title, "Details", "Sprint", new {id = Model.sprintId}, null)
+    </div>    
 
     <div class="display-label">
         @Html.DisplayNameFor(model => model.tasks)
@@ -52,17 +67,12 @@
         {
             <h3>Model.tasks is null</h3>
         }
-    </div>
+    </div> 
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.sprint.title)
-    </div>
-    <div class="display-field">
-        @Html.ActionLink((string)Model.sprint.title, "Details", "Sprint", new {id = Model.sprintId}, null)
+    <div class="taskList">
+
+        <!-- List out tasks using Backbone here -->
     </div>
 
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
