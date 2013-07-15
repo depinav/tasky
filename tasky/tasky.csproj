@@ -196,9 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307111456056_init.cs" />
-    <Compile Include="Migrations\201307111456056_init.Designer.cs">
-      <DependentUpon>201307111456056_init.cs</DependentUpon>
+    <Compile Include="Migrations\201307121629188_init.cs" />
+    <Compile Include="Migrations\201307121629188_init.Designer.cs">
+      <DependentUpon>201307121629188_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -267,6 +267,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\application\models\backboneModels.js" />
     <Content Include="Scripts\application\models\modelCollections.js" />
+    <Content Include="Scripts\application\views\TaskListView.js" />
     <Content Include="Scripts\backbone-min-1.0.0.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -346,14 +347,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\application\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307111456056_init.resx">
-      <DependentUpon>201307111456056_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201307121629188_init.resx">
+      <DependentUpon>201307121629188_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

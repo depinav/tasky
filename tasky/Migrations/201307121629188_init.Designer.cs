@@ -11,7 +11,7 @@ namespace tasky.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201307111456056_init"; }
+            get { return "201307121629188_init"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace tasky.Models
 {
@@ -37,7 +38,10 @@ namespace tasky.Models
 
         [Display(Name = "Story")]
         [ForeignKey("story")]
+        [ScriptIgnore]
         public int storyId { get; set; }
+
+        [ScriptIgnore]
         public virtual Story story { get; set; }
     }
 }
