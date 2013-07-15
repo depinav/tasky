@@ -7,19 +7,24 @@ using System.Web;
 using System.Web.Mvc;
 using tasky.Models;
 using tasky.DAL;
+using tasky.Repository;
 
 namespace tasky.Controllers
 {
     public class TeamMemberController : Controller
     {
-        private TaskyContext db = new TaskyContext();
+        private ITeamMemberRepository repo;
+        public TeamMemberController(ITeamMemberRepository r)
+        {
+            this.repo = r;
+        }
 
         //
         // GET: /TeamMember/
 
         public ActionResult Index()
         {
-            return View(db.TeamMembers.ToList());
+            return View(repo.FindAll());
         }
 
         //
@@ -27,13 +32,18 @@ namespace tasky.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            TeamMember teammember = db.TeamMembers.Find(id);
-            teammember.tasks = db.Tasks.Where(t => t.TeamMemberId == id).OrderBy(t => t.Title).ToList();
+            TeamMember teammember = repo.FindById(id);
+
             if (teammember == null)
             {
                 return HttpNotFound();
             }
-            return View(teammember);
+            else
+            {
+                teammember.tasks = repo.FindTasksForTeamMember(id);
+                return View(teammember);
+            }
+            
         }
 
         //
@@ -53,8 +63,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TeamMembers.Add(teammember);
-                db.SaveChanges();
+                repo.Save(teammember);
                 return RedirectToAction("Index");
             }
 
@@ -66,8 +75,7 @@ namespace tasky.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            TeamMember teammember = db.TeamMembers.Find(id);
-            ViewBag.TaskOptions = new SelectList(getTaskOptions(), "Id", "Title");
+            TeamMember teammember = repo.FindById(id);
 
             if (teammember == null)
             {
@@ -85,8 +93,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(teammember).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Save(teammember);
                 return RedirectToAction("Index");
             }
             return View(teammember);
@@ -97,7 +104,7 @@ namespace tasky.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            TeamMember teammember = db.TeamMembers.Find(id);
+            TeamMember teammember = repo.FindById(id);
             if (teammember == null)
             {
                 return HttpNotFound();
@@ -112,21 +119,8 @@ namespace tasky.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TeamMember teammember = db.TeamMembers.Find(id);
-            db.TeamMembers.Remove(teammember);
-            db.SaveChanges();
+            repo.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-        private List<Task> getTaskOptions()
-        {
-            return db.Tasks.ToList();
         }
     }
 }

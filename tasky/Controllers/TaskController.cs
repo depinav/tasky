@@ -7,13 +7,23 @@ using System.Web;
 using System.Web.Mvc;
 using tasky.Models;
 using tasky.DAL;
+using tasky.Repository;
 
 namespace tasky.Controllers
 {
     public class TaskController : Controller
     {
         private static String[] StatusOptions = new String[] { "To-Do", "In Progress", "Done", "Accepted" };
-        private TaskyContext db = new TaskyContext();
+
+        private IStoryRepository storyRepo;
+        private ITeamMemberRepository teamMemberRepo;
+        private ITaskRepository taskRepo;
+        public TaskController(IStoryRepository s, ITeamMemberRepository m, ITaskRepository r)
+        {
+            this.storyRepo = s;
+            this.teamMemberRepo = m;
+            this.taskRepo = r;
+        }
 
         //
         // GET: /Task/
@@ -26,17 +36,7 @@ namespace tasky.Controllers
             //create a selectlist for the team member options - use the name of every existing sprint
             ViewBag.TeamMemberOptions = new SelectList(getTeamMemberOptions(), "Id", "Name");
 
-            var taskQuery = db.Tasks.AsQueryable();
-            if (statusFilter.Length > 0)
-            {
-                taskQuery = taskQuery.Where(model => model.Status == statusFilter);
-            }
-            if (teamMemberFilter != null)
-            {
-                taskQuery = taskQuery.Where(model => model.TeamMember.id == (int)teamMemberFilter);
-            }
-
-            return View(taskQuery.ToList());
+            return View(taskRepo.FindWithFilters(statusFilter, teamMemberFilter));
             //return View(db.Tasks.ToList());
         }
 
@@ -45,7 +45,7 @@ namespace tasky.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Task task = db.Tasks.Find(id);
+            Task task = taskRepo.FindById(id);
             if (task == null)
             {
                 return HttpNotFound();
@@ -62,7 +62,7 @@ namespace tasky.Controllers
             
             if (teamMemberID != null)
             {
-                TeamMember currentTeamMember = db.TeamMembers.Find(teamMemberID);
+                TeamMember currentTeamMember = teamMemberRepo.FindById((int)teamMemberID);
                 ViewBag.currentTeamMemberID = currentTeamMember.id;
                 ViewBag.teamMemberName = currentTeamMember.name;
             }
@@ -74,7 +74,7 @@ namespace tasky.Controllers
 
             if (storyID != null)
             {
-                Story currentStory = db.Stories.Find(storyID);
+                Story currentStory = storyRepo.FindById((int)storyID);
                 ViewBag.currentStoryID = currentStory.id;
                 ViewBag.currentStoryTitle = currentStory.title;
             }
@@ -101,8 +101,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tasks.Add(task);
-                db.SaveChanges();
+                taskRepo.Save(task);
                 return RedirectToAction("Index");
             }
 
@@ -114,7 +113,7 @@ namespace tasky.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Task task = db.Tasks.Find(id);
+            Task task = taskRepo.FindById(id);
             if (task == null)
             {
                 return HttpNotFound();
@@ -140,8 +139,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(task).State = EntityState.Modified;
-                db.SaveChanges();
+                taskRepo.Save(task);
                 return RedirectToAction("Index");
             }
 
@@ -153,7 +151,7 @@ namespace tasky.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Task task = db.Tasks.Find(id);
+            Task task = taskRepo.FindById(id);
             if (task == null)
             {
                 return HttpNotFound();
@@ -168,27 +166,19 @@ namespace tasky.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Task task = db.Tasks.Find(id);
-            db.Tasks.Remove(task);
-            db.SaveChanges();
+            taskRepo.Delete(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
         //queries all tasks, groups them by team member name, then returns the names
-        private List<TeamMember> getTeamMemberOptions()
+        private IEnumerable<TeamMember> getTeamMemberOptions()
         {
-            return db.TeamMembers.ToList();
+            return teamMemberRepo.FindAll();
         }
 
-        private List<Story> getStoryOptions()
+        private IEnumerable<Story> getStoryOptions()
         {
-            return db.Stories.ToList();
+            return storyRepo.FindAll();
         }
     }
 }

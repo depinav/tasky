@@ -13,6 +13,8 @@ namespace tasky.Injection
         {
             Bind<ISprintRepository>().To<SprintRepository>().InTransientScope();
             Bind<IStoryRepository>().To<StoryRepository>().InTransientScope();
+            Bind<ITeamMemberRepository>().To<TeamMemberRepository>().InTransientScope();
+            Bind<ITaskRepository>().To<TaskRepository>().InTransientScope();
         }
     }
 

@@ -19,7 +19,7 @@ namespace tasky.Models
         public string email { get; set; }
 
         [Display(Name = "Tasks")]
-        public List<Task> tasks { get; set; }
+        public IEnumerable<Task> tasks { get; set; }
 
         // the following is a reminder for app security purposes
         public string hash { get; set; }
