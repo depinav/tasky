@@ -6,8 +6,9 @@ var TaskListView = Backbone.View.extend({
     render: function () {
         var html = "<table class=\"taskListTable\">";
         
-        _.each(this.items.models, function(item) {
-            html = html.concat("<tr><td>" + item.get("title") + "</td></tr>");
+        _.each(this.items.models, function (item) {
+            console.log(item.get("Title"));
+            html = html.concat("<tr><td>" + item.get("Title") + "</td></tr>");
         })
 
         html = html.concat("</table>");

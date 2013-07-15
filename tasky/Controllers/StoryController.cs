@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using tasky.Models;
+using tasky.ViewModels;
 using tasky.DAL;
 using tasky.Repository;
 
@@ -40,16 +41,32 @@ namespace tasky.Controllers
         //
         // GET: /Story/Details/5
 
+
         public ActionResult Details(int id)
         {
-            Story story = storyRepo.FindById(id);
-            story.tasks = storyRepo.FindTasksForStory(id);
+            StoryViewModel storyViewModel = new StoryViewModel();
+            SprintViewModel sprintViewModel = new SprintViewModel();
+            TaskViewModel taskViewModel = new TaskViewModel();
 
+            Story story = storyRepo.FindById(id);
             if (story == null)
             {
                 return HttpNotFound();
             }
-            return View(story);
+            story.tasks = storyRepo.FindTasksForStory(id);
+
+            int storyExists = storyViewModel.convertStory(story);
+            sprintViewModel.convertSprint(story.sprint);
+            storyViewModel.sprintViewModel = sprintViewModel;
+            ICollection<TaskViewModel> tasks = new List<TaskViewModel>();
+
+            foreach(Task task in story.tasks)
+            {
+                tasks.Add(TaskViewModel.convertTask(task));
+            }
+
+            storyViewModel.tasks = tasks;
+            return View(storyViewModel);
         }
 
         //
