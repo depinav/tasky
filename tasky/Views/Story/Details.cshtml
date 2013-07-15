@@ -1,4 +1,4 @@
-﻿@model tasky.Models.Story
+﻿@model tasky.ViewModels.StoryViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -46,29 +46,12 @@
     </div>
 
     <div class="display-label">
-        @Html.DisplayNameFor(model => model.sprint.title)
+        @Html.DisplayNameFor(model => model.sprintViewModel.title)
     </div>
     <div class="display-field">
-        @Html.ActionLink((string)Model.sprint.title, "Details", "Sprint", new {id = Model.sprintId}, null)
+        @Html.ActionLink((string)Model.sprintViewModel.title, "Details", "Sprint", new {id = Model.sprintViewModel.id}, null)
     </div>    
-<!-- 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.tasks)
-    </div>
-    <div class="display-field">
-        @if(Model.tasks != null) 
-        {
-            foreach (var task in Model.tasks)
-            {
-                @Html.ActionLink((string)task.Title, "Details", "Task", new {id = task.id}, null)
-            }
-        }
-        else
-        {
-            <h3>Model.tasks is null</h3>
-        }
-    </div> 
--->
+
     <div class="taskList">
 
         <!-- List out tasks using Backbone here -->
@@ -78,11 +61,14 @@
 
 @section Scripts {
     <script type="text/javascript">
-        var taskdata = [
+        var taskdata = @Html.Raw(Json.Encode(Model.tasks))
+        /*
+            [
             {title: "hi"},
             {title: "hi2"},
             {title: "hi3"}
         ];
+        */
 
         var c = new TaskList(taskdata);
         console.log(c);

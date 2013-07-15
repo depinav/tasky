@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using tasky.Models;
+using tasky.ViewModels;
 using tasky.DAL;
 
 namespace tasky.Controllers
@@ -14,6 +15,9 @@ namespace tasky.Controllers
     {
         private static String[] StatusOptions = new String[] { "To-Do", "In Progress", "Done", "Accepted"};
         private TaskyContext db = new TaskyContext();
+        StoryViewModel storyViewModel = new StoryViewModel();
+        SprintViewModel sprintViewModel = new SprintViewModel();
+        TaskViewModel taskViewModel = new TaskViewModel();
 
         //
         // GET: /Story/
@@ -42,16 +46,31 @@ namespace tasky.Controllers
         //
         // GET: /Story/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int? id = 0)
         {
+            /*
             Story story = db.Stories.Find(id);
             story.tasks = db.Tasks.Where(t => t.storyId == id).OrderBy(t => t.Title).ToList();
+            */
+            int storyExists = storyViewModel.convertStory(db.Stories.Find(id));
 
-            if (story == null)
+            if (storyExists == -1)
             {
                 return HttpNotFound();
             }
-            return View(story);
+
+            sprintViewModel.convertSprint(db.Stories.Find(id).sprint);
+            storyViewModel.sprintViewModel = sprintViewModel;
+            ICollection<TaskViewModel> tasks = new List<TaskViewModel>();
+            List<Task> taskList = db.Tasks.Where(t => t.storyId == id).OrderBy(t => t.Title).ToList();
+
+            foreach(Task task in taskList)
+            {
+                tasks.Add(TaskViewModel.convertTask(task));
+            }
+
+            storyViewModel.tasks = tasks;
+            return View(storyViewModel);
         }
 
         //
