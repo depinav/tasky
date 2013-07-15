@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 
 namespace tasky.Models
 {
@@ -33,6 +32,6 @@ namespace tasky.Models
 
         [ScriptIgnore]
         [Display(Name = "Tasks")]
-        public List<Task> tasks { get; set; }
+        public IEnumerable<Task> tasks { get; set; }
     }
 }

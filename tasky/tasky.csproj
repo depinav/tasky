@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -196,6 +199,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Injection\DefaultModule.cs" />
+    <Compile Include="Injection\NinjectControllerFactory.cs" />
+    <Compile Include="Repository\IStoryRepository.cs" />
+    <Compile Include="Repository\StoryRepository.cs" />
+    <Compile Include="Repository\SprintRepository.cs" />
+    <Compile Include="Repository\ISprintRepository.cs" />
     <Compile Include="Migrations\201307121629188_init.cs" />
     <Compile Include="Migrations\201307121629188_init.Designer.cs">
       <DependentUpon>201307121629188_init.cs</DependentUpon>

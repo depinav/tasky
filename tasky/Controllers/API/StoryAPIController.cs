@@ -17,18 +17,21 @@ namespace tasky.Controllers
         private TaskyContext db = new TaskyContext();
 
         // GET api/storyapi
+        [ActionName("DefaultAction")]
         public IEnumerable<Story> Get()
         {
             return db.Stories.ToList();
         }
 
         // GET api/storyapi/5
+        [ActionName("DefaultAction")]
         public Story Get(int id)
         {
             return db.Stories.Find(id);
         }
 
         // POST api/storyapi
+        [ActionName("DefaultAction")]
         public Story Post([FromBody]Story value)
         {
             if (value != null && ModelState.IsValid)
@@ -41,6 +44,7 @@ namespace tasky.Controllers
         }
 
         // PUT api/storyapi/5
+        [ActionName("DefaultAction")]
         public Story Put(int id, [FromBody]Story value)
         {
             if (value != null && ModelState.IsValid)
@@ -54,11 +58,19 @@ namespace tasky.Controllers
         }
 
         // DELETE api/storyapi/5
+        [ActionName("DefaultAction")]
         public void Delete(int id)
         {
             Story story = db.Stories.Find(id);
             db.Stories.Remove(story);
             db.SaveChanges();
+        }
+
+        //GET api/storyapi/5/tasks/
+        [HttpGet]
+        public IEnumerable<Task> Tasks(int id)
+        {
+            return db.Tasks.Where(model => model.storyId == id).ToList();
         }
     }
 }

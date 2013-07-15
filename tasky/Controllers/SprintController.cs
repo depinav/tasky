@@ -1,25 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using tasky.Models;
 using tasky.DAL;
+using tasky.Models;
+using tasky.Repository;
 
 namespace tasky.Controllers
 {
     public class SprintController : Controller
     {
-        private TaskyContext db = new TaskyContext();
+        private ISprintRepository repo;
+        public SprintController(ISprintRepository r)
+        {
+            this.repo = r;
+        }
 
         //
         // GET: /Sprint/
 
         public ActionResult Index()
         {
-            return View(db.Sprints.ToList());
+            return View(repo.FindAll());
         }
 
         //
@@ -27,9 +28,8 @@ namespace tasky.Controllers
 
         public ActionResult Details(int id)
         {
-            Sprint sprint = db.Sprints.Find(id);
-            sprint.stories = db.Stories.Where(s => s.sprintId == id).OrderBy(s => s.title).ToList();
-
+            Sprint sprint = repo.FindById(id);
+            sprint.stories = repo.FindStoriesForSprint(id);
             if (sprint == null)
             {
                 return HttpNotFound();
@@ -54,8 +54,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sprints.Add(sprint);
-                db.SaveChanges();
+                repo.Save(sprint);
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +66,7 @@ namespace tasky.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Sprint sprint = db.Sprints.Find(id);
+            Sprint sprint = repo.FindById(id);
             if (sprint == null)
             {
                 return HttpNotFound();
@@ -84,8 +83,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sprint).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Save(sprint);
                 return RedirectToAction("Index");
             }
             return View(sprint);
@@ -97,7 +95,7 @@ namespace tasky.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Sprint sprint = db.Sprints.Find(id);
+            Sprint sprint = repo.FindById(id);
 
             if (sprint == null)
             {
@@ -113,16 +111,8 @@ namespace tasky.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sprint sprint = db.Sprints.Find(id);
-            db.Sprints.Remove(sprint);
-            db.SaveChanges();
+            repo.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

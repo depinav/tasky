@@ -7,13 +7,21 @@ using System.Web;
 using System.Web.Mvc;
 using tasky.Models;
 using tasky.DAL;
+using tasky.Repository;
 
 namespace tasky.Controllers
 {
     public class StoryController : Controller
     {
         private static String[] StatusOptions = new String[] { "To-Do", "In Progress", "Done", "Accepted"};
-        private TaskyContext db = new TaskyContext();
+
+        private ISprintRepository sprintRepo;
+        private IStoryRepository storyRepo;
+        public StoryController(ISprintRepository s,IStoryRepository r)
+        {
+            this.sprintRepo = s;
+            this.storyRepo = r;
+        }
 
         //
         // GET: /Story/
@@ -26,26 +34,16 @@ namespace tasky.Controllers
             //create a selectlist for the sprint options - use the name of every existing sprint
             ViewBag.SprintOptions = new SelectList(getSprintOptions(), "Id","Title");
 
-            var storyQuery = db.Stories.AsQueryable();
-            if (statusFilter.Length > 0)
-            {
-                storyQuery = storyQuery.Where(model => model.status == statusFilter);
-            }
-            if (sprintFilter != null)
-            {
-                storyQuery = storyQuery.Where(model => model.sprint.id == (int)sprintFilter);
-            }
-            
-            return View(storyQuery.ToList());
+            return View(storyRepo.FindWithFilters(statusFilter, sprintFilter));
         }
 
         //
         // GET: /Story/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id)
         {
-            Story story = db.Stories.Find(id);
-            story.tasks = db.Tasks.Where(t => t.storyId == id).OrderBy(t => t.Title).ToList();
+            Story story = storyRepo.FindById(id);
+            story.tasks = storyRepo.FindTasksForStory(id);
 
             if (story == null)
             {
@@ -62,7 +60,7 @@ namespace tasky.Controllers
             ViewBag.StatusOptions = new SelectList(StatusOptions);
             if (sprintID != null)
             {
-                Sprint currentSprint = db.Sprints.Find(sprintID);
+                Sprint currentSprint = sprintRepo.FindById((int)sprintID);
                 ViewBag.currentSprintID = currentSprint.id;
                 ViewBag.sprintTitle = currentSprint.title;
             }
@@ -86,8 +84,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Stories.Add(story);                
-                db.SaveChanges();
+                storyRepo.Save(story);
                 return RedirectToAction("Index");
             }
             return View(story);
@@ -98,7 +95,7 @@ namespace tasky.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Story story = db.Stories.Find(id);
+            Story story = storyRepo.FindById(id);
             if (story == null)
             {
                 return HttpNotFound();
@@ -122,8 +119,7 @@ namespace tasky.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(story).State = EntityState.Modified;
-                db.SaveChanges();
+                storyRepo.Save(story);
                 return RedirectToAction("Index");
             }
 
@@ -135,7 +131,7 @@ namespace tasky.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Story story = db.Stories.Find(id);
+            Story story = storyRepo.FindById(id);
             if (story == null)
             {
                 return HttpNotFound();
@@ -150,22 +146,14 @@ namespace tasky.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Story story = db.Stories.Find(id);
-            db.Stories.Remove(story);
-            db.SaveChanges();
+            storyRepo.Delete(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
         //queries all stories, groups them by sprint name, then returns the sprint names
-        private List<Sprint> getSprintOptions()
+        private IEnumerable<Sprint> getSprintOptions()
         {
-            return db.Sprints.ToList();
+            return sprintRepo.FindAll();
         }
     }
 }
