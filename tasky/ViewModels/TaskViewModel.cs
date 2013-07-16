@@ -30,6 +30,12 @@ namespace tasky.ViewModels
         [Display(Name = "Status")]
         public string Status { get; set; }
 
+        [Display(Name = "Team Member")]
+        public int TeamMemberId { get; set; }
+
+        [Display(Name = "Story")]
+        public int storyId { get; set; }
+
         public static TaskViewModel convertTask(Task task)
         {
             TaskViewModel taskVM = new TaskViewModel();
@@ -41,6 +47,8 @@ namespace tasky.ViewModels
                 taskVM.Estimate_Hours = task.Estimate_Hours;
                 taskVM.Remaining_Hours = task.Remaining_Hours;
                 taskVM.Status = task.Status;
+                taskVM.TeamMemberId = task.TeamMemberId;
+                taskVM.storyId = task.storyId;
             }
             return taskVM;
         }

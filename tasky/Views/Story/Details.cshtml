@@ -77,11 +77,6 @@
             var taskView = new TaskListView({ items: c, el:$(".taskList") })
             taskView.render();
 
-            $(".task-check").click(function() {
-
-                var task = $(this).parent();
-                task.toggleClass('checked');
-            });
         });
     </script>
 }

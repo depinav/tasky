@@ -1,15 +1,6 @@
 var Task = Backbone.Model.extend({
-	urlRoot: '/api/taskapi',
+    urlRoot: '/api/taskapi',
 
-	defaults: {
-		title: '',
-		description: '',
-		estimate_Hours: 0,
-		remaining_Hours: 0,
-		status: '',
-		teamMember: null,
-		story: null
-	}
 });
 
 var Story = Backbone.Model.extend({
