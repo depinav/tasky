@@ -64,6 +64,7 @@ var TaskListView = Backbone.View.extend({
 
             var task = $(event.currentTarget).parent();
             task.toggleClass('checked');
+            model.save({ remaining_hours: 0 });
             model.save({ status: "Done" });
         }
         else {
