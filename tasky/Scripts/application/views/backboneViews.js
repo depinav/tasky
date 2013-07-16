@@ -23,11 +23,16 @@ var TaskListView = Backbone.View.extend({
     },
 
     render: function () {
+        //        var html = "<table class=\"taskListTable\">";
         var html = "<table class=\"taskListTable\">";
 
         _.each(this.items.models, function (item) {
             console.log(item.get("Title"));
-            html = html.concat("<tr><td><a href=\"/Task/Details/" + item.get("id").toString() + "\">" + item.get("Title") + "</a></td></tr>");
+            html = html.concat("<tr><div class=\"unchecked\">");
+            html = html.concat("<input type=\"checkbox\" class=\"task-check\" />");
+            html = html.concat("<a href=\"/Task/Details/" + item.get("id").toString() + "\">" + item.get("Title") + "</a>");
+            html = html.concat("</div></tr>");
+            //            html = html.concat("<tr><td><a href=\"/Task/Details/" + item.get("id").toString() + "\">" + item.get("Title") + "</a></td></tr>");
         })
 
         html = html.concat("</table>");
