@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using tasky.Controllers;
 using System.Collections.Generic;
 using Moq;
+using tasky.ViewModels;
 
 namespace UnitTestProject1
 {
@@ -56,12 +57,11 @@ namespace UnitTestProject1
             controller = new SprintController(mockRepo.Object);
             var viewResult = (ViewResult)controller.Details(1);
 
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(Sprint));
-            var sprintResult = (Sprint)viewResult.ViewData.Model;
-            Assert.AreEqual(testSprint, sprintResult);
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(SprintViewModel));
+            var sprintResult = (SprintViewModel)viewResult.ViewData.Model;
+            Assert.AreEqual(testSprint.id, sprintResult.id);
 
-            Assert.IsInstanceOfType(sprintResult.stories, typeof(Story[]));
-            Assert.AreEqual(2, ((Story[])sprintResult.stories).Length);
+            Assert.AreEqual(2, sprintResult.stories.Count);
         }
 
         [TestMethod]
