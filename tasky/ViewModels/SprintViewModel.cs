@@ -24,6 +24,8 @@ namespace tasky.ViewModels
         [DataType(DataType.Date)]
         public DateTime endDate { get; set; }
 
+        public ICollection<StoryViewModel> stories { get; set; }
+
         public void convertSprint(Sprint sprint)
         {
             if (sprint == null)

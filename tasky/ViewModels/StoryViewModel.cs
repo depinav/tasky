@@ -35,20 +35,17 @@ namespace tasky.ViewModels
 
         public SprintViewModel sprintViewModel {get;set;}
 
-        public int convertStory(Story story)
+        public static StoryViewModel convertStory(Story story)
         {
-            if (story == null)
-                return -1;
-            else
-            {
-                this.id = story.id;
-                this.title = story.title;
-                this.description = story.description;
-                this.points = story.points;
-                this.status = story.status;
-                this.sprintId = story.sprintId;
-                return 0;
-            }
+            StoryViewModel storyVM = new StoryViewModel();
+            storyVM.id = story.id;
+            storyVM.title = story.title;
+            storyVM.description = story.description;
+            storyVM.points = story.points;
+            storyVM.status = story.status;
+            storyVM.sprintId = story.sprintId;
+
+            return storyVM;
         }
     }
 }
