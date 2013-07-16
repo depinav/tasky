@@ -29,12 +29,15 @@ namespace tasky.Controllers
         public ActionResult Details(int id)
         {
             Sprint sprint = repo.FindById(id);
-            sprint.stories = repo.FindStoriesForSprint(id);
             if (sprint == null)
             {
                 return HttpNotFound();
             }
-            return View(sprint);
+            else
+            {
+                sprint.stories = repo.FindStoriesForSprint(id);
+                return View(sprint);
+            }
         }
 
         //
