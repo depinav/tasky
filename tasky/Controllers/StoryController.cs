@@ -70,7 +70,7 @@ namespace tasky.Controllers
         //
         // GET: /Story/Create
 
-        public ActionResult Create(int? sprintID)
+        public ActionResult Create(int? sprintID = null)
         {
             ViewBag.StatusOptions = new SelectList(StatusOptions);
             if (sprintID != null)

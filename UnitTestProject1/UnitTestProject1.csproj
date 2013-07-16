@@ -57,7 +57,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestSprintController.cs" />
+    <Compile Include="Tests\TestStoryController.cs" />
+    <Compile Include="Tests\TestSprintController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

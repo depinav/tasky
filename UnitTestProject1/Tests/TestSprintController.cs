@@ -1,22 +1,19 @@
-﻿using System;
-using System.Web;
-using System.Web.Mvc;
-using tasky.Models;
-using tasky.DAL;
-using tasky.Repository;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using tasky.Controllers;
-using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using tasky.Controllers;
+using tasky.Models;
+using tasky.Repository;
 using tasky.ViewModels;
 
-namespace UnitTestProject1
+namespace Tests
 {
     [TestClass]
     public class TestSprintController
     {
         [TestMethod]
-        public void TestListAll()
+        public void TestSprintIndex()
         {
             // Arrange
             var mockRepo = new Mock<ISprintRepository>();
@@ -34,7 +31,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestDetail()
+        public void TestSprintDetail()
         {
             //verify that the controller returns an error view if the sprint doesn't exist
             var mockRepo = new Mock<ISprintRepository>();
@@ -65,7 +62,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestCreate()
+        public void TestSprintCreate()
         {
 
             //verify that the argumentless Create() method returns the default create view
@@ -106,7 +103,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestEdit()
+        public void TestSprintEdit()
         {
             //verify that Edit(id) returns an error view if the sprint doesn't exist
             var mockRepo = new Mock<ISprintRepository>();
@@ -159,7 +156,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestDelete()
+        public void TestSprintDelete()
         {
             //verify that Delete(id) returns an error view if the sprint doesn't exist
             var mockRepo = new Mock<ISprintRepository>();
