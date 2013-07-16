@@ -44,7 +44,7 @@ namespace tasky.Controllers
 
         public ActionResult Details(int id)
         {
-            SprintViewModel sprintViewModel = new SprintViewModel();
+            SprintViewModel sprintViewModel;
 
             Story story = storyRepo.FindById(id);
             if (story == null)
@@ -54,7 +54,7 @@ namespace tasky.Controllers
             story.tasks = storyRepo.FindTasksForStory(id);
 
             StoryViewModel storyViewModel = StoryViewModel.convertStory(story);
-            sprintViewModel.convertSprint(story.sprint);
+            sprintViewModel = SprintViewModel.convertSprint(story.sprint);
             storyViewModel.sprintViewModel = sprintViewModel;
             ICollection<TaskViewModel> tasks = new List<TaskViewModel>();
 
