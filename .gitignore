@@ -109,4 +109,3 @@ Backup*/
 UpgradeLog*.XML
 
 packages
-.nuget
