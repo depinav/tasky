@@ -1,8 +1,10 @@
 ﻿using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using tasky.DAL;
 using tasky.Models;
+using tasky.ViewModels;
 using tasky.Repository;
 
 namespace tasky.Controllers
@@ -29,12 +31,27 @@ namespace tasky.Controllers
         public ActionResult Details(int id)
         {
             Sprint sprint = repo.FindById(id);
-            sprint.stories = repo.FindStoriesForSprint(id);
+            
             if (sprint == null)
             {
                 return HttpNotFound();
             }
-            return View(sprint);
+
+            StoryViewModel storyViewModel = new StoryViewModel();
+            SprintViewModel sprintViewModel = new SprintViewModel();
+            sprint.stories = repo.FindStoriesForSprint(id);
+            sprintViewModel.convertSprint(sprint);
+
+            ICollection<StoryViewModel> stories = new List<StoryViewModel>();
+            
+            foreach (Story story in sprint.stories)
+            {
+                stories.Add(StoryViewModel.convertStory(story));
+            }
+
+            sprintViewModel.stories = stories;
+            
+            return View(sprintViewModel);
         }
 
         //

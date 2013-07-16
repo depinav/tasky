@@ -12,12 +12,14 @@ var Task = Backbone.Model.extend({
 	}
 });
 
-var Sprint = Backbone.Model.extend({
-    urlRoot: 'api/sprintapi',
+var Story = Backbone.Model.extend({
+    urlRoot: 'api/storyapi',
 
     defaults: {
         title: '',
-        startdate: null,
-        enddate: null
+        description: '',
+        points: 0,
+        status: '',
+        sprintId: 0
     }
 });

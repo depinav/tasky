@@ -1,4 +1,4 @@
-﻿@model tasky.Models.Sprint
+﻿@model tasky.ViewModels.SprintViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -30,24 +30,27 @@
         @Html.DisplayFor(model => model.endDate)
     </div>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.stories)
-    </div>
-    <div class="display-field">
-        @if(Model.stories != null) 
-        {
-            foreach (var story in Model.stories)
-            {
-                @Html.ActionLink((string)story.title, "Details", "Story", new {id = story.id}, null)
-            }
-        }
-        else
-        {
-            <h3>Model.stories is null</h3>
-        }
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <div class="storyList">
+
+        <!-- List out stories herrr using Backbone -->
     </div>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section Scripts {
+    <script type="text/javascript">
+        var storydata = @Html.Raw(Json.Encode(Model.stories))
+
+        var storylist = new StoryList(storydata);
+
+        $(document).on("ready", function() {
+            var storyView = new StoryListView({items:storylist, el:$(".storyList") })
+            storyView.render();
+        });
+    </script>
+}
+
