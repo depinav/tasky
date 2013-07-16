@@ -19,7 +19,7 @@ namespace UnitTestProject1
         {
             // Arrange
             var mockRepo = new Mock<ISprintRepository>();
-            var sprints = new[] { new Sprint { id = 1, title = "test" } };
+            var sprints = new[] { new Sprint { id = 1, title = "test" }, new Sprint { id = 2, title = "test2" } };
             mockRepo.Setup(cr => cr.FindAll()).Returns(sprints);
             var controller = new SprintController(mockRepo.Object);
 
@@ -28,6 +28,8 @@ namespace UnitTestProject1
 
             // Assert
             Assert.IsInstanceOfType(result.ViewData.Model, typeof(IEnumerable<Sprint>));
+            var sprintResult = (Sprint[])result.ViewData.Model;
+            Assert.AreEqual(2, sprintResult.Length);
         }
     }
 }
