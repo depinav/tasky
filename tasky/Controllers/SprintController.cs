@@ -31,7 +31,7 @@ namespace tasky.Controllers
         public ActionResult Details(int id)
         {
             Sprint sprint = repo.FindById(id);
-            
+
             if (sprint == null)
             {
                 return HttpNotFound();
