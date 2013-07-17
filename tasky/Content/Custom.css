@@ -6,7 +6,7 @@
     color: gray;
 }
 
-#col {
+.col {
     float: left;
     background-color: #C9D7ED;
     padding: 2px;
@@ -14,4 +14,8 @@
     margin: 2px;
     -moz-border-radius: 15px;
     border-radius: 15px; 
+}
+
+ul.storyContainers {
+    min-height: 10px;
 }

@@ -4,15 +4,18 @@
     },
 
     render: function () {
-        var html = '<table class="storyListTable">';
+        this.$el.find(".storyContainers").children().remove();
+        var el = this.$el;
 
         _.each(this.stories.models, function (story) {
-            html = html.concat('<tr><td><a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</div></a></td></tr>');
+            var html = '<li>';
+            html = html.concat('<a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</a></li>');
+            var idString = story.get("status").replace(" ", "-");
+            console.log('idString is: #' + idString);
+            console.log(el.find("#" + idString));
+            console.log(el.find("#" + idString).find(".storyContainers"));
+            el.find("#"+idString).find(".storyContainers").append(html);
         })
-
-        html = html.concat('</table>');
-
-        this.$el.html(html);
     }
 
 });
