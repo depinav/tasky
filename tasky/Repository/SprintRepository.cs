@@ -12,12 +12,12 @@ namespace tasky.Repository
     {
         private TaskyContext db = new TaskyContext();
 
-        public IEnumerable<Sprint> FindAll()
+        public ICollection<Sprint> FindAll()
         {
             return db.Sprints.ToList();
         }
 
-        public IEnumerable<Story> FindStoriesForSprint(int id)
+        public ICollection<Story> FindStoriesForSprint(int id)
         {
             return db.Stories.Where(model => model.sprintId == id).ToList();
         }

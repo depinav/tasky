@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 using tasky.Models;
+using tasky.ViewModels;
 
 namespace tasky.ViewModels
 {
@@ -26,21 +27,31 @@ namespace tasky.ViewModels
 
         public ICollection<StoryViewModel> stories { get; set; }
 
-        public void convertSprint(Sprint sprint)
+        public static SprintViewModel convertSprint(Sprint sprint)
         {
-            if (sprint == null)
+            SprintViewModel sprintVM = new SprintViewModel();
+
+            if (sprint != null)
             {
-                this.id = 0;
-                this.title = "";
-                this.startDate = DateTime.Now;
-                this.endDate = DateTime.Now;
+                sprintVM.id = sprint.id;
+                sprintVM.title = sprint.title;
+                sprintVM.startDate = sprint.startDate;
+                sprintVM.endDate = sprint.endDate;
             }
-            else
+            return sprintVM;
+        }
+
+        public void convertStoriesToVMs(ICollection<Story> stories)
+        {
+            if (stories != null)
             {
-                this.id = sprint.id;
-                this.title = sprint.title;
-                this.startDate = sprint.startDate;
-                this.endDate = sprint.endDate;
+                if (this.stories == null)
+                    this.stories = new List<StoryViewModel>();
+
+                foreach (Story story in stories)
+                {
+                    this.stories.Add(StoryViewModel.convertStory(story));
+                }
             }
         }
     }

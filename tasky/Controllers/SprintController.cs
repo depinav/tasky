@@ -22,7 +22,18 @@ namespace tasky.Controllers
 
         public ActionResult Index()
         {
-            return View(repo.FindAll());
+            ICollection<Sprint> sprints = repo.FindAll();
+            ICollection<SprintViewModel> sprintVMs = new List<SprintViewModel>();
+            IEnumerator<Sprint> sprintIterator = sprints.GetEnumerator();
+            SprintViewModel tempSprintVM;
+            while (sprintIterator.MoveNext())
+            {
+                tempSprintVM = SprintViewModel.convertSprint(sprintIterator.Current);
+                tempSprintVM.convertStoriesToVMs(repo.FindStoriesForSprint(sprintIterator.Current.id));
+                sprintVMs.Add(tempSprintVM);
+            }
+            
+            return View(sprintVMs);
         }
 
         //
@@ -38,9 +49,8 @@ namespace tasky.Controllers
             }
 
             StoryViewModel storyViewModel = new StoryViewModel();
-            SprintViewModel sprintViewModel = new SprintViewModel();
             sprint.stories = repo.FindStoriesForSprint(id);
-            sprintViewModel.convertSprint(sprint);
+            SprintViewModel sprintViewModel = SprintViewModel.convertSprint(sprint);
 
             ICollection<StoryViewModel> stories = new List<StoryViewModel>();
             
