@@ -26,7 +26,7 @@ namespace tasky.Models
         public DateTime endDate { get; set; }
 
         [Display(Name="Stories")]
-        public IEnumerable<Story> stories { get; set; }
+        public ICollection<Story> stories { get; set; }
     }
 
     

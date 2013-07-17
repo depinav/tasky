@@ -8,8 +8,8 @@ namespace tasky.Repository
 {
     public interface ISprintRepository
     {
-        IEnumerable<Sprint> FindAll();
-        IEnumerable<Story> FindStoriesForSprint(int id);
+        ICollection<Sprint> FindAll();
+        ICollection<Story> FindStoriesForSprint(int id);
         int Save(Sprint s);
         Sprint FindById(int id);
         void Delete(int id);

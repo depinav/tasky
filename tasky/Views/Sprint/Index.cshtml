@@ -1,4 +1,4 @@
-﻿@model IEnumerable<tasky.Models.Sprint>
+﻿@model IEnumerable<tasky.ViewModels.SprintViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -10,31 +10,51 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var item in Model) {
-    <table>
-        <tr>
-            <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
-            <td>@Html.DisplayFor(modelItem => item.title)</td>
-        </tr>
-        <tr>
-            <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
-            <td>@Html.DisplayFor(modelItem => item.startDate)</td>
-        </tr>
-        <tr>
-            <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
-            <td>@Html.DisplayFor(modelItem => item.endDate)</td>
-        </tr>
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id })
-            </td>
-        </tr>
-    </table>
+<div class="sprintIndexContainer">
+    @foreach (var item in Model) {
+        <table>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
+                <td>@Html.DisplayFor(modelItem => item.title)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
+                <td>@Html.DisplayFor(modelItem => item.startDate)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
+                <td>@Html.DisplayFor(modelItem => item.endDate)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                </td>
+            </tr>
+        </table>
     
-    <table>
-        <p>Should list stories here!</p>
+        <table id=@item.id>
 
-    </table>
+        </table>
+    }
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var sprintArray = @Html.Raw(Json.Encode(Model));
+        var sprintCollection = new Backbone.Collection([]);
+
+        _.each(sprintArray, function(items) {
+            console.log(items.stories);
+            sprintCollection.add({sprintid: items.id, stories: new StoryList(items.stories)});
+
+        })
+
+        $(document).on("ready", function() {
+           // console.log(sprintCollection);
+            var storyTitleListView = new StoryTitleListView({items:sprintCollection, el:$(".sprintIndexContainer")});
+            storyTitleListView.render();
+        })
+    </script>
 }
