@@ -33,10 +33,10 @@
                 </td>
             </tr>
         </table>
-    
-        <table id=@item.id>
+        
+        <ul id=@item.id class="storyContainers">
 
-        </table>
+        </ul>
     }
 </div>
 
@@ -46,7 +46,6 @@
         var sprintCollection = new Backbone.Collection([]);
 
         _.each(sprintArray, function(items) {
-            console.log(items.stories);
             sprintCollection.add({sprintid: items.id, stories: new StoryList(items.stories)});
 
         })
@@ -56,5 +55,11 @@
             var storyTitleListView = new StoryTitleListView({items:sprintCollection, el:$(".sprintIndexContainer")});
             storyTitleListView.render();
         })
+
+        $(function() {
+            $( ".storyContainers" ).sortable({
+                connectWith: ".storyContainers"
+            }).disableSelection();
+        });
     </script>
 }
