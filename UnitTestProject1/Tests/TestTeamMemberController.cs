@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using tasky.Controllers;
 using tasky.Models;
@@ -59,7 +60,7 @@ namespace Tests
             Assert.AreEqual(testMember.id, memberResult.id);
 
             // fix this
-            //Assert.AreEqual(2, memberResult.tasks);
+            Assert.AreEqual(2, Enumerable.Count(memberResult.tasks));
         }
 
         [TestMethod]
