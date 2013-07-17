@@ -14,7 +14,7 @@
     @foreach (var item in Model)
     {
         string divID = "col" + item.id;
-        <div id="col" class="sprintDrag">
+        <div id="col" class="col">
             <table>
                 <tr>
                     <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
@@ -37,9 +37,9 @@
                 </tr>
             </table>
         
-            <ul id=@item.id class="storyContainers">
+            <div id=@item.id class="storyContainers">
 
-            </ul>
+            </div>
         </div>
     }
 </div>
@@ -58,12 +58,11 @@
            // console.log(sprintCollection);
             var storyTitleListView = new StoryTitleListView({items:sprintCollection, el:$(".sprintIndexContainer")});
             storyTitleListView.render();
-        })
 
-        $(function() {
             $( ".storyContainers" ).sortable({
-                connectWith: ".storyContainers"
+                connectWith: ".storyContainers",
+                placeholder: ".storyContainerPH"
             }).disableSelection();
-        });
+        })
     </script>
 }

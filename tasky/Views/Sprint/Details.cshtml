@@ -35,9 +35,40 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 
+    <h3>Stories</h3>
     <div class="storyList">
+        <div class="col">
+            <h3>To-Do</h3>
+            <div id="To-Do" class="storyCol">
+                <div class="storyContainers">
 
-        <!-- List out stories herrr using Backbone -->
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h3>In Progress</h3>
+            <div id="In-Progress" class="storyCol">
+                <div class="storyContainers">
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Done</h3>
+            <div id="Done" class="storyCol">
+                <div class="storyContainers">
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Accepted</h3>
+            <div id="Accepted" class="storyCol">
+                <div class="storyContainers">
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </fieldset>
 
@@ -50,6 +81,11 @@
         $(document).on("ready", function() {
             var storyView = new StoryListView({items:storylist, el:$(".storyList") })
             storyView.render();
+
+            $( ".storyContainers" ).sortable({
+                connectWith: ".storyContainers",
+                placeholder: ".storyContainerPH"
+            }).disableSelection();
         });
     </script>
 }
