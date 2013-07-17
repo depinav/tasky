@@ -17,6 +17,8 @@ namespace tasky.ViewModels
         [Display(Name = "Email")]
         public string email { get; set; }
 
+        public ICollection<TaskViewModel> tasks { get; set; }
+
         // the following is a reminder for app security purposes
         public string hash { get; set; }
         public string salt { get; set; }
