@@ -37,9 +37,9 @@
                 </tr>
             </table>
         
-            <ul id=@item.id class="storyContainers">
+            <div id=@item.id class="storyContainers">
 
-            </ul>
+            </div>
         </div>
     }
 </div>
@@ -60,7 +60,8 @@
             storyTitleListView.render();
 
             $( ".storyContainers" ).sortable({
-                connectWith: ".storyContainers"
+                connectWith: ".storyContainers",
+                placeholder: ".storyContainerPH"
             }).disableSelection();
         })
     </script>

@@ -16,6 +16,14 @@
     border-radius: 15px; 
 }
 
-ul.storyContainers {
-    min-height: 10px;
+.storyContainers {
+    min-height: 200px;
+    width: 250px;
+}
+
+.sortableEntry, .storyContainerPH {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 5px;
 }

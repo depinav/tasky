@@ -8,8 +8,8 @@
         var el = this.$el;
 
         _.each(this.stories.models, function (story) {
-            var html = '<li>';
-            html = html.concat('<a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</a></li>');
+            var html = '<div class="sortableEntry">';
+            html = html.concat('<a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</a></div>');
             var idString = story.get("status").replace(" ", "-");
             console.log('idString is: #' + idString);
             console.log(el.find("#" + idString));
@@ -32,14 +32,12 @@ var StoryTitleListView = Backbone.View.extend({
         _.each(this.sprints.models, function (item) {
             var html = '';
             _.each(item.get("stories").models, function(story) {
-                html = html.concat('<li><a href="/Story/Details/' + story.get("id") + '">');
+                html = html.concat('<div class="sortableEntry"><a href="/Story/Details/' + story.get("id") + '">');
                 html = html.concat(story.get("title"));
-                html = html.concat('</a></li>');
-                console.log($('ul#' + item.get('sprintid')));
-                
+                html = html.concat('</a></div>');                
             })
 
-            $('ul#' + item.get('sprintid')).html(html);
+            $('div#' + item.get('sprintid')).html(html);
         })
     }
 })
