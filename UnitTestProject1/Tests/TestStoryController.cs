@@ -18,21 +18,34 @@ namespace Tests
         [TestMethod]
         public void TestStoryIndex()
         {
-            // Arrange
+            //verify that when index is called without filters, all stories are returned
             var storyRepo = new Mock<IStoryRepository>();
             var sprintRepo = getSprintMock();
 
-            var stories = new[] { new Story { id = 1, title = "test" }, new Story { id = 2, title = "test2" } };
-            storyRepo.Setup(cr => cr.FindAll()).Returns(stories);
+            var stories = new List<Story> { new Story { id = 1, title = "test" }, new Story { id = 2, title = "test2" } };
+            storyRepo.Setup(cr => cr.FindWithFilters("", null)).Returns(stories);
             var controller = new StoryController(sprintRepo.Object, storyRepo.Object);
 
-            // Act
             var result = (ViewResult)controller.Index();
 
-            // Assert
-            Assert.IsInstanceOfType(result.ViewData.Model, typeof(IEnumerable<Story>));
-            var sprintResult = (Story[])result.ViewData.Model;
-            Assert.AreEqual(2, sprintResult.Length);
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(ICollection<Story>));
+            var storyResult = (ICollection<Story>)result.ViewData.Model;
+            Assert.AreEqual(2, storyResult.Count);
+
+            //verify that when called with a status filter and sprint filter
+            //the controller passes the filters to the repo
+            storyRepo = new Mock<IStoryRepository>();
+            sprintRepo = getSprintMock();
+
+            stories = new List<Story> { new Story { id = 1, title = "test" }, new Story { id = 2, title = "test2" } };
+            storyRepo.Setup(cr => cr.FindWithFilters("abc", 1)).Returns(stories);
+            controller = new StoryController(sprintRepo.Object, storyRepo.Object);
+
+            result = (ViewResult)controller.Index("abc", 1);
+
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(ICollection<Story>));
+            storyResult = (ICollection<Story>)result.ViewData.Model;
+            Assert.AreEqual(2, storyResult.Count);
         }
 
         [TestMethod]
@@ -72,8 +85,9 @@ namespace Tests
 
             //verify that the argumentless Create() method returns the default create view
             var storyRepo = new Mock<IStoryRepository>();
+            var sprintRepo = getSprintMock();
 
-            var controller = new StoryController(null, storyRepo.Object);
+            var controller = new StoryController(sprintRepo.Object, storyRepo.Object);
             var result = (ViewResult)controller.Create();
 
             Assert.AreEqual("", result.ViewName);
@@ -124,9 +138,10 @@ namespace Tests
             //verify that the Edit(id) method returns the edit view
             Story testStory = new Story { id = 1, title = "abc" };
             storyRepo = new Mock<IStoryRepository>();
+            var sprintRepo = getSprintMock();
             storyRepo.Setup(cr => cr.FindById(1)).Returns(testStory);
 
-            controller = new StoryController(null, storyRepo.Object);
+            controller = new StoryController(sprintRepo.Object, storyRepo.Object);
             var result = (ViewResult)controller.Edit(1);
 
             Assert.AreEqual("", result.ViewName);
@@ -136,8 +151,9 @@ namespace Tests
             //the default create view is returned again
             testStory = new Story { id = 1, title = "test title" };
             storyRepo = new Mock<IStoryRepository>();
-            
-            controller = new StoryController(null, storyRepo.Object);
+            sprintRepo = getSprintMock();
+
+            controller = new StoryController(sprintRepo.Object, storyRepo.Object);
             controller.ModelState.AddModelError("key", "model is invalid");// Causes ModelState.IsValid to return false
             result = (ViewResult)controller.Edit(testStory);
 
@@ -208,6 +224,11 @@ namespace Tests
             m.Setup(cr => cr.FindAll()).Returns(sprints);
 
             return m;
+        }
+
+        private List<String> expectedStatusOptions()
+        {
+            return new List<String> { "To-Do", "In Progress", "Done", "Accepted" };
         }
     }
 }

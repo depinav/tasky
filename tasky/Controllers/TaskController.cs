@@ -56,7 +56,7 @@ namespace tasky.Controllers
         //
         // GET: /Task/Create
 
-        public ActionResult Create(int? teamMemberID, int? storyID)
+        public ActionResult Create(int? teamMemberID = null, int? storyID = null)
         {
             ViewBag.StatusOptions = new SelectList(StatusOptions);
             

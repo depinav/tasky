@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Tests\TestTaskController.cs" />
     <Compile Include="Tests\TestStoryController.cs" />
     <Compile Include="Tests\TestSprintController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
