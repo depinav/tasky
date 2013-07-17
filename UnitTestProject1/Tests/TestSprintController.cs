@@ -21,6 +21,7 @@ namespace Tests
             mockRepo.Setup(cr => cr.FindAll()).Returns(sprints);
             var controller = new SprintController(mockRepo.Object);
 
+            Assert.Fail();
             // Act
             var result = (ViewResult)controller.Index();
 
