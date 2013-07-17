@@ -24,20 +24,19 @@ var StoryTitleListView = Backbone.View.extend({
     },
 
     render: function () {
-        var html = "";
+        
 
         _.each(this.sprints.models, function (item) {
-            console.log('item story is: ' + item.get("stories"));
-
+            var html = '';
             _.each(item.get("stories").models, function(story) {
-                html = html.concat('<a href="/Story/Details/' + story.get("id") + '">');
+                html = html.concat('<li><a href="/Story/Details/' + story.get("id") + '">');
                 html = html.concat(story.get("title"));
-                html = html.concat('</a>');
-                console.log(html);
+                html = html.concat('</a></li>');
+                console.log($('ul#' + item.get('sprintid')));
+                
             })
 
-            console.log('inside BB-view. item sprintid is: ' + item.get('sprintid') + 'html is: ' + html);
-            $('table#'+item.get('sprintid')).html(html);
+            $('ul#' + item.get('sprintid')).html(html);
         })
     }
 })
