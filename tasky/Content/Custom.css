@@ -5,3 +5,13 @@
 .checked a {
     color: gray;
 }
+
+#col {
+    float: left;
+    background-color: #C9D7ED;
+    padding: 2px;
+    border: solid;
+    margin: 2px;
+    -moz-border-radius: 15px;
+    border-radius: 15px; 
+}

@@ -12,31 +12,34 @@
 
 <div class="sprintIndexContainer">
     @foreach (var item in Model) {
-        <table>
-            <tr>
-                <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
-                <td>@Html.DisplayFor(modelItem => item.title)</td>
-            </tr>
-            <tr>
-                <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
-                <td>@Html.DisplayFor(modelItem => item.startDate)</td>
-            </tr>
-            <tr>
-                <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
-                <td>@Html.DisplayFor(modelItem => item.endDate)</td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
-                </td>
-            </tr>
-        </table>
-    
-        <table id=@item.id>
+//        string divID = "col" + item.id;
+        <div id="col" class="sprintDrag">
+            <table>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
+                    <td>@Html.DisplayFor(modelItem => item.title)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
+                    <td>@Html.DisplayFor(modelItem => item.startDate)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
+                    <td>@Html.DisplayFor(modelItem => item.endDate)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                    </td>
+                </tr>
+            </table>
+        
+            <table id=@item.id>
 
-        </table>
+            </table>
+        </div>
     }
 </div>
 
