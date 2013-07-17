@@ -60,6 +60,7 @@
     <Compile Include="Tests\TestStoryController.cs" />
     <Compile Include="Tests\TestSprintController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\TestTeamMemberController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\tasky\tasky.csproj">
