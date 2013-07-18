@@ -23,14 +23,31 @@
 var StoryTitleListView = Backbone.View.extend({
     initialize: function () {
         this.sprints = this.options.items;
-        console.log(this.sprints);
+        var view = this;
+            $( ".storyContainers" ).sortable({
+                connectWith: ".storyContainers",
+                placeholder: ".storyContainerPH",
+                stop: function (event, ui) {
+                    var sprintID = ui.item.parent('div').attr('id');
+                    var storyID = ui.item.attr('data-id');
+                    var oldSprint = ui.item.attr('data-sprintID');
+
+                    var sprint = view.sprints.get(oldSprint);
+                    var story = sprint.get('stories').get(storyID);
+
+                    story.save({ sprintId: sprintID });
+                    view.sprints.get(sprintID).get('stories').add(story);
+                    view.sprints.get(oldSprint).get('stories').remove(story);
+
+                }
+            }).disableSelection();
     },
 
     render: function () {
         _.each(this.sprints.models, function (item) {
             var html = '';
-            _.each(item.get("stories").models, function(story) {
-                html = html.concat('<div class="sortableEntry"><a href="/Story/Details/' + story.get("id") + '">');
+            _.each(item.get("stories").models, function (story) {
+                html = html.concat('<div class="sortableEntry" data-id=' + story.get("id") + ' data-sprintID = ' + item.get("sprintid") + '><a href="/Story/Details/' + story.get("id") + '" >');
                 html = html.concat(story.get("title"));
                 html = html.concat('</a></div>');                
             })
@@ -68,7 +85,6 @@ var TaskListView = Backbone.View.extend({
             html = html.concat("<input type=\"checkbox\" class=\"task-check\" id=\"" + item.get("id") + " \"" + chBoxStatus + ">");
             html = html.concat('<a href="/Task/Details/' + item.get("id").toString() + '">' + item.get("Title") + '</a>');
             html = html.concat('</div></tr>');
-            //            html = html.concat("<tr><td><a href=\"/Task/Details/" + item.get("id").toString() + "\">" + item.get("Title") + "</a></td></tr>");
 
         })
 
@@ -80,8 +96,6 @@ var TaskListView = Backbone.View.extend({
     },
 
     handleTaskClick: function (event) {
-
-        
 
         var taskid = parseInt($(event.currentTarget).attr('id'));
         var model = this.items.get(taskid);
