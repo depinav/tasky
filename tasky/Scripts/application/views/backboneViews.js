@@ -1,4 +1,4 @@
-﻿var StoryListView = Backbone.View.extend({
+﻿var DragStoryBySprintView = Backbone.View.extend({
     initialize: function () {
         this.stories = this.options.items;
     },
@@ -20,7 +20,7 @@
 
 });
 
-var StoryTitleListView = Backbone.View.extend({
+var DragStoryByStatusView = Backbone.View.extend({
     initialize: function () {
         this.sprints = this.options.items;
         var view = this;

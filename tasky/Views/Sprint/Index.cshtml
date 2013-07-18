@@ -58,8 +58,8 @@
 
         $(document).on("ready", function() {
            // console.log(sprintCollection);
-            var storyTitleListView = new StoryTitleListView({items:sprintCollection, el:$(".sprintIndexContainer")});
-            storyTitleListView.render();
+            var dragview = new DragStoryBySprintView({items:sprintCollection, el:$(".sprintIndexContainer")});
+            dragview.render();
 
             
         })
