@@ -27,8 +27,6 @@ var StoryTitleListView = Backbone.View.extend({
     },
 
     render: function () {
-        
-
         _.each(this.sprints.models, function (item) {
             var html = '';
             _.each(item.get("stories").models, function(story) {
