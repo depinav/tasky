@@ -74,7 +74,7 @@
 
 @section Scripts {
     <script type="text/javascript">
-        var storydata = @Html.Raw(Json.Encode(Model.stories)) 
+        var storydata = @Html.Raw(Json.Encode(Model.stories));
 
         var storylist = new StoryList(storydata);
 

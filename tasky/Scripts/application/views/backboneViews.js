@@ -1,4 +1,4 @@
-﻿var DragStoryBySprintView = Backbone.View.extend({
+﻿var DragStoryByStatusView = Backbone.View.extend({
     initialize: function () {
         this.stories = this.options.items;
     },
@@ -20,32 +20,30 @@
 
 });
 
-var DragStoryByStatusView = Backbone.View.extend({
+var DragStoryBySprintView = Backbone.View.extend({
     initialize: function () {
         this.sprints = this.options.items;
         var view = this;
-            $( ".storyContainers" ).sortable({
-                connectWith: ".storyContainers",
-                placeholder: ".storyContainerPH",
-                stop: function (event, ui) {
-                    var sprintID = ui.item.parent('div').attr('id');
-                    var storyID = ui.item.attr('data-id');
-                    var oldSprint = ui.item.attr('data-sprintID');
+        $( ".storyContainers" ).sortable({
+            connectWith: ".storyContainers",
+            placeholder: ".storyContainerPH",
+            receive: function (event, ui) {
+                var newSprintID = $(this).attr('id');
+                var storyID = ui.item.attr('data-id');
+                var oldSprintID = ui.sender.attr('id');
 
-                    var sprint = view.sprints.get(oldSprint);
-                    var story = sprint.get('stories').get(storyID);
+                var oldSprint = view.sprints.get(oldSprintID);
+                var story = oldSprint.get('stories').get(storyID);
 
-                    story.save({ sprintId: sprintID });
-                    view.sprints.get(sprintID).get('stories').add(story);
-                    view.sprints.get(oldSprint).get('stories').remove(story);
-
-                }
-            }).disableSelection();
+                story.save({ sprintId: newSprintID });
+                view.sprints.get(newSprintID).get('stories').add(story);
+                view.sprints.get(oldSprintID).get('stories').remove(story);
+            }
+        }).disableSelection();
     },
 
     render: function () {
         
-
         _.each(this.sprints.models, function (item) {
             var html = '';
             _.each(item.get("stories").models, function (story) {
