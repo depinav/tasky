@@ -10,38 +10,40 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<div class="sprintIndexContainer">
-    @foreach (var item in Model)
-    {
-        string divID = "col" + item.id;
-        <div id="col" class="col">
-            <table>
-                <tr>
-                    <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
-                    <td>@Html.DisplayFor(modelItem => item.title)</td>
-                </tr>
-                <tr>
-                    <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
-                    <td>@Html.DisplayFor(modelItem => item.startDate)</td>
-                </tr>
-                <tr>
-                    <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
-                    <td>@Html.DisplayFor(modelItem => item.endDate)</td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.id })
-                    </td>
-                </tr>
-            </table>
-        
-            <div id=@item.id class="storyContainers">
+<div class="scroller">
+    <div class="sprintIndexContainer">
+        @foreach (var item in Model)
+        {
+            string divID = "col" + item.id;
+            <div id="col" class="col">
+                <table>
+                    <tr>
+                        <td><b>@Html.DisplayNameFor(model => model.title)</b></td>
+                        <td>@Html.DisplayFor(modelItem => item.title)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
+                        <td>@Html.DisplayFor(modelItem => item.startDate)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
+                        <td>@Html.DisplayFor(modelItem => item.endDate)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                        </td>
+                    </tr>
+                </table>
+            
+                <div id=@item.id class="storyContainers">
 
+                </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
 
 @section Scripts {
@@ -50,7 +52,7 @@
         var sprintCollection = new Backbone.Collection([]);
 
         _.each(sprintArray, function(items) {
-            sprintCollection.add({sprintid: items.id, stories: new StoryList(items.stories)});
+            sprintCollection.add({id: items.id, sprintid: items.id, stories: new StoryList(items.stories)});
 
         })
 
@@ -59,10 +61,7 @@
             var storyTitleListView = new StoryTitleListView({items:sprintCollection, el:$(".sprintIndexContainer")});
             storyTitleListView.render();
 
-            $( ".storyContainers" ).sortable({
-                connectWith: ".storyContainers",
-                placeholder: ".storyContainerPH"
-            }).disableSelection();
+            
         })
     </script>
 }

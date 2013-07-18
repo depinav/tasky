@@ -9,21 +9,34 @@
 .col {
     float: left;
     background-color: #C9D7ED;
+    width: 200px;
+    height: 100%;
     padding: 2px;
     border: solid;
     margin: 2px;
     -moz-border-radius: 15px;
     border-radius: 15px; 
+    display: block;
+}
+
+.sprintIndexContainer {
+    width: 1662px;
+}
+
+.scroller {
+    width: 900px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .storyContainers {
     min-height: 200px;
-    width: 250px;
+    width: 200px;
 }
 
 .sortableEntry, .storyContainerPH {
     width: 200px;
     height: 30px;
     border: 1px solid black;
-    margin: 5px;
+    margin: 1px;
 }
