@@ -35,12 +35,14 @@
 }
 
 .sortableEntry, .storyContainerPH {
-    background-color: #B2C7E6;
     width: 200px;
     height: auto;
     min-height: 30px;
     border: 1px solid black;
     border-radius: 5px;
-    margin: 5px;
+    -moz-border-radius: 5px;
     word-wrap: break-word;
+    margin: 1px;
+    text-align: center;
+    background-color: #D5F1ED;
 }

@@ -4,7 +4,7 @@ var Task = Backbone.Model.extend({
 });
 
 var Story = Backbone.Model.extend({
-    urlRoot: 'api/storyapi',
+    urlRoot: '/api/storyapi',
 
     defaults: {
         title: '',
