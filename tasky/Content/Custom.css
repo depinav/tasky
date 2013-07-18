@@ -39,4 +39,8 @@
     height: 30px;
     border: 1px solid black;
     margin: 1px;
+    -moz-border-radius: 15px;
+    border-radius: 15px; 
+    text-align: center;
+    background-color: #D5F1ED;
 }
