@@ -31,6 +31,8 @@ namespace tasky.ViewModels
         [ForeignKey("sprint")]
         public int sprintId { get; set; }
 
+        public int sprintOrder { get; set; }
+
         public ICollection<TaskViewModel> tasks { get; set; }
 
         public SprintViewModel sprintViewModel {get;set;}
@@ -44,6 +46,7 @@ namespace tasky.ViewModels
             storyVM.points = story.points;
             storyVM.status = story.status;
             storyVM.sprintId = story.sprintId;
+            storyVM.sprintOrder = story.sprintOrder;
 
             return storyVM;
         }

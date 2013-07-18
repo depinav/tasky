@@ -25,6 +25,8 @@ namespace tasky.Models
         [Required]
         public string status { get; set; }
 
+        public int sprintOrder { get; set; }
+
         [Display(Name = "Sprint")]
         [ForeignKey("sprint")]
         public int sprintId { get; set; }

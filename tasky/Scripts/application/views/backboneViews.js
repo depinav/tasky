@@ -27,6 +27,8 @@ var DragStoryBySprintView = Backbone.View.extend({
         $( ".storyContainers" ).sortable({
             connectWith: ".storyContainers",
             placeholder: ".storyContainerPH",
+
+            //event handler to change a story's sprint
             receive: function (event, ui) {
                 var newSprintID = $(this).attr('id');
                 var storyID = ui.item.attr('data-id');
@@ -38,7 +40,24 @@ var DragStoryBySprintView = Backbone.View.extend({
                 story.save({ sprintId: newSprintID });
                 view.sprints.get(newSprintID).get('stories').add(story);
                 view.sprints.get(oldSprintID).get('stories').remove(story);
-            }
+                console.log("rec" + newSprintID);
+            },
+
+            //event handler to update story's order
+            update: function (event, ui) {
+                //IMPORTANT NOTE: When the user drags a thing from one list to another list, this event fires twice - once for the "old" list, and once for the "new" list
+                //for updating the prioritization this is what we want, but if you're adding something else to this method it might not be what you want
+                // http://stackoverflow.com/questions/3492828/jquery-sortable-connectwith-calls-the-update-method-twice
+                
+                var sprintId = $(this).attr("id");
+
+                //get the list of story IDs, in othe order that the user put them in, for this sprint
+                var storyIdList = _.map($(this).children(), function (entry) {
+                    return $(entry).attr("data-id");
+                });
+
+                console.log("update" + sprintId);
+            },
         }).disableSelection();
     },
 

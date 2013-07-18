@@ -19,7 +19,10 @@ namespace tasky.Repository
 
         public ICollection<Story> FindStoriesForSprint(int id)
         {
-            return db.Stories.Where(model => model.sprintId == id).ToList();
+            return db.Stories
+                .Where(model => model.sprintId == id)
+                .OrderBy(story => story.sprintOrder)
+                .ToList();
         }
 
         public int Save(Sprint s)
