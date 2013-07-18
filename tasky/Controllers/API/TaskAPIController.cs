@@ -17,7 +17,7 @@ namespace tasky.Controllers
         private TaskyContext db = new TaskyContext();
 
         // GET api/taskapi
-        public IEnumerable<Task> Get()
+        public ICollection<Task> Get()
         {
             return db.Tasks.ToList();
         }

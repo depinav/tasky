@@ -12,12 +12,12 @@ namespace tasky.Repository
     {
         private TaskyContext db = new TaskyContext();
 
-        public IEnumerable<TeamMember> FindAll()
+        public ICollection<TeamMember> FindAll()
         {
             return db.TeamMembers.ToList();
         }
 
-        public IEnumerable<Task> FindTasksForTeamMember(int id)
+        public ICollection<Task> FindTasksForTeamMember(int id)
         {
             return db.Tasks.Where(model => model.storyId == id).ToList();
         }

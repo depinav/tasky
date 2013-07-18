@@ -8,9 +8,9 @@ namespace tasky.Repository
 {
     public interface IStoryRepository
     {
-        IEnumerable<Story> FindAll();
-        IEnumerable<Story> FindWithFilters(string statusFilter, int? sprintFilter);
-        IEnumerable<Task> FindTasksForStory(int id);
+        ICollection<Story> FindAll();
+        ICollection<Story> FindWithFilters(string statusFilter, int? sprintFilter);
+        ICollection<Task> FindTasksForStory(int id);
         int Save(Story s);
         Story FindById(int id);
         void Delete(int id);

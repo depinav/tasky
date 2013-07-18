@@ -18,7 +18,7 @@ namespace tasky.Controllers
 
         // GET api/storyapi
         [ActionName("DefaultAction")]
-        public IEnumerable<Story> Get()
+        public ICollection<Story> Get()
         {
             return db.Stories.ToList();
         }
@@ -68,7 +68,7 @@ namespace tasky.Controllers
 
         //GET api/storyapi/5/tasks/
         [HttpGet]
-        public IEnumerable<Task> Tasks(int id)
+        public ICollection<Task> Tasks(int id)
         {
             return db.Tasks.Where(model => model.storyId == id).ToList();
         }

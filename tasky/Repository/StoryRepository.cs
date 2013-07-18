@@ -12,12 +12,12 @@ namespace tasky.Repository
     {
         private TaskyContext db = new TaskyContext();
 
-        public IEnumerable<Story> FindAll()
+        public ICollection<Story> FindAll()
         {
             return db.Stories.ToList();
         }
 
-        public IEnumerable<Story> FindWithFilters(string statusFilter, int? sprintFilter)
+        public ICollection<Story> FindWithFilters(string statusFilter, int? sprintFilter)
         {
             var storyQuery = db.Stories.AsQueryable();
             if (statusFilter.Length > 0)
@@ -31,7 +31,7 @@ namespace tasky.Repository
             return storyQuery.ToList();
         }
 
-        public IEnumerable<Task> FindTasksForStory(int id)
+        public ICollection<Task> FindTasksForStory(int id)
         {
             return db.Tasks.Where(model => model.storyId == id).ToList();
         }

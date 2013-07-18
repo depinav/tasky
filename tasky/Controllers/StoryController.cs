@@ -166,7 +166,7 @@ namespace tasky.Controllers
         }
 
         //queries all stories, groups them by sprint name, then returns the sprint names
-        private IEnumerable<Sprint> getSprintOptions()
+        private ICollection<Sprint> getSprintOptions()
         {
             return sprintRepo.FindAll();
         }

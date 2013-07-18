@@ -12,12 +12,12 @@ namespace tasky.Repository
     {
         private TaskyContext db = new TaskyContext();
 
-        public IEnumerable<Task> FindAll()
+        public ICollection<Task> FindAll()
         {
             return db.Tasks.ToList();
         }
 
-        public IEnumerable<Task> FindWithFilters(string statusFilter, int? teamMemberFilter)
+        public ICollection<Task> FindWithFilters(string statusFilter, int? teamMemberFilter)
         {
             var taskQuery = db.Tasks.AsQueryable();
             if (statusFilter.Length > 0)

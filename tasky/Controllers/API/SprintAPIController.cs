@@ -17,7 +17,7 @@ namespace tasky.Controllers
         private TaskyContext db = new TaskyContext();
 
         // GET api/sprintapi
-        public IEnumerable<Sprint> Get()
+        public ICollection<Sprint> Get()
         {
             return db.Sprints.ToList();
         }
