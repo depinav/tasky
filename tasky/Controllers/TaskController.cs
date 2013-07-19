@@ -171,12 +171,12 @@ namespace tasky.Controllers
         }
 
         //queries all tasks, groups them by team member name, then returns the names
-        private IEnumerable<TeamMember> getTeamMemberOptions()
+        private ICollection<TeamMember> getTeamMemberOptions()
         {
             return teamMemberRepo.FindAll();
         }
 
-        private IEnumerable<Story> getStoryOptions()
+        private ICollection<Story> getStoryOptions()
         {
             return storyRepo.FindAll();
         }
