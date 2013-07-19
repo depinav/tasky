@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using tasky.Models;
+using tasky.ViewModels;
 using tasky.DAL;
 using tasky.Repository;
 
@@ -18,6 +19,7 @@ namespace tasky.Controllers
         private IStoryRepository storyRepo;
         private ITeamMemberRepository teamMemberRepo;
         private ITaskRepository taskRepo;
+
         public TaskController(IStoryRepository s, ITeamMemberRepository m, ITaskRepository r)
         {
             this.storyRepo = s;
@@ -46,11 +48,16 @@ namespace tasky.Controllers
         public ActionResult Details(int id = 0)
         {
             Task task = taskRepo.FindById(id);
+            TaskLogViewModel taskLogVM = new TaskLogViewModel();
+            taskLogVM.getTaskInfo(task);
+            taskLogVM.getTaskLogInfo( new TaskLog { taskId = task.id });
+
             if (task == null)
             {
                 return HttpNotFound();
             }
-            return View(task);
+
+            return View(taskLogVM);
         }
 
         //
@@ -108,10 +115,23 @@ namespace tasky.Controllers
             return View(task);
         }
 
+        public ActionResult LogHours(TaskLog log)
+        {
+            if (ModelState.IsValid)
+            {
+                Task task = taskRepo.FindById(log.taskId);
+                task.Remaining_Hours -= log.loggedHours;
+
+                taskRepo.Log(log);
+                taskRepo.Save(task);
+            }
+            return RedirectToAction("Details/"+log.taskId);;
+        }
+
         //
         // GET: /Task/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id)
         {
             Task task = taskRepo.FindById(id);
             if (task == null)

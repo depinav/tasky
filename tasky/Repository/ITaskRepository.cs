@@ -13,5 +13,6 @@ namespace tasky.Repository
         int Save(Task s);
         Task FindById(int id);
         void Delete(int id);
+        void Log(TaskLog log);
     }
 }

@@ -12,6 +12,7 @@ namespace tasky.DAL
         public DbSet<Sprint> Sprints { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<TaskLog> TaskLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
