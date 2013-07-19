@@ -34,6 +34,6 @@ namespace tasky.Models
 
         [ScriptIgnore]
         [Display(Name = "Tasks")]
-        public IEnumerable<Task> tasks { get; set; }
+        public ICollection<Task> tasks { get; set; }
     }
 }

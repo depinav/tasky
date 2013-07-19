@@ -1,6 +1,18 @@
 ﻿var DragStoryByStatusView = Backbone.View.extend({
     initialize: function () {
         this.stories = this.options.items;
+        var view = this;
+        $( ".storyContainers" ).sortable({
+            connectWith: ".storyContainers",
+            placeholder: ".storyContainerPH",
+            receive: function (event, ui) {
+                var newStatus = ui.item.parent('div').parent('div').attr('id');
+                var storyId = ui.item.attr('id');
+                var story = view.stories.get(storyId);
+                console.log(story);
+                story.save({ status: newStatus });
+            }
+        }).disableSelection();
     },
 
     render: function () {
@@ -8,7 +20,7 @@
         var el = this.$el;
 
         _.each(this.stories.models, function (story) {
-            var html = '<div class="sortableEntry">';
+            var html = '<div class="sortableEntry" id="' + story.get("id").toString() + '" >';
             html = html.concat('<a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</a></div>');
             var idString = story.get("status").replace(" ", "-");
             console.log('idString is: #' + idString);
@@ -24,6 +36,7 @@ var DragStoryBySprintView = Backbone.View.extend({
     initialize: function () {
         this.sprints = this.options.items;
         var view = this;
+
         $( ".storyContainers" ).sortable({
             connectWith: ".storyContainers",
             placeholder: ".storyContainerPH",
@@ -62,16 +75,21 @@ var DragStoryBySprintView = Backbone.View.extend({
     },
 
     render: function () {
+
         _.each(this.sprints.models, function (item) {
             var html = '';
             _.each(item.get("stories").models, function (story) {
                 html = html.concat('<div class="sortableEntry" data-id=' + story.get("id") + ' data-sprintID = ' + item.get("sprintid") + '><a href="/Story/Details/' + story.get("id") + '" >');
                 html = html.concat(story.get("title"));
-                html = html.concat('</a></div>');                
+                html = html.concat('</a></div>');
             })
 
             $('div#' + item.get('sprintid')).html(html);
         })
+    },
+
+    detailsDrag: function () {
+        console.log("Inside detailsDrag method");
     }
 })
 

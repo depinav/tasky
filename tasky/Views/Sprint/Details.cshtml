@@ -79,13 +79,11 @@
         var storylist = new StoryList(storydata);
 
         $(document).on("ready", function() {
+
             var storyView = new DragStoryByStatusView({items:storylist, el:$(".storyList") })
             storyView.render();
 
-            $( ".storyContainers" ).sortable({
-                connectWith: ".storyContainers",
-                placeholder: ".storyContainerPH"
-            }).disableSelection();
+            
         });
     </script>
 }

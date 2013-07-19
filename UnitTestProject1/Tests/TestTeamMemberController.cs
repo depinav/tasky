@@ -26,7 +26,7 @@ namespace Tests
             var result = (ViewResult)controller.Index();
 
             // Assert
-            Assert.IsInstanceOfType(result.ViewData.Model, typeof(IEnumerable<TeamMember>));
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(ICollection<TeamMember>));
             var memberResult = (TeamMember[])result.ViewData.Model;
             Assert.AreEqual(2, memberResult.Length);
         }

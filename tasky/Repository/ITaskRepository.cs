@@ -8,10 +8,11 @@ namespace tasky.Repository
 {
     public interface ITaskRepository
     {
-        IEnumerable<Task> FindAll();
-        IEnumerable<Task> FindWithFilters(string statusFilter, int? teamMemberFilter);
+        ICollection<Task> FindAll();
+        ICollection<Task> FindWithFilters(string statusFilter, int? teamMemberFilter);
         int Save(Task s);
         Task FindById(int id);
         void Delete(int id);
+        void Log(TaskLog log);
     }
 }

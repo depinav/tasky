@@ -12,12 +12,12 @@ namespace tasky.Repository
     {
         private TaskyContext db = new TaskyContext();
 
-        public IEnumerable<Task> FindAll()
+        public ICollection<Task> FindAll()
         {
             return db.Tasks.ToList();
         }
 
-        public IEnumerable<Task> FindWithFilters(string statusFilter, int? teamMemberFilter)
+        public ICollection<Task> FindWithFilters(string statusFilter, int? teamMemberFilter)
         {
             var taskQuery = db.Tasks.AsQueryable();
             if (statusFilter.Length > 0)
@@ -44,6 +44,12 @@ namespace tasky.Repository
             }
             db.SaveChanges();
             return s.id;
+        }
+
+        public void Log(TaskLog log)
+        {
+            //save taskLog data here. one could even say you need to... 'log' the taskLog
+            log = db.TaskLogs.Add(log);
         }
 
         public Task FindById(int id)
