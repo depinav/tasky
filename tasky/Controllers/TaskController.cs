@@ -49,13 +49,15 @@ namespace tasky.Controllers
         {
             Task task = taskRepo.FindById(id);
             TaskLogViewModel taskLogVM = new TaskLogViewModel();
-            taskLogVM.getTaskInfo(task);
-            taskLogVM.getTaskLogInfo( new TaskLog { taskId = task.id });
+            
 
             if (task == null)
             {
                 return HttpNotFound();
             }
+
+            taskLogVM.setTaskInfo(task);
+            taskLogVM.setTaskLogInfo(new TaskLog { taskId = task.id });
 
             return View(taskLogVM);
         }
@@ -120,7 +122,9 @@ namespace tasky.Controllers
             if (ModelState.IsValid)
             {
                 Task task = taskRepo.FindById(log.taskId);
-                task.Remaining_Hours -= log.loggedHours;
+
+                if(task.Remaining_Hours > 0)
+                    task.Remaining_Hours -= log.loggedHours;
 
                 taskRepo.Log(log);
                 taskRepo.Save(task);

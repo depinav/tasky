@@ -29,8 +29,21 @@ namespace tasky.ViewModels
 
         public int taskLogID { get; set; }
 
-        public void getTaskInfo(Task task)
+        public void setTaskInfo(Task task)
         {
+            if (task == null)
+            {
+                this.taskId = -1;
+                this.taskTitle = "";
+                this.taskDesc = "";
+                this.taskEstHours = -1;
+                this.taskRemHours = -1;
+                this.taskStatus = "";
+                this.taskTmName = "";
+                this.taskTmID = -1;
+                this.taskStoryTitle = "";
+                this.taskStoryId = -1;
+            }
             this.taskId = task.id;
             this.taskTitle = task.Title;
             this.taskDesc = task.Description;
@@ -43,7 +56,7 @@ namespace tasky.ViewModels
             this.taskStoryId = task.story.id;
         }
 
-        public void getTaskLogInfo(TaskLog taskLog)
+        public void setTaskLogInfo(TaskLog taskLog)
         {
             this.loggedHours = taskLog.loggedHours;
             this.logDate = taskLog.logDate;

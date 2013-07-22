@@ -14,5 +14,7 @@ namespace tasky.Repository
         Task FindById(int id);
         void Delete(int id);
         void Log(TaskLog log);
+        ICollection<TaskLog> GetLogs();
+        TaskLog GetLogById(int id);
     }
 }

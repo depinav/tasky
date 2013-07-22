@@ -65,7 +65,7 @@ namespace Tests
 
             //verify that the controller returns an a vew for the story if it exists
             //also verify that related stories were loaded
-            Task testTask = new Task { id = 1, Title = "abc" };
+            Task testTask = new Task { id = 1, Title = "abc", TeamMember = new TeamMember(), story = new Story() };
             Task[] testTasks = new Task[] { new Task(), new Task() };
             taskRepo = new Mock<ITaskRepository>();
             taskRepo.Setup(cr => cr.FindById(1)).Returns(testTask);
@@ -73,9 +73,9 @@ namespace Tests
             controller = new TaskController(null, null, taskRepo.Object);
             var viewResult = (ViewResult)controller.Details(1);
 
-            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(Task));
-            var taskResult = (Task)viewResult.ViewData.Model;
-            Assert.AreEqual(testTask.id, taskResult.id);
+            Assert.IsInstanceOfType(viewResult.ViewData.Model, typeof(TaskLogViewModel));
+            var taskResult = (TaskLogViewModel)viewResult.ViewData.Model;
+            Assert.AreEqual(testTask.id, taskResult.taskId);
         }
 
         [TestMethod]
@@ -178,6 +178,31 @@ namespace Tests
         }
 
         [TestMethod]
+        public void TestTaskLogHours()
+        {
+            //verify that repo.save and repo.log are never called with an invalid model
+            var taskRepo = new Mock<ITaskRepository>();
+            taskRepo.Setup(cr => cr.FindById(It.IsAny<int>())).Returns((int i) => null);
+
+            var controller = new TaskController(null, null, taskRepo.Object);
+            controller.ModelState.AddModelError("key", "model is invalid");
+            controller.LogHours(new TaskLog());
+            taskRepo.Verify(cr => cr.Save(It.IsAny<Task>()), Times.Never());
+            taskRepo.Verify(cr => cr.Log(It.IsAny<TaskLog>()), Times.Never());
+
+            //verify that the task details page is returned to the user on a successful log
+            Task testTask = new Task { id = 1, Title = "abc", Remaining_Hours = 5 };
+            TaskLog testLog = new TaskLog { loggedHours = 2, logDate = new DateTime(), taskId = testTask.id };
+            taskRepo = new Mock<ITaskRepository>();
+            taskRepo.Setup(cr => cr.FindById(1)).Returns(testTask);            
+            controller = new TaskController(null, null, taskRepo.Object);
+            var createResult = controller.Create(testTask);
+            var result = (RedirectToRouteResult)controller.LogHours(testLog);
+            Assert.AreEqual("Details/1", result.RouteValues["action"]);
+            
+        }
+
+        [TestMethod]
         public void TestTaskDelete()
         {
             //verify that Delete(id) returns an error view if the story doesn't exist
@@ -241,5 +266,6 @@ namespace Tests
         {
             return new List<String> { "To-Do", "In Progress", "Done", "Accepted" };
         }
+
     }
 }

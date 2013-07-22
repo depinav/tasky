@@ -48,8 +48,17 @@ namespace tasky.Repository
 
         public void Log(TaskLog log)
         {
-            //save taskLog data here. one could even say you need to... 'log' the taskLog
             log = db.TaskLogs.Add(log);
+        }
+
+        public ICollection<TaskLog> GetLogs()
+        {
+            return db.TaskLogs.ToList();
+        }
+
+        public TaskLog GetLogById(int id)
+        {
+            return db.TaskLogs.Find(id);
         }
 
         public Task FindById(int id)
