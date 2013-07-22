@@ -86,7 +86,7 @@ namespace tasky.Repository
             db.SaveChanges();
             */
             
-            Sprint currentSprint = (Sprint)db.Sprints.Where(s => s.id == id);
+            Sprint currentSprint = (Sprint)db.Sprints.Find(id);
             currentSprint.stories = stories;
             db.SaveChanges();
         }
