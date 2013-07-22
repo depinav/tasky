@@ -45,11 +45,22 @@ namespace Tests
 
             //verify that the controller returns an a vew for the sprint if it exists
             //also verify that related stories were loaded
-            Sprint testSprint = new Sprint { id = 1, title = "abc" };
+            Sprint testSprint = new Sprint {
+                id = 1,
+                title = "abc",
+                startDate = new System.DateTime(2010, 1, 1),
+                endDate = new System.DateTime(2010, 2, 1)
+            };
             Story[] testStories = new Story[] { new Story(), new Story() };
+            var testTaskLogs = new List<TaskLog> { 
+                new TaskLog { loggedHours = 1, logDate = new System.DateTime(2010, 1, 3), }, 
+                new TaskLog { loggedHours = 2, logDate = new System.DateTime(2010, 1, 3), },
+                new TaskLog { loggedHours = 5, logDate = new System.DateTime(2010, 1, 4), },
+            };
             mockRepo = new Mock<ISprintRepository>();
             mockRepo.Setup(cr => cr.FindById(1)).Returns(testSprint);
             mockRepo.Setup(cr => cr.FindStoriesForSprint(1)).Returns(testStories);
+            mockRepo.Setup(cr => cr.FindTaskLogsForSprint(1)).Returns(testTaskLogs);
 
             controller = new SprintController(mockRepo.Object);
             var viewResult = (ViewResult)controller.Details(1);
@@ -59,6 +70,7 @@ namespace Tests
             Assert.AreEqual(testSprint.id, sprintResult.id);
 
             Assert.AreEqual(2, sprintResult.stories.Count);
+
         }
 
         [TestMethod]
