@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201307221434416_test.Designer.cs">
       <DependentUpon>201307221434416_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307221828234_burndown.cs" />
+    <Compile Include="Migrations\201307221828234_burndown.Designer.cs">
+      <DependentUpon>201307221828234_burndown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\TaskLog.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
@@ -391,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307221434416_test.resx">
       <DependentUpon>201307221434416_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307221828234_burndown.resx">
+      <DependentUpon>201307221828234_burndown.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

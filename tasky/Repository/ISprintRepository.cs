@@ -16,5 +16,6 @@ namespace tasky.Repository
         void Delete(int id);
 
         int SumTaskEstimatesForSprint(int id);
+        void SaveStories(int id, List<Story> stories);
     }
 }
