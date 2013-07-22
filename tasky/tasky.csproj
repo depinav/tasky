@@ -212,9 +212,6 @@
       <DependentUpon>201307221434416_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\TaskLog.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\ITeamMemberRepository.cs" />
@@ -241,8 +238,6 @@
     <Compile Include="ViewModels\TeamMemberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\tasky.dll" />
-    <Content Include="bin\tasky.pdb" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
