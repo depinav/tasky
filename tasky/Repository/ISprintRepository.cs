@@ -10,8 +10,11 @@ namespace tasky.Repository
     {
         ICollection<Sprint> FindAll();
         ICollection<Story> FindStoriesForSprint(int id);
+        ICollection<TaskLog> FindTaskLogsForSprint(int id);
         int Save(Sprint s);
         Sprint FindById(int id);
         void Delete(int id);
+
+        int SumTaskEstimatesForSprint(int id);
     }
 }
