@@ -77,5 +77,18 @@ namespace tasky.Repository
                 return 0;
             }
         }
+
+        public void SaveStories(int id, List<Story> stories)
+        {
+            /*
+            List<Story> dbStories = db.Stories.Where(s => s.sprintId == id).ToList();
+            dbStories = stories;
+            db.SaveChanges();
+            */
+            
+            Sprint currentSprint = (Sprint)db.Sprints.Where(s => s.id == id);
+            currentSprint.stories = stories;
+            db.SaveChanges();
+        }
     }
 }

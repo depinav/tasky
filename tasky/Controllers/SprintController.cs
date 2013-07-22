@@ -174,10 +174,16 @@ namespace tasky.Controllers
             return RedirectToAction("Index");
         }
 
+        public void UpdateStories(int id, List<Story> stories)
+        {
+            repo.SaveStories(id, stories);
+        }
+
         public class BurndownEntry
         {
             public DateTime date { get; set; }
             public int remaining { get; set; }
         }
+
     }
 }
