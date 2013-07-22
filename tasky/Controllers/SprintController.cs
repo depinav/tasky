@@ -174,6 +174,7 @@ namespace tasky.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public void UpdateStories(int id, List<Story> stories)
         {
             repo.SaveStories(id, stories);

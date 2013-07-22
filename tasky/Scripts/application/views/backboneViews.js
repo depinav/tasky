@@ -53,7 +53,6 @@ var DragStoryBySprintView = Backbone.View.extend({
                 story.save({ sprintId: newSprintID });
                 view.sprints.get(newSprintID).get('stories').add(story);
                 view.sprints.get(oldSprintID).get('stories').remove(story);
-                console.log("rec" + newSprintID);
             },
 
             //event handler to update story's order
@@ -63,13 +62,21 @@ var DragStoryBySprintView = Backbone.View.extend({
                 // http://stackoverflow.com/questions/3492828/jquery-sortable-connectwith-calls-the-update-method-twice
                 
                 var sprintId = $(this).attr("id");
+                var storyCollection = view.sprints.get(sprintId).get("stories");
 
-                //get the list of story IDs, in othe order that the user put them in, for this sprint
-                var storyIdList = _.map($(this).children(), function (entry) {
-                    return $(entry).attr("data-id");
+                //get the list of stories, in othe order that the user put them in, for this sprint
+                var storyList = _.map($(this).children(), function (entry) {
+                    return storyCollection.get($(entry).attr("data-id"));
                 });
 
-                console.log("update" + sprintId);
+                //update each story with its new story order
+                _.each(storyList, function (e, i) {
+                    e.set({ "sprintOrder": i });
+                });
+
+                var data = (new Backbone.Collection(storyList)).toJSON();
+
+                $.post("/Sprint/UpdateStories/" + sprintId + "/", data);
             },
         }).disableSelection();
     },
