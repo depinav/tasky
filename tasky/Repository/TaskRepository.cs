@@ -46,6 +46,21 @@ namespace tasky.Repository
             return s.id;
         }
 
+        public void Log(TaskLog log)
+        {
+            log = db.TaskLogs.Add(log);
+        }
+
+        public ICollection<TaskLog> GetLogs()
+        {
+            return db.TaskLogs.ToList();
+        }
+
+        public TaskLog GetLogById(int id)
+        {
+            return db.TaskLogs.Find(id);
+        }
+
         public Task FindById(int id)
         {
             return db.Tasks.Find(id);

@@ -6,6 +6,7 @@ using tasky.DAL;
 using tasky.Models;
 using tasky.ViewModels;
 using tasky.Repository;
+using System;
 
 namespace tasky.Controllers
 {
@@ -60,6 +61,37 @@ namespace tasky.Controllers
             }
 
             sprintViewModel.stories = stories;
+
+            //compute the data for the burndown chart
+            int totalEstimated = repo.SumTaskEstimatesForSprint(id);
+
+            Dictionary<DateTime, int> dataMap = new Dictionary<DateTime, int>();
+            foreach (var i in repo.FindTaskLogsForSprint(id))
+            {
+                int sum;
+                if (!dataMap.TryGetValue(i.logDate, out sum))
+                {
+                    sum = 0;
+                }
+                dataMap[i.logDate] = sum + i.loggedHours;
+            }
+
+            //create the list of "actual" burndown data
+            List<BurndownEntry> burndownEntries = new List<BurndownEntry>();
+            int remainingHours = totalEstimated;
+            foreach(DateTime d in dataMap.Keys.OrderBy(date => date)) {
+                remainingHours -= dataMap[d];
+                burndownEntries.Add(new BurndownEntry { date = d, remaining = remainingHours });
+            }
+
+            //create the list of "ideal" burndown data
+            List<BurndownEntry> idealBurn = new List<BurndownEntry>();
+            idealBurn.Add(new BurndownEntry { date = sprint.startDate, remaining = totalEstimated });
+            idealBurn.Add(new BurndownEntry { date = sprint.endDate, remaining = 0 });
+
+            ViewBag.ActualBurndownEntries = burndownEntries;
+            ViewBag.IdealBurndownEntries = idealBurn;
+            ViewBag.InitialEstimate = totalEstimated;
             
             return View(sprintViewModel);
         }
@@ -141,5 +173,17 @@ namespace tasky.Controllers
             repo.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public void UpdateStories(int id, List<Story> stories)
+        {
+            repo.SaveStories(id, stories);
+        }
+
+        public class BurndownEntry
+        {
+            public DateTime date { get; set; }
+            public int remaining { get; set; }
+        }
+
     }
 }

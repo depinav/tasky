@@ -19,7 +19,18 @@ namespace tasky.Repository
 
         public ICollection<Story> FindStoriesForSprint(int id)
         {
-            return db.Stories.Where(model => model.sprintId == id).ToList();
+            return db.Stories
+                .Where(model => model.sprintId == id)
+                .OrderBy(story => story.sprintOrder)
+                .ToList();
+        }
+
+        public ICollection<TaskLog> FindTaskLogsForSprint(int id)
+        {
+            return db.TaskLogs
+                .Where(model => model.task.story.sprintId == id)
+                .OrderBy(model => model.logDate)
+                .ToList();
         }
 
         public int Save(Sprint s)
@@ -50,6 +61,33 @@ namespace tasky.Repository
         {
             Sprint sprint = this.FindById(id);
             db.Sprints.Remove(sprint);
+            db.SaveChanges();
+        }
+
+        public int SumTaskEstimatesForSprint(int id)
+        {
+            //we have to do a task count beforehand because mvc raises an error for some reason
+            //instead of just returning 0 if there are no records
+            if (db.Tasks.Where(model => model.story.sprintId == id).Count() > 0)
+            {
+                return db.Tasks.Where(model => model.story.sprintId == id).Sum(model => model.Estimate_Hours);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public void SaveStories(int id, List<Story> stories)
+        {
+            /*
+            List<Story> dbStories = db.Stories.Where(s => s.sprintId == id).ToList();
+            dbStories = stories;
+            db.SaveChanges();
+            */
+            
+            Sprint currentSprint = (Sprint)db.Sprints.Where(s => s.id == id);
+            currentSprint.stories = stories;
             db.SaveChanges();
         }
     }

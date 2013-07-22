@@ -6,6 +6,8 @@
 
 <h2>Sprint Details</h2>
 
+<div id="chartContainer" style="min-width: 400px; height: 200px;"></div>
+
 <fieldset>
     <legend>Sprint</legend>
 
@@ -75,15 +77,63 @@
 @section Scripts {
     <script type="text/javascript">
         var storydata = @Html.Raw(Json.Encode(Model.stories));
+        var actualBurndownData = @Html.Raw(Json.Encode(ViewBag.ActualBurndownEntries));
+        var idealBurndownData = @Html.Raw(Json.Encode(ViewBag.IdealBurndownEntries));
 
         var storylist = new StoryList(storydata);
+
+        var setupHighchart = function(selector, actual, ideal) {
+
+            var createDataPoint = function(item) {
+                var parsedDate = parseInt(item.date.substr(6));//see http://stackoverflow.com/questions/726334/asp-net-mvc-jsonresult-date-format
+                return [parsedDate, item.remaining];
+            }
+
+            var idealData = _.map(ideal, createDataPoint);
+            var actualData = _.map(actual, createDataPoint);
+            $(selector).highcharts({
+                title: {
+                    text: "Burn Down",
+                },
+                chart: {
+                    type: 'spline',
+                },
+                legend: {
+                    enabled: false,
+                },
+                xAxis: {
+                    type: 'datetime',
+                },
+                yAxis: {
+                    min: 0,
+                    max: @ViewBag.InitialEstimate,
+                    tickPixelInterval: 20,
+                },
+                tooltip: {
+                    xDateFormat: '%Y-%m-%d',
+                    shared: true
+                },
+                series: [
+                    {
+                        name: "Remaining Hours",
+                        data: actualData,
+                    },
+                    {
+                        name: "Ideal Hours",
+                        data: idealData,
+                        lineWidth: 1,
+                        dashStyle: 'dash'
+                    }
+                ],
+            });
+        }
 
         $(document).on("ready", function() {
 
             var storyView = new DragStoryByStatusView({items:storylist, el:$(".storyList") })
             storyView.render();
 
-            
+            setupHighchart("#chartContainer", actualBurndownData, idealBurndownData);
         });
     </script>
 }

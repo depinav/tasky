@@ -205,6 +205,23 @@
     </Compile>
     <Compile Include="Injection\DefaultModule.cs" />
     <Compile Include="Injection\NinjectControllerFactory.cs" />
+    <Compile Include="Migrations\201307191520184_logs.cs" />
+    <Compile Include="Migrations\201307191520184_logs.Designer.cs">
+      <DependentUpon>201307191520184_logs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307221434416_test.cs" />
+    <Compile Include="Migrations\201307221434416_test.Designer.cs">
+      <DependentUpon>201307221434416_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307221828234_burndown.cs" />
+    <Compile Include="Migrations\201307221828234_burndown.Designer.cs">
+      <DependentUpon>201307221828234_burndown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307222027276_fixes.cs" />
+    <Compile Include="Migrations\201307222027276_fixes.Designer.cs">
+      <DependentUpon>201307222027276_fixes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskLog.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\ITeamMemberRepository.cs" />
@@ -231,6 +248,7 @@
     </Compile>
     <Compile Include="ViewModels\SprintViewModel.cs" />
     <Compile Include="ViewModels\StoryViewModel.cs" />
+    <Compile Include="ViewModels\TaskLogViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\TeamMemberViewModel.cs" />
   </ItemGroup>
@@ -400,6 +418,21 @@
     <EmbeddedResource Include="Migrations\201307121629188_init.resx">
       <DependentUpon>201307121629188_init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307191520184_logs.resx">
+      <DependentUpon>201307191520184_logs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307221434416_test.resx">
+      <DependentUpon>201307221434416_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307221828234_burndown.resx">
+      <DependentUpon>201307221828234_burndown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307222027276_fixes.resx">
+      <DependentUpon>201307222027276_fixes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
