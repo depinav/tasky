@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201307221828234_burndown.Designer.cs">
       <DependentUpon>201307221828234_burndown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307222027276_fixes.cs" />
+    <Compile Include="Migrations\201307222027276_fixes.Designer.cs">
+      <DependentUpon>201307222027276_fixes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\TaskLog.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
@@ -399,6 +403,12 @@
     <EmbeddedResource Include="Migrations\201307221828234_burndown.resx">
       <DependentUpon>201307221828234_burndown.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307222027276_fixes.resx">
+      <DependentUpon>201307222027276_fixes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
