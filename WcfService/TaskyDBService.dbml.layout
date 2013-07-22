@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TaskyDBService">
+  <DataContextMoniker Name="/TaskyDBServiceDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6c758384-1d01-4740-80b1-8eacdbc2d0f7" absoluteBounds="3.125, 1.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/TaskyDBServiceDataContext/Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca9346ec-f340-4f21-ace9-5e7fc168c63a" absoluteBounds="3.14, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bbad4587-e85c-420a-a73e-6f3cf59189fd" absoluteBounds="5.625, 0.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/TaskyDBServiceDataContext/Story" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f27b346-4eaf-4e65-a639-6e292bbc0f8f" absoluteBounds="5.6400000000000006, 1.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a3cff54-dfe9-4936-9cba-31e04deceaa0" absoluteBounds="5.875, 3, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/TaskyDBServiceDataContext/TeamMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94512d0f-1e04-4766-9526-ebaa3612ee84" absoluteBounds="5.8900000000000006, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

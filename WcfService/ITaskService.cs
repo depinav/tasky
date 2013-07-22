@@ -14,5 +14,17 @@ namespace WcfService {
 
         [OperationContract]
         ICollection<Task> getTasks();
+
+        [OperationContract]
+        ICollection<Task> getTask(int id);
+
+        [OperationContract]
+        ICollection<Task> createTask(string title, string description, int hours, int teamMemberID, int storyID);
+
+        [OperationContract]
+        ICollection<Task> deleteTask(int id);
+
+        [OperationContract]
+        ICollection<Task> updateTask(int id, string title, string decsription, string estimateHours, string remainingHours, string teamMemberID, string storyID);
     }
 }
