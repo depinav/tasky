@@ -15,12 +15,6 @@ namespace tasky.Controllers
 {
     public class StoryAPIController : ApiController
     {
-        IStoryRepository repo;
-        public StoryAPIController(IStoryRepository s)
-        {
-            repo = s;
-        }
-
         private TaskyContext db = new TaskyContext();
 
         // GET api/storyapi
@@ -36,7 +30,7 @@ namespace tasky.Controllers
         {
             return db.Stories.Find(id);
         }
-
+        /*
         // POST api/storyapi
         [ActionName("DefaultAction")]
         public Story Post([FromBody]Story value)
@@ -49,7 +43,7 @@ namespace tasky.Controllers
             }
             return null;
         }
-
+        */
         // PUT api/storyapi/5
         [ActionName("DefaultAction")]
         public Story Put(int id, [FromBody]Story value)
@@ -82,9 +76,17 @@ namespace tasky.Controllers
 
         //POST api/storyapi/saveStories/
         [HttpPost]
-        public void saveStories(List<Story> stories)
+        public int saveStories(List<Story> stories)
         {
+            int status = 0;
+            foreach (Story story in stories)
+            {
+                db.Entry(story).State = EntityState.Modified;
+                db.SaveChanges();
+                status = 1;
+            }
 
+            return status;
         }
     }
 }

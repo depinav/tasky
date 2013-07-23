@@ -76,7 +76,9 @@ var DragStoryBySprintView = Backbone.View.extend({
 
                 var data = (new Backbone.Collection(storyList)).toJSON();
 
-                $.post("/Sprint/UpdateStories/" + sprintId + "/", data);
+                $.post("/api/StoryAPI/saveStories" + "/", data).success(function(status) {
+                    console.log(status);
+                });
             },
         }).disableSelection();
     },
