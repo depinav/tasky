@@ -46,3 +46,8 @@
     text-align: center;
     background-color: #D5F1ED;
 }
+
+.storyContainerPH {
+    background-color: #D0EAE9;
+    border: 1px dashed #444;
+}

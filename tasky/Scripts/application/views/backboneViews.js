@@ -4,7 +4,7 @@
         var view = this;
         $( ".storyContainers" ).sortable({
             connectWith: ".storyContainers",
-            placeholder: ".storyContainerPH",
+            placeholder: "storyContainerPH",
             receive: function (event, ui) {
                 var newStatus = ui.item.parent('div').parent('div').attr('id');
                 var storyId = ui.item.attr('id');
@@ -39,7 +39,7 @@ var DragStoryBySprintView = Backbone.View.extend({
 
         $( ".storyContainers" ).sortable({
             connectWith: ".storyContainers",
-            placeholder: ".storyContainerPH",
+            placeholder: "storyContainerPH",
 
             //event handler to change a story's sprint
             receive: function (event, ui) {
