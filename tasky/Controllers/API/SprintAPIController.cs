@@ -17,18 +17,21 @@ namespace tasky.Controllers
         private TaskyContext db = new TaskyContext();
 
         // GET api/sprintapi
+        [ActionName("DefaultAction")]
         public ICollection<Sprint> Get()
         {
             return db.Sprints.ToList();
         }
 
         // GET api/sprintapi/5
+        [ActionName("DefaultAction")]
         public Sprint Get(int id)
         {
             return db.Sprints.Find(id);
         }
 
         // POST api/sprintapi
+        [ActionName("DefaultAction")]
         public Sprint Post([FromBody]Sprint value)
         {
             if (value != null && ModelState.IsValid)
@@ -41,6 +44,7 @@ namespace tasky.Controllers
         }
 
         // PUT api/sprintapi/5
+        [ActionName("DefaultAction")]
         public Sprint Put(int id, [FromBody]Sprint value)
         {
             if (value != null && ModelState.IsValid)
@@ -54,6 +58,7 @@ namespace tasky.Controllers
         }
 
         // DELETE api/sprintapi/5
+        [ActionName("DefaultAction")]
         public void Delete(int id)
         {
             Sprint sprint = db.Sprints.Find(id);

@@ -9,11 +9,18 @@ using System.Web.Http;
 
 using tasky.Models;
 using tasky.DAL;
+using tasky.Repository;
 
 namespace tasky.Controllers
 {
     public class StoryAPIController : ApiController
     {
+        IStoryRepository repo;
+        public StoryAPIController(IStoryRepository s)
+        {
+            repo = s;
+        }
+
         private TaskyContext db = new TaskyContext();
 
         // GET api/storyapi
@@ -71,6 +78,13 @@ namespace tasky.Controllers
         public ICollection<Task> Tasks(int id)
         {
             return db.Tasks.Where(model => model.storyId == id).ToList();
+        }
+
+        //POST api/storyapi/saveStories/
+        [HttpPost]
+        public void saveStories(List<Story> stories)
+        {
+
         }
     }
 }
