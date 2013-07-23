@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using tasky.Models;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.Migrations;
 
 namespace tasky.DAL
 {
@@ -17,6 +18,16 @@ namespace tasky.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbContext, Configuration>());
+        }
+    }
+
+    public class Configuration : DbMigrationsConfiguration<DbContext>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
     }
 }
