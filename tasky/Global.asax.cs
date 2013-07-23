@@ -20,6 +20,8 @@ namespace tasky
         {
             IKernel kernel = new StandardKernel(new DefaultModule());
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(kernel));
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+
 
             AreaRegistration.RegisterAllAreas();
 

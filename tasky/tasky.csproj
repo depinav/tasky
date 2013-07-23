@@ -42,6 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -205,6 +208,7 @@
     </Compile>
     <Compile Include="Injection\DefaultModule.cs" />
     <Compile Include="Injection\NinjectControllerFactory.cs" />
+    <Compile Include="Injection\NinjectDependencyResolver.cs" />
     <Compile Include="Models\TaskLog.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />

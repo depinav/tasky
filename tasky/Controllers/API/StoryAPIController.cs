@@ -1,77 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 using tasky.Models;
-using tasky.DAL;
 using tasky.Repository;
 
 namespace tasky.Controllers
 {
     public class StoryAPIController : ApiController
     {
-        private TaskyContext db = new TaskyContext();
+        private IStoryRepository repo;
+        public StoryAPIController(IStoryRepository s)
+        {
+            repo = s;
+        }
 
         // GET api/storyapi
         [ActionName("DefaultAction")]
         public ICollection<Story> Get()
         {
-            return db.Stories.ToList();
+            return repo.FindAll();
         }
 
         // GET api/storyapi/5
         [ActionName("DefaultAction")]
         public Story Get(int id)
         {
-            return db.Stories.Find(id);
+            return repo.FindById(id);
         }
-        /*
+        
         // POST api/storyapi
         [ActionName("DefaultAction")]
-        public Story Post([FromBody]Story value)
+        public int Post([FromBody]Story value)
         {
             if (value != null && ModelState.IsValid)
             {
-                value = db.Stories.Add(value);
-                db.SaveChanges();
-                return value;
+                return repo.Save(value);
             }
-            return null;
+            return -1;
         }
-        */
+        
         // PUT api/storyapi/5
         [ActionName("DefaultAction")]
-        public Story Put(int id, [FromBody]Story value)
+        public void Put(int id, [FromBody]Story value)
         {
             if (value != null && ModelState.IsValid)
             {
                 value.id = id;
-                db.Entry(value).State = EntityState.Modified;
-                db.SaveChanges();
-                return value;
+                repo.Save(value);
             }
-            return null;
         }
 
         // DELETE api/storyapi/5
         [ActionName("DefaultAction")]
         public void Delete(int id)
         {
-            Story story = db.Stories.Find(id);
-            db.Stories.Remove(story);
-            db.SaveChanges();
-        }
-
-        //GET api/storyapi/5/tasks/
-        [HttpGet]
-        public ICollection<Task> Tasks(int id)
-        {
-            return db.Tasks.Where(model => model.storyId == id).ToList();
+            repo.Delete(id);
         }
 
         //POST api/storyapi/saveStories/
@@ -80,8 +63,7 @@ namespace tasky.Controllers
         {
             foreach (Story story in stories)
             {
-                db.Entry(story).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Save(story);
             }
         }
     }
