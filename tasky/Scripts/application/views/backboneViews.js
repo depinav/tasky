@@ -73,11 +73,14 @@ var DragStoryBySprintView = Backbone.View.extend({
                 _.each(storyList, function (e, i) {
                     e.set({ "sprintOrder": i });
                 });
-
+                
                 var data = (new Backbone.Collection(storyList)).toJSON();
-
-                $.post("/api/StoryAPI/saveStories" + "/", data).success(function(status) {
-                    console.log(status);
+                $.ajax({
+                    type: "POST",
+                    url: "/api/StoryAPI/saveStories" + "/",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json"
                 });
             },
         }).disableSelection();

@@ -76,17 +76,13 @@ namespace tasky.Controllers
 
         //POST api/storyapi/saveStories/
         [HttpPost]
-        public int saveStories(List<Story> stories)
+        public void SaveStories([FromBody]List<Story> stories)
         {
-            int status = 0;
             foreach (Story story in stories)
             {
                 db.Entry(story).State = EntityState.Modified;
                 db.SaveChanges();
-                status = 1;
             }
-
-            return status;
         }
     }
 }
