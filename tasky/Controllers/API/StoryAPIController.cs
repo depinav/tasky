@@ -82,7 +82,7 @@ namespace tasky.Controllers
 
         //POST api/storyapi/saveStories/
         [HttpPost]
-        public void saveStories(List<Story> stories)
+        public void SaveStories(List<Story> stories)
         {
 
         }
