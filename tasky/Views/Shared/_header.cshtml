@@ -1,0 +1,14 @@
+﻿<header class="headerContainer">            
+    <div>
+        <span class="site-title">@Html.ActionLink("Tasky", "Index", "Home") | @Html.ActionLink("Help", "Index", "Home")</span>
+        <span class="site-title">
+        <!-- This section exists only for navigation during testing and development. NOT PERMANENT -->
+            @Html.ActionLink("Home", "Index", "Home") |  
+            @Html.ActionLink("Sprints", "Index", "Sprint") | 
+            @Html.ActionLink("Stories", "Index", "Story") | 
+            @Html.ActionLink("Tasks", "Index", "Task") | 
+            @Html.ActionLink("Team Members", "Index", "TeamMember")
+        <!-- End temp -->
+        </span>
+    </div>  
+</header>

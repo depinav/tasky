@@ -1,4 +1,31 @@
-﻿.checked {
+﻿@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
+
+body {
+    background-color: #F5F5F5;
+    height: 100%;
+}
+
+.headerContainer {
+    width: 100%;
+    border-style: solid;
+    border-width: thin;
+    background-color: #144057;
+    line-height: 60px;
+    color: #FFFFFF;
+}
+
+.headerContainer a {
+    color: #93D2FF;
+    font-size: 24px;
+    font-family:'Roboto', sans-serif;
+}
+
+.site-title {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.checked {
     text-decoration: line-through;
 }
 
@@ -7,47 +34,59 @@
 }
 
 .col {
+    color:#FFFFFF;
     float: left;
-    background-color: #C9D7ED;
-    width: 200px;
+    background-color: #696663;
+    width: 250px;
     height: 100%;
     padding: 2px;
     border: solid;
-    margin: 2px;
-    -moz-border-radius: 15px;
-    border-radius: 15px; 
+    margin: 1px;
     display: block;
 }
 
+.col a {
+    color: #93D2FF;
+}
+
 .sprintIndexContainer {
-    width: 1662px;
+    width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .scroller {
-    width: 900px;
+    width:100%;
+    height: 100%;
     overflow-x: auto;
     overflow-y: hidden;
 }
 
 .storyContainers {
     min-height: 200px;
-    width: 200px;
+    width: 100%;
+    background-color: #E2E2E2;
 }
 
 .sortableEntry, .storyContainerPH {
-    width: 200px;
     height: auto;
     min-height: 30px;
     border: 1px solid black;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
     word-wrap: break-word;
     margin: 1px;
     text-align: center;
-    background-color: #D5F1ED;
+    background-color: #BD5348;
 }
 
-.storyContainerPH {
-    background-color: #D0EAE9;
-    border: 1px dashed #444;
+.sortableEntry a, .storyContainerPM a{
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
 }
+
+.sortableEntry:hover {
+    background-color: #d18880;
+    cursor: pointer;
+}
+;
