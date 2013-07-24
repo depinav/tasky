@@ -25,6 +25,6 @@ namespace WcfService {
         ICollection<Task> deleteTask(int id);
 
         [OperationContract]
-        ICollection<Task> updateTask(int id, string title, string decsription, string estimateHours, string remainingHours, string teamMemberID, string storyID);
+        ICollection<Task> updateTask(int id, string title, string decsription, int estimateHours, int remainingHours, int teamMemberID, int storyID);
     }
 }

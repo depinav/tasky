@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TaskLogService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50249/TaskLogService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50249/TaskLogService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50249/TaskLogService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITaskLogService_getTaskLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:getTaskLogs" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_getTaskLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getTaskLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_getTaskLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:getTaskLog" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_getTaskLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getTaskLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_createTaskLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:createTaskLog" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_createTaskLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createTaskLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_deleteTaskLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteTaskLog" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_deleteTaskLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteTaskLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_updateTaskLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateTaskLog" />
+  </wsdl:message>
+  <wsdl:message name="ITaskLogService_updateTaskLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateTaskLogResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITaskLogService">
+    <wsdl:operation name="getTaskLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITaskLogService/getTaskLogs" message="tns:ITaskLogService_getTaskLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITaskLogService/getTaskLogsResponse" message="tns:ITaskLogService_getTaskLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getTaskLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITaskLogService/getTaskLog" message="tns:ITaskLogService_getTaskLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITaskLogService/getTaskLogResponse" message="tns:ITaskLogService_getTaskLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createTaskLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITaskLogService/createTaskLog" message="tns:ITaskLogService_createTaskLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITaskLogService/createTaskLogResponse" message="tns:ITaskLogService_createTaskLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTaskLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITaskLogService/deleteTaskLog" message="tns:ITaskLogService_deleteTaskLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITaskLogService/deleteTaskLogResponse" message="tns:ITaskLogService_deleteTaskLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTaskLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITaskLogService/updateTaskLog" message="tns:ITaskLogService_updateTaskLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITaskLogService/updateTaskLogResponse" message="tns:ITaskLogService_updateTaskLog_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITaskLogService" type="tns:ITaskLogService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getTaskLogs">
+      <soap:operation soapAction="http://tempuri.org/ITaskLogService/getTaskLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTaskLog">
+      <soap:operation soapAction="http://tempuri.org/ITaskLogService/getTaskLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTaskLog">
+      <soap:operation soapAction="http://tempuri.org/ITaskLogService/createTaskLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTaskLog">
+      <soap:operation soapAction="http://tempuri.org/ITaskLogService/deleteTaskLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTaskLog">
+      <soap:operation soapAction="http://tempuri.org/ITaskLogService/updateTaskLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaskLogService">
+    <wsdl:port name="BasicHttpBinding_ITaskLogService" binding="tns:BasicHttpBinding_ITaskLogService">
+      <soap:address location="http://localhost:50249/TaskLogService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
