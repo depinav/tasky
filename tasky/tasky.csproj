@@ -205,6 +205,10 @@
     </Compile>
     <Compile Include="Injection\DefaultModule.cs" />
     <Compile Include="Injection\NinjectControllerFactory.cs" />
+    <Compile Include="Migrations\201307231851585_add-migrations.cs" />
+    <Compile Include="Migrations\201307231851585_add-migrations.Designer.cs">
+      <DependentUpon>201307231851585_add-migrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\TaskLog.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
@@ -234,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\mobile.css" />
+    <Content Include="Content\print.css" />
+    <Content Include="Content\screen.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -326,7 +333,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -388,6 +394,7 @@
     <None Include="Service References\TaskServiceReference1\TaskService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\_header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -403,6 +410,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\TaskServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201307231851585_add-migrations.resx">
+      <DependentUpon>201307231851585_add-migrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
