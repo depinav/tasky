@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4a522d3a-34b3-493d-8f79-59b1a1c20cd1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50249/TaskLogService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TaskLogService.xsd" MetadataType="Schema" ID="bf7934f8-bdd2-4826-9ec1-3bb59ebfe3da" SourceId="1" SourceUrl="http://localhost:50249/TaskLogService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TaskLogService.wsdl" MetadataType="Wsdl" ID="de9f354e-570b-4fc8-8891-bb182622f562" SourceId="1" SourceUrl="http://localhost:50249/TaskLogService.svc?wsdl" />
+    <MetadataFile FileName="TaskLogService1.xsd" MetadataType="Schema" ID="71edf7ee-7a32-4413-af6c-4a223002fdc6" SourceId="1" SourceUrl="http://localhost:50249/TaskLogService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TaskLogService2.xsd" MetadataType="Schema" ID="74c81957-92aa-4c45-955b-a4eb3afaef6c" SourceId="1" SourceUrl="http://localhost:50249/TaskLogService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TaskLogService.disco" MetadataType="Disco" ID="b3e89c3f-df22-499d-9f9e-aab204d2c5f3" SourceId="1" SourceUrl="http://localhost:50249/TaskLogService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

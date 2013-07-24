@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="837ea69c-96b4-4e44-bad3-6edabdfda6b8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50249/TeamMemberService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TeamMemberService.disco" MetadataType="Disco" ID="759f39ae-df28-42df-9435-3958be430984" SourceId="1" SourceUrl="http://localhost:50249/TeamMemberService.svc?disco" />
+    <MetadataFile FileName="TeamMemberService.xsd" MetadataType="Schema" ID="526594c3-8b41-47e5-89ce-11fb0ab607da" SourceId="1" SourceUrl="http://localhost:50249/TeamMemberService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TeamMemberService1.xsd" MetadataType="Schema" ID="f605a34c-f4fe-43cd-b05a-64a5f204775f" SourceId="1" SourceUrl="http://localhost:50249/TeamMemberService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TeamMemberService.wsdl" MetadataType="Wsdl" ID="5d7c3177-d910-4b81-9dbc-78a775b5ea8c" SourceId="1" SourceUrl="http://localhost:50249/TeamMemberService.svc?wsdl" />
+    <MetadataFile FileName="TeamMemberService2.xsd" MetadataType="Schema" ID="f1994b3d-6839-40dc-b233-082449c97ace" SourceId="1" SourceUrl="http://localhost:50249/TeamMemberService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

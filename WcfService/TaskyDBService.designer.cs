@@ -39,6 +39,12 @@ namespace WcfService
     partial void InsertTeamMember(TeamMember instance);
     partial void UpdateTeamMember(TeamMember instance);
     partial void DeleteTeamMember(TeamMember instance);
+    partial void InsertSprint(Sprint instance);
+    partial void UpdateSprint(Sprint instance);
+    partial void DeleteSprint(Sprint instance);
+    partial void InsertTaskLog(TaskLog instance);
+    partial void UpdateTaskLog(TaskLog instance);
+    partial void DeleteTaskLog(TaskLog instance);
     #endregion
 		
 		public TaskyDBServiceDataContext() : 
@@ -92,6 +98,22 @@ namespace WcfService
 			get
 			{
 				return this.GetTable<TeamMember>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Sprint> Sprints
+		{
+			get
+			{
+				return this.GetTable<Sprint>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TaskLog> TaskLogs
+		{
+			get
+			{
+				return this.GetTable<TaskLog>();
 			}
 		}
 	}
@@ -641,6 +663,274 @@ namespace WcfService
 					this._salt = value;
 					this.SendPropertyChanged("salt");
 					this.OnsaltChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sprint")]
+	public partial class Sprint : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _title;
+		
+		private System.DateTime _startDate;
+		
+		private System.DateTime _endDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void OnstartDateChanging(System.DateTime value);
+    partial void OnstartDateChanged();
+    partial void OnendDateChanging(System.DateTime value);
+    partial void OnendDateChanged();
+    #endregion
+		
+		public Sprint()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(MAX)")]
+		public string title
+		{
+			get
+			{
+				return this._title;
+			}
+			set
+			{
+				if ((this._title != value))
+				{
+					this.OntitleChanging(value);
+					this.SendPropertyChanging();
+					this._title = value;
+					this.SendPropertyChanged("title");
+					this.OntitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_startDate", DbType="DateTime NOT NULL")]
+		public System.DateTime startDate
+		{
+			get
+			{
+				return this._startDate;
+			}
+			set
+			{
+				if ((this._startDate != value))
+				{
+					this.OnstartDateChanging(value);
+					this.SendPropertyChanging();
+					this._startDate = value;
+					this.SendPropertyChanged("startDate");
+					this.OnstartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endDate", DbType="DateTime NOT NULL")]
+		public System.DateTime endDate
+		{
+			get
+			{
+				return this._endDate;
+			}
+			set
+			{
+				if ((this._endDate != value))
+				{
+					this.OnendDateChanging(value);
+					this.SendPropertyChanging();
+					this._endDate = value;
+					this.SendPropertyChanged("endDate");
+					this.OnendDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TaskLog")]
+	public partial class TaskLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _loggedHours;
+		
+		private System.DateTime _logDate;
+		
+		private int _taskId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnloggedHoursChanging(int value);
+    partial void OnloggedHoursChanged();
+    partial void OnlogDateChanging(System.DateTime value);
+    partial void OnlogDateChanged();
+    partial void OntaskIdChanging(int value);
+    partial void OntaskIdChanged();
+    #endregion
+		
+		public TaskLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_loggedHours", DbType="Int NOT NULL")]
+		public int loggedHours
+		{
+			get
+			{
+				return this._loggedHours;
+			}
+			set
+			{
+				if ((this._loggedHours != value))
+				{
+					this.OnloggedHoursChanging(value);
+					this.SendPropertyChanging();
+					this._loggedHours = value;
+					this.SendPropertyChanged("loggedHours");
+					this.OnloggedHoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_logDate", DbType="DateTime NOT NULL")]
+		public System.DateTime logDate
+		{
+			get
+			{
+				return this._logDate;
+			}
+			set
+			{
+				if ((this._logDate != value))
+				{
+					this.OnlogDateChanging(value);
+					this.SendPropertyChanging();
+					this._logDate = value;
+					this.SendPropertyChanged("logDate");
+					this.OnlogDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_taskId", DbType="Int NOT NULL")]
+		public int taskId
+		{
+			get
+			{
+				return this._taskId;
+			}
+			set
+			{
+				if ((this._taskId != value))
+				{
+					this.OntaskIdChanging(value);
+					this.SendPropertyChanging();
+					this._taskId = value;
+					this.SendPropertyChanged("taskId");
+					this.OntaskIdChanged();
 				}
 			}
 		}

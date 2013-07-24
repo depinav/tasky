@@ -16,28 +16,17 @@
         {
             string divID = "col" + item.id;
             <div id="col" class="col">
-                <table class="storyColHeader">
-                    <tr>
-                        <td><b>@Html.DisplayNameFor(model1 => model1.title)</b></td>
-                        <td>@Html.DisplayFor(modelItem => item.title)</td>
-                    </tr>
-                    <tr>
-                        <td><b>@Html.DisplayNameFor(model => model.startDate)</b></td>
-                        <td>@Html.DisplayFor(modelItem => item.startDate)</td>
-                    </tr>
-                    <tr>
-                        <td><b>@Html.DisplayNameFor(model => model.endDate)</b></td>
-                        <td>@Html.DisplayFor(modelItem => item.endDate)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-                        </td>
-                    </tr>
-                </table>
-            
+                <div class="colTitle">@Html.DisplayFor(modelItem => item.title)</div>
+                <div class="colDates">
+                    @Html.DisplayFor(modelItem => item.startDate)
+                    to
+                    @Html.DisplayFor(modelItem => item.endDate)
+                </div>
+                <div class="colActions">
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                </div>
                 <div id="@item.id" class="storyContainers">
 
                 </div>

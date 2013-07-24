@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fa60c1ff-c817-44ab-acb8-0c8e1dddcc69" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50249/SprintService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SprintService.xsd" MetadataType="Schema" ID="150655a4-73b3-4a58-b09c-48454ae4ca76" SourceId="1" SourceUrl="http://localhost:50249/SprintService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SprintService.disco" MetadataType="Disco" ID="b688c96e-b0b8-4305-9cb3-c782bada4a9b" SourceId="1" SourceUrl="http://localhost:50249/SprintService.svc?disco" />
+    <MetadataFile FileName="SprintService1.xsd" MetadataType="Schema" ID="b67a000b-1a76-49f8-940e-60dd97b40e54" SourceId="1" SourceUrl="http://localhost:50249/SprintService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SprintService2.xsd" MetadataType="Schema" ID="5a1d6896-662c-46fd-a7c5-1e5320fcf4ca" SourceId="1" SourceUrl="http://localhost:50249/SprintService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SprintService.wsdl" MetadataType="Wsdl" ID="a7beb4d6-e843-4cf8-980d-431b471156c0" SourceId="1" SourceUrl="http://localhost:50249/SprintService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

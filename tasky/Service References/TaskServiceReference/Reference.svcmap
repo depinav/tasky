@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3d45c2fd-2136-4b0f-ab89-1dd85e46ccc6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="acb0955f-2427-481a-aea3-2c0a08c87ee1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:50249/TaskService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TaskService.xsd" MetadataType="Schema" ID="ef66614e-b24d-4d84-85df-5f3b82dfa920" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?xsd=xsd1" />
-    <MetadataFile FileName="TaskService1.xsd" MetadataType="Schema" ID="df78500d-f1a2-4f04-b3de-39fe383542e0" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?xsd=xsd0" />
-    <MetadataFile FileName="TaskService.wsdl" MetadataType="Wsdl" ID="2094f82f-cad2-421f-bd48-767d403162e5" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?wsdl" />
-    <MetadataFile FileName="TaskService.disco" MetadataType="Disco" ID="dc50c53c-7440-4a1f-989d-07ad1833ee0d" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?disco" />
-    <MetadataFile FileName="TaskService2.xsd" MetadataType="Schema" ID="cf413e6a-229d-44ae-b83a-6aedd0793f1f" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TaskService.xsd" MetadataType="Schema" ID="5a58f7c1-9593-4e18-8b1d-0cc7d50ec8f8" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TaskService1.xsd" MetadataType="Schema" ID="ed7a151a-33be-41b7-82fb-1631dd67df70" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TaskService.wsdl" MetadataType="Wsdl" ID="9920804d-6e82-4ac4-81c1-132911e932fe" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?wsdl" />
+    <MetadataFile FileName="TaskService.disco" MetadataType="Disco" ID="d50c7555-3665-4bee-86b8-16143c8d00ba" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?disco" />
+    <MetadataFile FileName="TaskService2.xsd" MetadataType="Schema" ID="451b2ea7-abed-4a75-b914-6d0dee1cf25e" SourceId="1" SourceUrl="http://localhost:50249/TaskService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

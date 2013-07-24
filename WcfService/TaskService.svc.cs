@@ -84,7 +84,7 @@ namespace WcfService
             return result.ToList();
         }
 
-        public ICollection<Task> updateTask(int id, string title, string description, string estimateHours, string remainingHours, string teamMemberID, string storyID) {
+        public ICollection<Task> updateTask(int id, string title, string description, int estimateHours, int remainingHours, int teamMemberID, int storyID) {
 
             var query = (from atask in db.Tasks where atask.id == id select atask);
 
@@ -96,23 +96,19 @@ namespace WcfService
                 if (description != null)
                     task.Description = description;
 
-                if (estimateHours != null)
-                    task.Estimate_Hours = int.Parse(estimateHours);
+                    task.Estimate_Hours = estimateHours;
 
-                if (remainingHours != null)
-                    task.Remaining_Hours = int.Parse(remainingHours);
+                    task.Remaining_Hours = remainingHours;
 
-                if (teamMemberID != null)
-                {
+                if (teamMemberID != null) {
 
-                    TeamMember teamMember = (from team in db.TeamMembers where team.id == int.Parse(teamMemberID) select team).ToList().First();
+                    TeamMember teamMember = (from team in db.TeamMembers where team.id == teamMemberID select team).ToList().First();
                     task.TeamMemberId = teamMember.id;
                 }
 
-                if (storyID != null)
-                {
+                if (storyID != null) {
 
-                    Story story = (from aStory in db.Stories where aStory.id == int.Parse(storyID) select aStory).ToList().First();
+                    Story story = (from aStory in db.Stories where aStory.id == storyID select aStory).ToList().First();
                     task.storyId = story.id;
                 }
             }
@@ -121,6 +117,7 @@ namespace WcfService
 
                 db.SubmitChanges();
             }
+
             catch (Exception e) {
 
                 Console.WriteLine(e);

@@ -68,10 +68,27 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SprintService.svc" />
+    <Content Include="StoryService.svc" />
+    <Content Include="TaskLogService.svc" />
     <Content Include="TaskService.svc" />
+    <Content Include="TeamMemberService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISprintService.cs" />
+    <Compile Include="IStoryService.cs" />
+    <Compile Include="ITaskLogService.cs" />
+    <Compile Include="ITeamMemberService.cs" />
+    <Compile Include="SprintService.svc.cs">
+      <DependentUpon>SprintService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="StoryService.svc.cs">
+      <DependentUpon>StoryService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="TaskLogService.svc.cs">
+      <DependentUpon>TaskLogService.svc</DependentUpon>
+    </Compile>
     <Compile Include="TaskService.svc.cs">
       <DependentUpon>TaskService.svc</DependentUpon>
     </Compile>
@@ -84,6 +101,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TaskyDBService.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="TeamMemberService.svc.cs">
+      <DependentUpon>TeamMemberService.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
