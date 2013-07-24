@@ -36,8 +36,8 @@ namespace tasky
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/Custom.css",
-                        "~/Content/screen.css"));
+                        "~/Content/screen.css",
+                        "~/Content/Custom.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

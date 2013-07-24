@@ -5,6 +5,10 @@ body {
     height: 100%;
 }
 
+.body {
+    margin: 5px 10px;
+}
+
 .headerContainer {
     width: 100%;
     border-style: solid;
@@ -89,4 +93,4 @@ body {
     background-color: #d18880;
     cursor: pointer;
 }
-;
+
