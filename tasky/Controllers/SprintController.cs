@@ -1,12 +1,10 @@
-﻿using System.Data;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using tasky.DAL;
 using tasky.Models;
-using tasky.ViewModels;
 using tasky.Repository;
-using System;
+using tasky.ViewModels;
 
 namespace tasky.Controllers
 {
