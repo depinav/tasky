@@ -225,7 +225,27 @@
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TeamMember.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\TaskServiceReference1\Reference.cs">
+    <Compile Include="Service References\SprintServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StoryServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TaskLogServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TaskServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TeamMemberServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -317,10 +337,38 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\underscore-min-1.5.1.js" />
-    <Content Include="Service References\TaskServiceReference1\TaskService.disco" />
-    <Content Include="Service References\TaskServiceReference1\configuration91.svcinfo" />
-    <Content Include="Service References\TaskServiceReference1\configuration.svcinfo" />
-    <Content Include="Service References\TaskServiceReference1\Reference.svcmap">
+    <Content Include="Service References\SprintServiceReference\SprintService.disco" />
+    <Content Include="Service References\SprintServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\SprintServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\SprintServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Service References\StoryServiceReference\StoryService.disco" />
+    <Content Include="Service References\StoryServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\StoryServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\StoryServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Service References\TaskLogServiceReference\TaskLogService.disco" />
+    <Content Include="Service References\TaskLogServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\TaskLogServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\TaskLogServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Service References\TaskServiceReference\TaskService.disco" />
+    <Content Include="Service References\TaskServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\TaskServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\TaskServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Service References\TeamMemberServiceReference\TeamMemberService.disco" />
+    <Content Include="Service References\TeamMemberServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\TeamMemberServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\TeamMemberServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -384,17 +432,57 @@
     <Content Include="Views\Story\Edit.cshtml" />
     <Content Include="Views\Story\Index.cshtml" />
     <Content Include="Views\Home\ApiTest.cshtml" />
-    <Content Include="Service References\TaskServiceReference1\TaskService.wsdl" />
-    <None Include="Service References\TaskServiceReference1\TaskService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TaskServiceReference1\TaskService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TaskServiceReference1\TaskService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Shared\_header.cshtml" />
+    <Content Include="Service References\SprintServiceReference\SprintService.wsdl" />
+    <None Include="Service References\SprintServiceReference\SprintService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SprintServiceReference\SprintService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SprintServiceReference\SprintService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\StoryServiceReference\StoryService.wsdl" />
+    <None Include="Service References\StoryServiceReference\StoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StoryServiceReference\StoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StoryServiceReference\StoryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\TaskLogServiceReference\TaskLogService.wsdl" />
+    <None Include="Service References\TaskLogServiceReference\TaskLogService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TaskLogServiceReference\TaskLogService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TaskLogServiceReference\TaskLogService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\TaskServiceReference\TaskService.wsdl" />
+    <None Include="Service References\TaskServiceReference\TaskService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TaskServiceReference\TaskService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TaskServiceReference\TaskService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\TeamMemberServiceReference\TeamMemberService.wsdl" />
+    <None Include="Service References\TeamMemberServiceReference\TeamMemberService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeamMemberServiceReference\TeamMemberService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeamMemberServiceReference\TeamMemberService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,17 +492,19 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\TaskServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201307231851585_add-migrations.resx">
       <DependentUpon>201307231851585_add-migrations.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SprintServiceReference\" />
+    <WCFMetadataStorage Include="Service References\StoryServiceReference\" />
+    <WCFMetadataStorage Include="Service References\TaskLogServiceReference\" />
+    <WCFMetadataStorage Include="Service References\TaskServiceReference\" />
+    <WCFMetadataStorage Include="Service References\TeamMemberServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
