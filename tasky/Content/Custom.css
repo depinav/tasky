@@ -49,6 +49,19 @@ body {
     color: #93D2FF;
 }
 
+.colTitle {
+    font-weight: bold;
+    text-align:center;
+}
+
+.colDates {
+    text-align: center;
+}
+
+.colActions {
+    text-align: center;
+}
+
 .sprintIndexContainer {
     width: 2000px;
     margin-left: auto;
@@ -68,20 +81,30 @@ body {
     background-color: #E2E2E2;
 }
 
-.sortableEntry, .storyContainerPH {
+.sortableEntry {
     height: auto;
     min-height: 30px;
     border: 1px solid black;
     word-wrap: break-word;
     margin: 1px;
     text-align: center;
-    background-color: #BD5348;
+    background-color: #9a4138;
+}
+
+.storyContainerPH {
+    height: auto;
+    min-height: 30px;
+    border: 2px dashed black;
+    word-wrap: break-word;
+    margin: 1px;
+    text-align: center;
+    background-color: #D18880;
+    opacity: 0.3;
 }
 
 .sortableEntry a, .storyContainerPM a{
     color: #FFFFFF;
     font-size: 14px;
-    font-weight: bolder;
     font-family: 'Roboto', sans-serif;
 }
 
