@@ -7,47 +7,44 @@
     <div class="span-5">
         <h2>@Model.title</h2>
         <div>@Html.DisplayFor(model => model.startDate) to @Html.DisplayFor(model => model.endDate)</div>
-        <div>@Html.ActionLink("Edit", "Edit", new { id=Model.id }) | @Html.ActionLink("Back to List", "Index")</div>
-        </p>
+        <div>@Html.ActionLink("Edit", "Edit", new { id=Model.id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Add Story", "Create")</div>
     </div>
-    <div class="span-19">
-        <div id="chartContainer" style="height: 200px;"></div>
-    </div>
-</div>
-<div class="storyList">
-    <div class="col">
-        <h3>To-Do</h3>
-        <div id="To-Do" class="storyCol">
-            <div class="storyContainers">
+    <div class="span-19 storyList">
+        <div class="col">
+            <div class="colTitle">To Do</div>
+            <div id="To-Do" class="storyCol">
+                <div class="storyContainers">
 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <h3>In Progress</h3>
-        <div id="In-Progress" class="storyCol">
-            <div class="storyContainers">
+        <div class="col">
+            <div class="colTitle">In Progress</div>
+            <div id="In-Progress" class="storyCol">
+                <div class="storyContainers">
 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <h3>Done</h3>
-        <div id="Done" class="storyCol">
-            <div class="storyContainers">
+        <div class="col">
+            <div class="colTitle">Done</div>
+            <div id="Done" class="storyCol">
+                <div class="storyContainers">
 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <h3>Accepted</h3>
-        <div id="Accepted" class="storyCol">
-            <div class="storyContainers">
+        <div class="col">
+            <div class="colTitle">Accepted</div>
+            <div id="Accepted" class="storyCol">
+                <div class="storyContainers">
                     
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div id="chartContainer" style="height: 200px;"></div>
 
 @section Scripts {
     <script type="text/javascript">
