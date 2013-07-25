@@ -18,7 +18,7 @@ namespace tasky.Models
         [Display(Name = "Description")]
         public string description { get; set; }
 
-        [Display(Name = "Points")]
+        [Display(Name = "Story Points")]
         public int points { get; set; }
 
         [Display(Name = "Status")]

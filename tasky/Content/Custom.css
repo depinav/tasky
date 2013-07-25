@@ -62,6 +62,20 @@ body {
     text-align: center;
 }
 
+.cornerContainer {
+    width:350px;
+}
+
+.cornerHeader {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cornerContent {
+    margin-left:20px;
+    margin-right: 20px;
+    line-height: 30px;
+}
 .sprintIndexContainer {
     width: 2000px;
     margin-left: auto;
