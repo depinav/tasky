@@ -4,61 +4,42 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Story</legend>
-
-    <div class="display-label">
-        User Story -
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.title)
-    </div>
-
-    <span>
-        @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
-         @Html.ActionLink("Delete", "Delete", new { id=Model.id })
+<div class="cornerContainer">
+    <div class="cornerHeader">@Html.DisplayFor(model => model.title)</div>
+            
+    <span class="cornerContent">
+    @Html.DisplayNameFor(model => model.sprintViewModel.title):
+    @Html.ActionLink((string)Model.sprintViewModel.title, "Details", "Sprint", new {id = Model.sprintViewModel.id}, null)
     </span>
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.points)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.points)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.status)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.status)
-    </div>
+    <span class="cornerContent">
+    @Html.DisplayNameFor(model => model.points):
+    @Html.DisplayFor(model => model.points)
+    </span>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.description)
-    </div>
+    <span class="cornerContent">
+    @Html.DisplayNameFor(model => model.status):
+    @Html.DisplayFor(model => model.status)
+    </span>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.sprintViewModel.title)
-    </div>
-    <div class="display-field">
-        @Html.ActionLink((string)Model.sprintViewModel.title, "Details", "Sprint", new {id = Model.sprintViewModel.id}, null)
-    </div>    
+    <span class="cornerContent">
+    @Html.DisplayNameFor(model => model.description):
+    @Html.DisplayFor(model => model.description)
+    </span>
+
+    <br />
+
+    <span class="cornerContent">
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Delete", "Delete", new { id=Model.id })
+    @Html.ActionLink("New Task", "Create", "Task")
+    </span>
 
     <div class="taskList">
 
         <!-- List out tasks using Backbone here -->
     </div>
-
-</fieldset>
-
+</div>
 @section Scripts {
     <script type="text/javascript">
         var taskdata = @Html.Raw(Json.Encode(Model.tasks))
