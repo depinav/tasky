@@ -22,6 +22,11 @@ namespace tasky.Controllers
             return View();
         }
 
+        public ActionResult Help()
+        {
+            return View();
+        }
+
         public ActionResult ApiTest()
         {
             return View();

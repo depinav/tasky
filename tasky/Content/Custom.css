@@ -9,6 +9,16 @@ body {
     margin: 5px 10px;
 }
 
+hr.hrStyleOne {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+}
+
 .headerContainer {
     width: 100%;
     border-style: solid;
@@ -66,20 +76,6 @@ body {
     text-align: center;
 }
 
-.cornerContainer {
-    width:350px;
-}
-
-.cornerHeader {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.cornerContent {
-    margin-left:20px;
-    margin-right: 20px;
-    line-height: 30px;
-}
 .sprintIndexContainer {
     width: 2000px;
     margin-left: auto;
@@ -142,4 +138,12 @@ body {
     line-height: 30px;
     margin-top:5px;
     margin-bottom:5px;
+}
+
+.descriptionContainer {
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 20px;
+    text-align:justify;
+    display:inline-block;
 }

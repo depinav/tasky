@@ -4,87 +4,79 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Task</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.taskTitle)
+<div class="container">
+    <div class="span-5">
+        
+        <div>
+            <h2>@Model.taskTitle</h2>
+            Story:&nbsp @Html.ActionLink((string)Model.taskStoryTitle, "Details", "Story", new {id = Model.taskStoryId}, null)
+        </div>
+        <div>Status:&nbsp @Html.DisplayFor(model => model.taskStatus)</div>
+        <div>
+            Assigned to:&nbsp @Html.ActionLink((string)Model.taskTmName, "Details", "TeamMember", new {id = Model.taskTmID}, null)
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id=Model.taskId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.taskTitle)
-    </div>
+    <div class="span-18">
+        <div class="span-3">
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.taskEstHours)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.taskEstHours)
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.taskDesc)
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.taskRemHours)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.taskRemHours)
+            </div>
+
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.taskStatus)
+             </div>
+            <div class="display-label">
+                @Html.DisplayFor(model => model.taskStatus)
+            </div>
+        </div>
+        <div class="span-10">
+            @using (Html.BeginForm("LogHours", "Task")) {
+                <div class="editor-label">
+                    @Html.DisplayNameFor(model => model.loggedHours)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.loggedHours, new { @name = "loggedHours" })
+                    @Html.ValidationMessageFor(model => model.loggedHours)
+                </div>
+
+                <div class="editor-label">
+                    @Html.DisplayNameFor(model => model.logDate)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.logDate, new { @name = "logDate" })
+                    @Html.ValidationMessageFor(model => model.logDate)
+                </div>
+
+                <div>
+                    @Html.HiddenFor(model => model.taskId, new { @name = "taskId" })
+                </div>
+
+                <p>
+                    <input type="submit" value="LogHours"/>
+                </p>
+            }
+        </div>
     </div>
-    <div class="display-field">
+</div>
+</br>
+<hr class="hrStyleOne">
+<div class="container">
+    <h3>Description</h3>
+    <div class="descriptionContainer">
         @Html.DisplayFor(model => model.taskDesc)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.taskEstHours)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.taskEstHours)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.taskRemHours)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.taskRemHours)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.taskStatus)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.taskStatus)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.taskTmName)
-    </div>
-    <div class="display-field">
-        @Html.ActionLink((string)Model.taskTmName, "Details", "TeamMember", new {id = Model.taskTmID}, null)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.taskStoryTitle)
-    </div>
-    <div class="display-field">
-        @Html.ActionLink((string)Model.taskStoryTitle, "Details", "Story", new {id = Model.taskStoryId}, null)
-    </div>
-
-    @using (Html.BeginForm("LogHours", "Task")) {
-        <div class="editor-label">
-            @Html.DisplayNameFor(model => model.loggedHours)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.loggedHours, new { @name = "loggedHours" })
-            @Html.ValidationMessageFor(model => model.loggedHours)
-        </div>
-
-        <div class="editor-label">
-            @Html.DisplayNameFor(model => model.logDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.logDate, new { @name = "logDate" })
-            @Html.ValidationMessageFor(model => model.logDate)
-        </div>
-
-        <div>
-            @Html.HiddenFor(model => model.taskId, new { @name = "taskId" })
-        </div>
-
-        <p>
-            <input type="submit" value="LogHours"/>
-        </p>
-    }
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.taskId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
