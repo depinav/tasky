@@ -117,26 +117,31 @@ var TaskListView = Backbone.View.extend({
 
     render: function () {
         //        var html = "<table class=\"taskListTable\">";
-        var html = '<table class="taskListTable">';
+        var html = '<div class="span-21">';
 
-        _.each(this.items.models, function (item) {
+        if (this.items.models.length === 0) {
+            html = html.concat('<div class="taskItem">  No tasks associated with this story</div>');
+        }
+        else {
+            _.each(this.items.models, function (item) {
 
-            var chBoxStatus = "";
-            if (item.get("Status") !== "Done")
-                chBoxStatus = "";
-            else
-                chBoxStatus = "checked";
+                var chBoxStatus = "";
+                if (item.get("Status") !== "Done")
+                    chBoxStatus = "";
+                else
+                    chBoxStatus = "checked";
 
-            console.log(item.get("Title"));
-            
-            html = html.concat("<tr><div class=\"" + chBoxStatus + "\">");
-            html = html.concat("<input type=\"checkbox\" class=\"task-check\" id=\"" + item.get("id") + " \"" + chBoxStatus + ">");
-            html = html.concat('<a href="/Task/Details/' + item.get("id").toString() + '">' + item.get("Title") + '</a>');
-            html = html.concat('</div></tr>');
+                console.log(item.get("Title"));
 
-        })
+                html = html.concat('<div class="taskItem"><div class="' + chBoxStatus + '">');
+                html = html.concat('<input type="checkbox" class="task-check" id="' + item.get('id') + ' "' + chBoxStatus + '>     Task:   ');
+                html = html.concat('<a href="/Task/Details/' + item.get("id").toString() + '">' + item.get("Title") + '</a>');
+                html = html.concat('</div></div>');
 
-        html = html.concat('</table>');
+            })
+        }
+
+        html = html.concat('</div>');
 
         this.$el.html(html);
 

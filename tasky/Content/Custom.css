@@ -131,3 +131,15 @@ body {
     cursor: pointer;
 }
 
+.taskList {
+    display: block;
+    margin-left: 50px;
+    margin-right: auto;
+}
+
+.taskItem {
+    border: 1px solid #696663;
+    line-height: 30px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
