@@ -36,19 +36,27 @@
 <div class="container">
     <h3>Tasks</h3>
     <div class="taskList">
-        <!-- List out tasks using Backbone here -->
+
+        <script id='itemTemplate' type='text/template'>
+                <% for (var i = 0; i < tasks.length; i++) { %>
+                    <% var task = tasks[i]; %>
+                    <% var chBoxStatus = "" %>
+                    <% if(task.get("Status") == "Done") { chBoxStatus = "checked";}%>
+                    <% console.log(task) %>
+                        <div class="taskItem">
+                            <div class='<%= chBoxStatus %>'>
+                                <input type="checkbox" class="task-check" id='<%= task.id %>' <%= chBoxStatus %>/>
+                                    Task: <a href='/Task/Details/<%= task.id %>'> <%= task.get("Title") %></a>
+                            </div>
+                        </div>
+                <% } %>
+        </script>
+
     </div>
 </div>
 @section Scripts {
     <script type="text/javascript">
-        var taskdata = @Html.Raw(Json.Encode(Model.tasks))
-        /*
-            [
-            {title: "hi"},
-            {title: "hi2"},
-            {title: "hi3"}
-        ];
-        */
+        var taskdata = @Html.Raw(Json.Encode(Model.tasks));
 
         var c = new TaskList(taskdata);
         console.log(c);

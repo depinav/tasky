@@ -121,51 +121,32 @@ var TaskListView = Backbone.View.extend({
 
         if (this.items.models.length === 0) {
             html = html.concat('<div class="taskItem">  No tasks associated with this story</div>');
+            html = html.concat('</div>');
         }
         else {
-            _.each(this.items.models, function (item) {
-
-                var chBoxStatus = "";
-                if (item.get("Status") !== "Done")
-                    chBoxStatus = "";
-                else
-                    chBoxStatus = "checked";
-
-                console.log(item.get("Title"));
-
-                html = html.concat('<div class="taskItem"><div class="' + chBoxStatus + '">');
-                html = html.concat('<input type="checkbox" class="task-check" id="' + item.get('id') + ' "' + chBoxStatus + '>     Task:   ');
-                html = html.concat('<a href="/Task/Details/' + item.get("id").toString() + '">' + item.get("Title") + '</a>');
-                html = html.concat('</div></div>');
-
-            })
-        }
-
-        html = html.concat('</div>');
-
+            var templateMarkup = $('#itemTemplate').html();
+            var compiledTemplate = _.template(templateMarkup, { tasks: this.items.models });
+            html = html.concat(compiledTemplate);
+            html = html.concat('</div>');
+        }       
         this.$el.html(html);
-
-
     },
 
     handleTaskClick: function (event) {
-
+        console.log('clicked');
         var taskid = parseInt($(event.currentTarget).attr('id'));
         var model = this.items.get(taskid);
 
-        if ($(event.currentTarget).parent().attr('class') === "") {
 
-            var task = $(event.currentTarget).parent();
-            task.toggleClass('checked');
-            model.save({ remaining_hours: 0 });
-            model.save({ status: "Done" });
-        }
-        else {
+        var task = $(event.currentTarget).parent()
 
-            var task = $(event.currentTarget).parent();
-            task.toggleClass();
+        if(task.hasClass("checked")) {
+            task.toggleClass("checked");
             model.save({ status: "In Progress" });
         }
-            
+        else {
+            task.toggleClass('checked');
+            model.save({ status: "Done", remaining_hours: 0 });
+        }            
     }
 });
