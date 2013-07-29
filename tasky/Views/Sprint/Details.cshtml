@@ -108,5 +108,23 @@
             setupHighchart("#chartContainer", actualBurndownData, idealBurndownData);
         });
     </script>
+
+    <script id='storyTemplate' type='text/template'>
+        <% for (var i = 0; i < stories.length; i++) { %>
+            <% var story = stories[i]; %>
+            <div class="sortableEntry" data-id='<%= story.id %>'>
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <div class="portlet-toggle"></div>
+                        <a href="/Story/Details/<%= story.id %>"><%= story.get("title") %></a>
+                    </div>
+                    <div class="portlet-content">
+                        <div><strong>Description</strong></div>
+                        <div><%= story.get("description") %></div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </script>
 }
 

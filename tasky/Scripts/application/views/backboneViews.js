@@ -1,4 +1,8 @@
 ﻿var DragStoryByStatusView = Backbone.View.extend({
+    events: {
+        "click .portlet-toggle": "handlePortletToggle",
+    },
+
     initialize: function () {
         this.stories = this.options.items;
         var view = this;
@@ -6,8 +10,8 @@
             connectWith: ".storyContainers",
             placeholder: "storyContainerPH",
             receive: function (event, ui) {
-                var newStatus = ui.item.parent('div').parent('div').attr('id');
-                var storyId = ui.item.attr('id');
+                var newStatus = ui.item.closest('.storyCol').attr('id');
+                var storyId = ui.item.attr('data-id');
                 var story = view.stories.get(storyId);
                 console.log(story);
                 story.save({ status: newStatus });
@@ -16,17 +20,37 @@
     },
 
     render: function () {
-        this.$el.find(".storyContainers").children().remove();
-        var el = this.$el;
+        //group the stories by status
+        var statusGrouping = this.stories.groupBy(function (model) { return model.get("status") });
 
-        _.each(this.stories.models, function (story) {
-            var html = '<div class="sortableEntry" id="' + story.get("id").toString() + '" >';
-            html = html.concat('<a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</a></div>');
-            var idString = story.get("status").replace(" ", "-");
+        //load template
+        var storyTemplate = $('#storyTemplate').html();
 
-            el.find("#"+idString).find(".storyContainers").append(html);
-        })
-    }
+        //for each status, render the list of stories for that status
+        for (status in statusGrouping) {
+            storyList = statusGrouping[status];
+
+            //render the template for this story list
+            var html = _.template(storyTemplate, { stories: storyList });
+
+            //copy the html into the correct place
+            var idString = status.replace(" ", "-");
+            this.$el.find("#" + idString + " .storyContainers").html(html);
+        }
+    },
+
+    handlePortletToggle: function (ev) {
+        var parent = $(ev.currentTarget).closest('.portlet');
+
+        if (parent.hasClass("active")) {
+            parent.find(".portlet-content").slideUp('fast');
+        }
+        else {
+            parent.find(".portlet-content").slideDown('fast');
+        }
+        parent.toggleClass('active');
+        return false;
+    },
 
 });
 
