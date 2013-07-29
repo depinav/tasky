@@ -30,6 +30,9 @@ namespace tasky
             bundles.Add(new ScriptBundle("~/bundles/charts").Include(
                         "~/Scripts/highcharts-3.0.2.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/supersecret").Include(
+                        "~/Scripts/application/misc/konami.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

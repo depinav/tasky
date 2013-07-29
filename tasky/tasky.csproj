@@ -317,6 +317,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\application\misc\konami.js" />
     <Content Include="Scripts\application\models\backboneModels.js" />
     <Content Include="Scripts\application\models\modelCollections.js" />
     <Content Include="Scripts\application\views\backboneViews.js" />
