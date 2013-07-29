@@ -7,7 +7,7 @@
     <div class="span-5">
         <h2>@Model.title</h2>
         <div>@Html.DisplayFor(model => model.startDate) to @Html.DisplayFor(model => model.endDate)</div>
-        <div>@Html.ActionLink("Edit", "Edit", new { id=Model.id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Add Story", "Create")</div>
+        <div>@Html.ActionLink("Edit", "Edit", new { id=Model.id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Add Story", "Create", "Story")</div>
     </div>
     <div class="span-19 storyList">
         <div class="col">

@@ -96,13 +96,49 @@ hr.hrStyleOne {
 }
 
 .sortableEntry {
+    margin: 3px;
+}
+
+.sortableEntry .portlet-header {
     height: auto;
     min-height: 30px;
     border: 1px solid black;
     word-wrap: break-word;
-    margin: 1px;
     text-align: center;
     background-color: #9a4138;
+}
+
+
+.sortableEntry .portlet-header:hover {
+    background-color: #b16860;
+    cursor: pointer;
+}
+.portlet-content {
+    border: 1px solid black;
+    border-top: none;
+    padding: 6px;
+    background-color: #e1a8a0;
+    color: black;
+    word-wrap: break-word;
+}
+
+
+/* portlet-only stuff */
+.portlet:not(.active) .portlet-content {
+    display: none;
+}
+.portlet .portlet-toggle {
+    float: right;
+    width: 16px;
+    height: 16px;
+    margin: 7px 5px;
+    background-image: url("//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-darkness/images/ui-icons_222222_256x240.png");
+}
+.portlet.active .portlet-toggle {
+    background-position: -64px -128px;
+}
+.portlet:not(.active) .portlet-toggle {
+    background-position: -32px -128px;
 }
 
 .storyContainerPH {
@@ -120,11 +156,6 @@ hr.hrStyleOne {
     color: #FFFFFF;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
-}
-
-.sortableEntry:hover {
-    background-color: #d18880;
-    cursor: pointer;
 }
 
 .taskList {

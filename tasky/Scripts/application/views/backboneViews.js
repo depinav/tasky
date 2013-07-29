@@ -23,9 +23,7 @@
             var html = '<div class="sortableEntry" id="' + story.get("id").toString() + '" >';
             html = html.concat('<a href="/Story/Details/' + story.get("id").toString() + '">' + story.get("title") + '</a></div>');
             var idString = story.get("status").replace(" ", "-");
-            console.log('idString is: #' + idString);
-            console.log(el.find("#" + idString));
-            console.log(el.find("#" + idString).find(".storyContainers"));
+
             el.find("#"+idString).find(".storyContainers").append(html);
         })
     }
@@ -33,11 +31,14 @@
 });
 
 var DragStoryBySprintView = Backbone.View.extend({
+    events: {
+        "click .portlet-toggle": "handlePortletToggle",
+    },
     initialize: function () {
         this.sprints = this.options.items;
         var view = this;
 
-        $( ".storyContainers" ).sortable({
+        $(".storyContainers").sortable({
             connectWith: ".storyContainers",
             placeholder: "storyContainerPH",
 
@@ -60,7 +61,7 @@ var DragStoryBySprintView = Backbone.View.extend({
                 //IMPORTANT NOTE: When the user drags a thing from one list to another list, this event fires twice - once for the "old" list, and once for the "new" list
                 //for updating the prioritization this is what we want, but if you're adding something else to this method it might not be what you want
                 // http://stackoverflow.com/questions/3492828/jquery-sortable-connectwith-calls-the-update-method-twice
-                
+
                 var sprintId = $(this).attr("id");
                 var storyCollection = view.sprints.get(sprintId).get("stories");
 
@@ -73,7 +74,7 @@ var DragStoryBySprintView = Backbone.View.extend({
                 _.each(storyList, function (e, i) {
                     e.set({ "sprintOrder": i });
                 });
-                
+
                 var data = (new Backbone.Collection(storyList)).toJSON();
                 $.ajax({
                     type: "POST",
@@ -88,27 +89,38 @@ var DragStoryBySprintView = Backbone.View.extend({
 
     render: function () {
 
+        var storyTemplate = $('#storyTemplate').html();
+
         _.each(this.sprints.models, function (item) {
-            var html = '';
-            _.each(item.get("stories").models, function (story) {
-                html = html.concat('<div class="sortableEntry" data-id=' + story.get("id") + ' data-sprintID = ' + item.get("sprintid") + '><a href="/Story/Details/' + story.get("id") + '" >');
-                html = html.concat(story.get("title"));
-                html = html.concat('</a></div>');
-            })
+            
+            var html = _.template(storyTemplate, { stories: item.get("stories").models });
 
             $('div#' + item.get('sprintid')).html(html);
-        })
+        });
     },
 
     detailsDrag: function () {
         console.log("Inside detailsDrag method");
-    }
+    },
+
+    handlePortletToggle: function (ev) {
+        var parent = $(ev.currentTarget).closest('.portlet');
+
+        if (parent.hasClass("active")) {
+            parent.find(".portlet-content").slideUp('fast');
+        }
+        else {
+            parent.find(".portlet-content").slideDown('fast');
+        }
+        parent.toggleClass('active');
+        return false;
+    },
 })
 
 var TaskListView = Backbone.View.extend({
 
     events: {
-        "click .task-check": "handleTaskClick"
+        "click .task-check": "handleTaskClick",
     },
 
     initialize: function () {
@@ -148,5 +160,5 @@ var TaskListView = Backbone.View.extend({
             task.toggleClass('checked');
             model.save({ status: "Done", remaining_hours: 0 });
         }            
-    }
+    },
 });
