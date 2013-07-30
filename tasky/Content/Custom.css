@@ -181,7 +181,7 @@ hr.hrStyleOne {
 
 .easter {
     position: absolute;
-    z-index: 1000;
+    left: -1000em;
     opacity:0;
 }
 

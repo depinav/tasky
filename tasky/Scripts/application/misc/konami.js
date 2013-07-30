@@ -53,8 +53,8 @@ var Konami = function (callback) {
 }
 
 function makeNewPosition() {
-    var h = $(window).height() - 25;
-    var w = $(window).width() - 200;
+    var h = $(window).height() - 125;
+    var w = $(window).width() - 350;
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
     return [nh, nw];
