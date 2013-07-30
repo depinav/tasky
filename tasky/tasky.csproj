@@ -317,6 +317,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\airplane.gif" />
+    <Content Include="Images\blue_tasky_logo.svg" />
+    <Content Include="Images\new_tasky_logo.svg" />
+    <Content Include="Images\new_tasky_logo1.svg" />
     <Content Include="Scripts\application\misc\konami.js" />
     <Content Include="Scripts\application\models\backboneModels.js" />
     <Content Include="Scripts\application\models\modelCollections.js" />

@@ -24,14 +24,14 @@ var Konami = function (callback) {
             }
         },
         input: "",
-        pattern: "3838404037393739666513",
+        pattern: "38384040373937396665",
         load: function (link) {
             this.addEvent(document, "keydown", function (e, ref_obj) {
                 if (ref_obj) konami = ref_obj; // IE
                 konami.input += e ? e.keyCode : event.keyCode;
+                console.log(konami.input);
                 if (konami.input.length > konami.pattern.length) konami.input = konami.input.substr((konami.input.length - konami.pattern.length));
                 if (konami.input == konami.pattern) {
-                    console.log("patterns match");
                     konami.code(link);
                     konami.input = "";
                     return;
@@ -40,7 +40,7 @@ var Konami = function (callback) {
             this.iphone.load(link);
 
         },
-        code: function (link) { window.location = link },
+        code: function (link) { window.location = link }
     }
 
     typeof callback === "string" && konami.load(callback);
@@ -50,11 +50,22 @@ var Konami = function (callback) {
     }
 
     return konami;
+}
+
+function makeNewPosition() {
+    var h = $(window).height() - 25;
+    var w = $(window).width() - 200;
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+    return [nh, nw];
 };
 
-var effector = function () {
-    $('.body').toggle("pulsate", 1500);
-    
+function effector() {
+    console.log('effector called');
+    var pos = makeNewPosition();
+    $('.easter').animate({ opacity: 1, top: pos[0], left: pos[1] }, 1000, 'linear', function () {
+        effector();
+    });
 };
 
 var easteregg = new Konami(effector);
