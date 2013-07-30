@@ -178,3 +178,10 @@ hr.hrStyleOne {
     text-align:justify;
     display:inline-block;
 }
+
+.easter {
+    position: absolute;
+    z-index: 1000;
+    opacity:0;
+}
+
