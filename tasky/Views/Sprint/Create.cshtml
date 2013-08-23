@@ -36,6 +36,21 @@
             @Html.EditorFor(model => model.endDate)
             @Html.ValidationMessageFor(model => model.endDate)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.releaseId)
+        </div>
+        <div class="editor-field">
+             @if (ViewBag.currentReleaseID != null)
+             {
+                 @Html.HiddenFor(model => model.releaseId, new { value = ViewBag.currentReleaseID });
+                 @ViewBag.releaseTitle
+             }
+            else
+            {
+                @Html.DropDownListFor(model => model.releaseId, ViewBag.ReleaseOptions as SelectList, "--Filter Release--");
+ 
+             }
+        </div>
 
         <p>
             <input type="submit" value="Create" />

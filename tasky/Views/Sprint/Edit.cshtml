@@ -38,6 +38,23 @@
             @Html.EditorFor(model => model.endDate)
             @Html.ValidationMessageFor(model => model.endDate)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.releaseId)
+        </div>
+        <div class="editor-field">
+            <!-- Receiving error, releaseID is int, requires IEnumerable
+                -->
+            @if (ViewBag.currentReleaseID != null)
+            {
+                @Html.HiddenFor(model => model.releaseId, new { value = ViewBag.currentReleaseID });
+                @ViewBag.releaseTitle
+            }
+            else
+            {
+               @Html.DropDownListFor(model => model.releaseId, ViewBag.ReleaseOptions as SelectList, "--Filter Release--");
+            }
+                
+        </div>
 
         <div class="editor-label">
             @Html.ActionLink("Create Story", "Create", "Story", new {sprintId = Model.id}, null)

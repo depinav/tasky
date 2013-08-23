@@ -52,5 +52,13 @@ namespace tasky.Controllers
         {
             repo.Delete(id);
         }
+
+        [HttpPost]
+        public void SaveSprints([FromBody]List<Sprint> sprints)
+        {
+            foreach(Sprint sprint in sprints){
+                repo.Save(sprint);
+            }
+        }
     }
 }

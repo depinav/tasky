@@ -185,3 +185,39 @@ hr.hrStyleOne {
     opacity:0;
 }
 
+/* Adding style to the sprintContainer*/
+
+.sprintContainer {
+    min-height: 200px;
+    width: 100%;
+    background-color: #E2E2E2;
+}
+
+.sprintContainerPH {
+    height: auto;
+    min-height: 30px;
+    border: 2px dashed black;
+    word-wrap: break-word;
+    margin: 1px;
+    text-align: center;
+    background-color: #D18880;
+    opacity: 0.3;
+}
+
+.releaseContainer {
+    min-height: 300px;
+    width: 100%;
+    background-color: #0094ff;
+}
+
+.releaseContainerPH {
+    height: auto;
+    min-height: 30px;
+    border: 2px dashed black;
+    word-wrap: break-word;
+    margin: 1px;
+    text-align: center;
+    background-color: #D18880;
+    opacity: 0.3;
+}
+

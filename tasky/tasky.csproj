@@ -192,9 +192,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\ReleaseAPIController.cs" />
     <Compile Include="Controllers\API\TeamMemberAPIController.cs" />
     <Compile Include="Controllers\API\TaskAPIController.cs" />
     <Compile Include="Controllers\API\StoryAPIController.cs" />
+    <Compile Include="Controllers\ReleaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\SprintAPIController.cs" />
     <Compile Include="Controllers\SprintController.cs" />
@@ -209,8 +211,24 @@
     <Compile Include="Injection\DefaultModule.cs" />
     <Compile Include="Injection\NinjectControllerFactory.cs" />
     <Compile Include="Injection\NinjectDependencyResolver.cs" />
+    <Compile Include="Migrations\201308192139494_addingReleaseModel.cs" />
+    <Compile Include="Migrations\201308192139494_addingReleaseModel.Designer.cs">
+      <DependentUpon>201308192139494_addingReleaseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308201422239_addingToSprintModel.cs" />
+    <Compile Include="Migrations\201308201422239_addingToSprintModel.Designer.cs">
+      <DependentUpon>201308201422239_addingToSprintModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308221924360_another.cs" />
+    <Compile Include="Migrations\201308221924360_another.Designer.cs">
+      <DependentUpon>201308221924360_another.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Release.cs" />
     <Compile Include="Models\TaskLog.cs" />
+    <Compile Include="Repository\IReleaseRepository.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
+    <Compile Include="Repository\ReleaseRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\ITeamMemberRepository.cs" />
     <Compile Include="Repository\TeamMemberRepository.cs" />
@@ -218,7 +236,6 @@
     <Compile Include="Repository\StoryRepository.cs" />
     <Compile Include="Repository\SprintRepository.cs" />
     <Compile Include="Repository\ISprintRepository.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Sprint.cs" />
     <Compile Include="Models\Story.cs" />
@@ -250,6 +267,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ReleaseViewModel.cs" />
     <Compile Include="ViewModels\SprintViewModel.cs" />
     <Compile Include="ViewModels\StoryViewModel.cs" />
     <Compile Include="ViewModels\TaskLogViewModel.cs" />
@@ -489,6 +507,11 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Release\Index.cshtml" />
+    <Content Include="Views\Release\Details.cshtml" />
+    <Content Include="Views\Release\Create.cshtml" />
+    <Content Include="Views\Release\Edit.cshtml" />
+    <Content Include="Views\Release\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -501,16 +524,22 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307231851585_add-migrations.resx">
-      <DependentUpon>201307231851585_add-migrations.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Service References\SprintServiceReference\" />
     <WCFMetadataStorage Include="Service References\StoryServiceReference\" />
     <WCFMetadataStorage Include="Service References\TaskLogServiceReference\" />
     <WCFMetadataStorage Include="Service References\TaskServiceReference\" />
     <WCFMetadataStorage Include="Service References\TeamMemberServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201308192139494_addingReleaseModel.resx">
+      <DependentUpon>201308192139494_addingReleaseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308201422239_addingToSprintModel.resx">
+      <DependentUpon>201308201422239_addingToSprintModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308221924360_another.resx">
+      <DependentUpon>201308221924360_another.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

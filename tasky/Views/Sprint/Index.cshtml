@@ -35,23 +35,23 @@
 </div>
 
 @section Scripts {
-    <script type="text/javascript">
-        var sprintArray = @Html.Raw(Json.Encode(Model));
-        var sprintCollection = new Backbone.Collection([]);
+<script type="text/javascript">
+    var sprintArray = @Html.Raw(Json.Encode(Model));
+    var sprintCollection = new Backbone.Collection([]);
 
-        _.each(sprintArray, function(items) {
-            sprintCollection.add({id: items.id, sprintid: items.id, stories: new StoryList(items.stories)});
+    _.each(sprintArray, function(items) {
+        sprintCollection.add({id: items.id, sprintid: items.id, stories: new StoryList(items.stories)});
 
-        })
+    })
 
-        $(document).on("ready", function() {
-           // console.log(sprintCollection);
-            var dragview = new DragStoryBySprintView({items:sprintCollection, el:$(".sprintIndexContainer")});
-            dragview.render();
+    $(document).on("ready", function() {
+        // console.log(sprintCollection);
+        var dragview = new DragStoryBySprintView({items:sprintCollection, el:$(".sprintIndexContainer")});
+        dragview.render();
 
             
-        })
-    </script>
+    })
+</script>
 
     <script id='storyTemplate' type='text/template'>
         <% for (var i = 0; i < stories.length; i++) { %>

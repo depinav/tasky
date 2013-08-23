@@ -14,3 +14,9 @@ var Story = Backbone.Model.extend({
         sprintId: 0
     }
 });
+
+var Release = Backbone.Model.extend({
+    urlRoot: '/api/releaseapi',
+    //Set default values for the Release below
+    //defaults: {}
+});

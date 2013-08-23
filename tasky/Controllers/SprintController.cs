@@ -11,6 +11,7 @@ namespace tasky.Controllers
     public class SprintController : Controller
     {
         private ISprintRepository repo;
+        private IReleaseRepository releaseRepo = new ReleaseRepository();
         public SprintController(ISprintRepository r)
         {
             this.repo = r;
@@ -97,8 +98,18 @@ namespace tasky.Controllers
         //
         // GET: /Sprint/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int? releaseID=null)
         {
+            if (releaseID != null)
+            {
+                Release currentRelease = releaseRepo.FindById((int)releaseID);
+                ViewBag.currentReleaseID = currentRelease.id;
+                ViewBag.releaseTitle = currentRelease.title;
+            }
+            else
+            {
+                ViewBag.ReleaseOptions = new SelectList(getReleaseOptions(), "Id", "Title");
+            }
             return View();
         }
 
@@ -124,10 +135,12 @@ namespace tasky.Controllers
         public ActionResult Edit(int id = 0)
         {
             Sprint sprint = repo.FindById(id);
+
             if (sprint == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.ReleaseOptions = new SelectList(getReleaseOptions(), "Id", "Title");
             return View(sprint);
         }
 
@@ -182,6 +195,10 @@ namespace tasky.Controllers
         {
             public DateTime date { get; set; }
             public int remaining { get; set; }
+        }
+        private ICollection<Release> getReleaseOptions()
+        {
+            return releaseRepo.FindAll();
         }
 
     }

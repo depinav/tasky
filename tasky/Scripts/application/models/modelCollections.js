@@ -5,3 +5,7 @@ var TaskList = Backbone.Collection.extend({
 var StoryList = Backbone.Collection.extend({
     model: Story
 });
+
+var ReleaseList = Backbone.Collection.extend({
+    model: Release
+});

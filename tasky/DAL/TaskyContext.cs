@@ -13,6 +13,10 @@ namespace tasky.DAL
         public DbSet<Task> Tasks { get; set; }
         public DbSet<TaskLog> TaskLogs { get; set; }
 
+        //Adding Release DBSet
+        public DbSet<Release> Releases { get; set; }
+        
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

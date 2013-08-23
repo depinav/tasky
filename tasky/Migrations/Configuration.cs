@@ -1,4 +1,4 @@
-namespace tasky.Migrations
+﻿namespace tasky.Migrations
 {
     using System;
     using System.Collections.Generic;
@@ -29,6 +29,14 @@ namespace tasky.Migrations
             //    );
             //
 
+            
+            context.Releases.AddOrUpdate(i => i.title,
+            new Release
+            {
+                title = "Release Title",
+                sprints = new List<Sprint>()
+            });
+
             context.Sprints.AddOrUpdate(i => i.title,
             new Sprint
             {
@@ -37,7 +45,7 @@ namespace tasky.Migrations
                 endDate = DateTime.Parse("2000-1-1"),
                 stories = new List<Story>()
             });
-
+            
             context.TeamMembers.AddOrUpdate(i => i.name,
             new TeamMember
             {
@@ -47,6 +55,8 @@ namespace tasky.Migrations
                 hash = null,
                 salt = null
             });
+
+            
         }
     }
 }
